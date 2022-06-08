@@ -11,14 +11,16 @@
   </head>
 
   <body>
-    <header>
-      <%= render 'layouts/header' %>
-    </header>
-    <main>
-      <%= yield %>
-    </main>
+    <div class="wrapper">
+      <header class="mb-5">
+        <%= render 'layouts/header' %>
+      </header>
+      <main>
+        <%= yield %>
+      </main>
+    </div>
     <footer>
-      <%= render 'layouts/footer' %>
+        <%= render 'layouts/footer' %>
     </footer>
   </body>
 </html>

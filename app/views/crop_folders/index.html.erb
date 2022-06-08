@@ -1,2 +1,53 @@
-<h1>CropFolders#index</h1>
-<p>Find me in app/views/crop_folders/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <% @crop_folders.each do |crop_folder| %>
+      <div class="crop_box">
+        <table class="table">
+          <tr>
+            <th>作物名：</th>
+            <td><%= crop_folder.crop_name %></td>
+          </tr>
+          <tr>
+            <th>栽培開始日：</th>
+            <td><%= crop_folder.new_crop_date %></td>
+          </tr>
+          <tr>
+            <th>場所：</th>
+            <td><%= crop_folder.place %></td>
+          </tr>
+          <tr>
+            <th>メモ：</th>
+            <td><%= crop_folder.memo %></td>
+          </tr>
+        </table>
+        <%= link_to "成長を記録する", crop_folder_path(crop_folder.id) %>
+      </div>
+      <% end %>
+    </div>
+    <div class="col-md-5 offset-md-1">
+      <%= render 'layouts/errors', obj: @crop_folder%>
+      <%= form_with model: @crop_folder, local:true do |f| %>
+        <div class="form-group">
+          <%= f.label :crop_name %>
+          <%= f.text_field :crop_name, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :new_crop_date %>
+          <%= f.date_field :new_crop_date, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :place %>
+          <%= f.select :place, ['畑', '庭', '屋上・ベランダ', '屋内', 'その他'], { include_blank: '選択してください'}, { class: 'form-control'} %>
+        </div>
+        <div class="form-group">
+          <%= f.label :memo %>
+          <%= f.text_area :memo, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.submit class: 'btn btn-success' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

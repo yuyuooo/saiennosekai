@@ -8,7 +8,7 @@
       <ul class="navbar-nav ml-auto pl-5">
         <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "#", class: "nav-link" do %>
+            <%= link_to crop_folders_path, class: "nav-link" do %>
               あなたの作物一覧<span class="sr-only">(current)</span>
             <% end %>
           </li>

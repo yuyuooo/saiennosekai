@@ -1,2 +1,57 @@
-<h1>CropFolders#show</h1>
-<p>Find me in app/views/crop_folders/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <% @crop_folder.diaries.each do |diary| %>
+      <div class="diary_box">
+        <table class="table">
+          <tr>
+            <th>日付：</th>
+            <td><%= diary.crop_date %></td>
+          </tr>
+          <tr>
+            <th>天気：</th>
+            <td><%= diary.weather %></td>
+          </tr>
+          <tr>
+            <th>題名：</th>
+            <td><%= diary.title %></td>
+          </tr>
+          <tr>
+            <th>本文：</th>
+            <td><%= diary.body %></td>
+          </tr>
+        </table>
+      </div>
+      <% end %>
+    </div>
+    <div class="col-md-5 offset-md-1">
+      <%= render 'layouts/errors', obj: @crop_folder%>
+      <%= form_with model: @crop_folder, local:true do |f| %>
+        <div class="form-group">
+          <%= f.label :crop_date %>
+          <%= f.date_field :crop_date, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :weather %>
+          <%= f.select :weather, ['晴れ', 'くもり', '雨', '雪', 'その他'], { include_blank: '選択してください'}, { class: 'form-control'} %>
+        </div>
+        <div class="form-group">
+          <%= f.label :title %>
+          <%= f.text_field :title, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :image %>
+          <%= f.file_field :crop_image, class: "form-control-file", accept: 'image/*' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :body %>
+          <%= f.text_area :body, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.submit class: 'btn btn-success' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
