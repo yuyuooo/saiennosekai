@@ -10,7 +10,7 @@ class CropFoldersController < ApplicationController
 
   def show
     @crop_folder = CropFolder.find(params[:id])
-    @diary = Diary.new
+    @crop_diary = Diary.new
   end
 
   def create

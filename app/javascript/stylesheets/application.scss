@@ -47,3 +47,38 @@
     border-color: #ffdb88 #fff #ffdb88;
     box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15);
   }
+
+  .diary_box {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px 10px 20px;
+    margin-bottom: 60px;
+    box-shadow: 0 10px 8px -6px #bebebe;
+    display: inline-block;
+    max-width: 100%;
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  .diary_box img {
+    text-align: center;
+  }
+
+  .masking-tape {
+    position: absolute;
+    top: -20px;
+    left: 30%;
+    width: 100px;
+    height: 30px;
+    border-left: 2px dotted rgba(0,0,0,.1); /* マステの左のギザギザ */
+    border-right: 2px dotted rgba(0,0,0,.1); /* マステの右のギザギザ */
+    box-shadow: 0 0 5px rgba(0,0,0,.2); /* マステに影をつける */
+    transform: rotate(4deg); /* マステを回転させる */
+    padding: 5px 15px; /* マステの内側の余白 */
+    background-color: #FAFF07;
+    color: #333;
+    font-size: 20px;
+    line-height: 1.4;
+    text-align: center;
+  }
+

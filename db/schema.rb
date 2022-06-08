@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2022_06_08_014440) do
     t.string "title"
     t.string "weather"
     t.text "body"
+    t.date "diary_date"
     t.integer "user_id"
     t.integer "crop_folder_id"
     t.datetime "created_at", precision: 6, null: false
