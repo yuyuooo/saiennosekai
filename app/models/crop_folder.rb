@@ -1,0 +1,3 @@
+class CropFolder < ApplicationRecord
+  
+end
