@@ -4,8 +4,9 @@ class CropFoldersController < ApplicationController
 
 
   def index
+    @user = current_user
+    @crop_folders = @user.crop_folders.all
     @crop_folder = CropFolder.new
-    @crop_folders = CropFolder.all
   end
 
   def show
@@ -27,7 +28,7 @@ class CropFoldersController < ApplicationController
   private
 
   def crop_folder_params
-    params.require(:crop_folder).permit(:tytle, :weather, :body)
+    params.require(:crop_folder).permit(:crop_name, :new_crop_date, :place, :memo)
   end
 
 end

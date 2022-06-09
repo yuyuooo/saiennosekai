@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :plans, only:[:index, :create]
+
   root to: 'homes#top'
   resources :crop_folders, only: [:index, :show, :create] do
     resources :diaries, only: [:create, :edit, :destroy]

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_08_014440) do
+ActiveRecord::Schema.define(version: 2022_06_09_012136) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2022_06_08_014440) do
     t.text "memo"
     t.date "new_crop_date"
     t.integer "user_id"
+    t.integer "plan_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -57,6 +58,15 @@ ActiveRecord::Schema.define(version: 2022_06_08_014440) do
     t.date "diary_date"
     t.integer "user_id"
     t.integer "crop_folder_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.string "crop_title"
+    t.text "action"
+    t.datetime "start_time"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

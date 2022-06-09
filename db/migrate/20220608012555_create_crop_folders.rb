@@ -6,7 +6,8 @@ class CreateCropFolders < ActiveRecord::Migration[6.1]
       t.text :memo
       t.date :new_crop_date
       t.integer :user_id
-
+      t.integer :plan_id
+      
       t.timestamps
     end
   end
