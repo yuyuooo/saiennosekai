@@ -31,8 +31,8 @@
       <% end %>
     </div>
     <div class="col-md-4">
-      <%= render 'layouts/errors', obj: @crop_diary %>
-      <%= form_with model:[@crop_folder, @crop_diary], local:true do |f| %>
+      <%= render 'layouts/errors', obj: @diary %>
+      <%= form_with model:[@crop_folder, @diary], local:true do |f| %>
         <div class="form-group">
           <%= f.label :diary_date %>
           <%= f.date_field :diary_date, class: 'form-control' %>

@@ -1,15 +1,21 @@
 class PlansController < ApplicationController
 
   def index
-    @plans = Plan.all
+    @user = current_user
+    @plans = @user.plans.all
     @plan = Plan.new
-    @plan.user_id = current_user.id
   end
 
   def create
     @plan = Plan.new(plan_params)
-    @plan.save
-    redirect_to plans_path
+    @plan.user_id = current_user.id
+    if @plan.save
+      redirect_to plans_path
+    else
+      @user = current_user
+      @plans = @user.plans.all
+      render 'index'
+    end
   end
 
   private

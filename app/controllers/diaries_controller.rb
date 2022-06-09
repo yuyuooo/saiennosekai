@@ -3,14 +3,12 @@ class DiariesController < ApplicationController
 before_action :authenticate_user!
 
   def create
-    crop_folder = CropFolder.find(params[:crop_folder_id])
+    @crop_folder = CropFolder.find(params[:crop_folder_id])
     @diary = current_user.diaries.new(diary_params)
-    @diary.crop_folder_id = crop_folder.id
+    @diary.crop_folder_id = @crop_folder.id
     if @diary.save
-      redirect_to crop_folder_path(crop_folder)
+      redirect_to crop_folder_path(@crop_folder.id)
     else
-      @crop_folder = CropFolder.find(params[:crop_folder_id])
-      @crop_diary = Diary.new
       render 'crop_folders/show'
     end
   end

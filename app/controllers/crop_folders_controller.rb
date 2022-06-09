@@ -11,14 +11,14 @@ class CropFoldersController < ApplicationController
 
   def show
     @crop_folder = CropFolder.find(params[:id])
-    @crop_diary = Diary.new
+    @diary = Diary.new
   end
 
   def create
     @crop_folder = CropFolder.new(crop_folder_params)
     @crop_folder.user_id = current_user.id
     if @crop_folder.save
-      redirect_to request.referer
+      redirect_to crop_folders_path
     else
       @crop_folders = CropFolder.all
       render 'index'
