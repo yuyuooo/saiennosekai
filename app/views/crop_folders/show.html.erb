@@ -1,13 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6 ml-5">
+    <div class="col-md-8">
       <% @crop_folder.diaries.each do |diary| %>
       <div class="diary_box">
+        <div class="crop_image">
+          <%= image_tag diary.get_crop_image(300,300), class: "img" %>
+        </div>
         <table class="table">
           <span class="masking-tape">
             <%= diary.id %>
           </span>
-          <%= image_tag diary.get_crop_image(200,200)  %>
           <tr>
             <th>日付：</th>
             <td><%= diary.diary_date %></td>
@@ -28,7 +30,7 @@
       </div>
       <% end %>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-4">
       <%= render 'layouts/errors', obj: @crop_diary %>
       <%= form_with model:[@crop_folder, @crop_diary], local:true do |f| %>
         <div class="form-group">

@@ -60,8 +60,14 @@
     position: relative;
   }
 
-  .diary_box img {
-    text-align: center;
+  .crop_image {
+    width: 300px;
+    height: 300px;
+    margin: 20px 0;
+  }
+
+  .crop_image img{
+    line-height: 300px;
   }
 
   .masking-tape {
