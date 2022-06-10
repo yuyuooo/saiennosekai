@@ -3,11 +3,9 @@ class CropFoldersController < ApplicationController
   before_action :authenticate_user!
 
 
-  def index
-    @user = current_user
-    @crop_folders = @user.crop_folders.all
-    @crop_folder = CropFolder.new
-  end
+  # def index
+  #   @crop_folders = CropFolder.all
+  # end
 
   def show
     @crop_folder = CropFolder.find(params[:id])
@@ -18,10 +16,11 @@ class CropFoldersController < ApplicationController
     @crop_folder = CropFolder.new(crop_folder_params)
     @crop_folder.user_id = current_user.id
     if @crop_folder.save
-      redirect_to crop_folders_path
+      redirect_to user_path(current_user)
     else
-      @crop_folders = CropFolder.all
-      render 'index'
+      @user = current_user
+      @crop_folders = @user.crop_folders.all
+      render 'user/show'
     end
   end
 

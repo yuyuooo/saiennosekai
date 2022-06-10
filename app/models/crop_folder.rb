@@ -2,6 +2,7 @@ class CropFolder < ApplicationRecord
 
   belongs_to :user
   has_many :diaries, dependent: :destroy
+  has_many :plans, dependent: :destroy
 
   validates :crop_name, presence: true, length: { minimum: 1, maximum: 20 }
   validates :place, presence: true

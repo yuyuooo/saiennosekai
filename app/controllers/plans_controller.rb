@@ -4,17 +4,22 @@ class PlansController < ApplicationController
     @user = current_user
     @plans = @user.plans.all
     @plan = Plan.new
+    @crop_folders = @user.crop_folders.all
+  end
+
+  def show
+    @crop_folder = CropFolder.find_by(id: params[:crop_folder_id])
+    @plan = Plan.new
   end
 
   def create
-    @plan = Plan.new(plan_params)
-    @plan.user_id = current_user.id
+    @crop_folder = CropFolder.find(params[:crop_folder_id])
+    @plan = current_user.plans.new(plan_params)
+    @plan.crop_folder_id = @crop_folder.id
     if @plan.save
-      redirect_to plans_path
+      redirect_to crop_folder_plans_path(@crop_folder.id)
     else
-      @user = current_user
-      @plans = @user.plans.all
-      render 'index'
+      render 'show'
     end
   end
 

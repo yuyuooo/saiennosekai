@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(version: 2022_06_09_012136) do
     t.text "memo"
     t.date "new_crop_date"
     t.integer "user_id"
-    t.integer "plan_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -67,6 +66,7 @@ ActiveRecord::Schema.define(version: 2022_06_09_012136) do
     t.text "action"
     t.datetime "start_time"
     t.integer "user_id"
+    t.integer "crop_folder_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
