@@ -3,9 +3,9 @@ class CropFoldersController < ApplicationController
   before_action :authenticate_user!
 
 
-  # def index
-  #   @crop_folders = CropFolder.all
-  # end
+  def index
+    @crop_folders = CropFolder.all
+  end
 
   def show
     @crop_folder = CropFolder.find(params[:id])
