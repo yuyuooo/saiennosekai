@@ -1,6 +1,53 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
+      <% if @crop_folder.user == current_user %>
+        <%= @crop_folder.crop_name %>の栽培日記をつける
+        <%= render 'layouts/errors', obj: @diary %>
+        <%= form_with model:[@crop_folder, @diary], local:true do |f| %>
+          <div class="form-group">
+            <%= f.label :diary_date %>
+            <%= f.date_field :diary_date, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :weather %>
+            <%= f.select :weather, ['晴れ', 'くもり', '雨', '雪', 'その他'], { include_blank: '選択してください'}, { class: 'form-control'} %>
+          </div>
+          <div class="form-group">
+            <%= f.label :title %>
+            <%= f.text_field :title, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :crop_image %>
+            <%= f.file_field :crop_image, class: "form-control-file", accept: 'image/*' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :body %>
+            <%= f.text_area :body, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.submit class: 'btn btn-success' %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-md-7 offset-md-1">
+      <p><%= @crop_folder.crop_name %>の栽培計画</p>
+      <% if @crop_folder.user == current_user %>
+        <%= link_to"予定を立てる", crop_folder_plans_path(@crop_folder), class: 'btn btn-info' %>
+      <% end %>
+      <%= month_calendar events: @crop_folder.plans do |date, plans| %>
+        <%= date.day %>
+		    <% plans.each do |plan| %>
+		      <div>
+		        <%= plan.action %>
+		      </div>
+		    <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
       <% @crop_folder.diaries.each do |diary| %>
       <div class="diary_box">
         <div class="crop_image">
@@ -29,46 +76,6 @@
         </table>
       </div>
       <% end %>
-    </div>
-    <div class="col-md-6">
-      <%= render 'layouts/errors', obj: @diary %>
-      <%= form_with model:[@crop_folder, @diary], local:true do |f| %>
-        <div class="form-group">
-          <%= f.label :diary_date %>
-          <%= f.date_field :diary_date, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :weather %>
-          <%= f.select :weather, ['晴れ', 'くもり', '雨', '雪', 'その他'], { include_blank: '選択してください'}, { class: 'form-control'} %>
-        </div>
-        <div class="form-group">
-          <%= f.label :title %>
-          <%= f.text_field :title, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :crop_image %>
-          <%= f.file_field :crop_image, class: "form-control-file", accept: 'image/*' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :body %>
-          <%= f.text_area :body, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.submit class: 'btn btn-success' %>
-        </div>
-      <% end %>
-      <div class="col">
-        <h5><%= @crop_folder.crop_name %>の栽培計画<h5>
-        <%= link_to"予定を立てる", crop_folder_plans_path(@crop_folder), class: 'btn btn-info' %>
-        <%= month_calendar events: @crop_folder.plans do |date, plans| %>
-          <%= date.day %>
-  		    <% plans.each do |plan| %>
-  		      <div>
-  		        <%= plan.action %>
-  		      </div>
-  		    <% end %>
-        <% end %>
-      </div>
     </div>
   </div>
 </div>

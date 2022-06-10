@@ -1,29 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <% @crop_folders.each do |crop_folder| %>
-      <div class="crop_box">
-        <table class="table">
-          <tr>
-            <th>作物名：</th>
-            <td><%= crop_folder.crop_name %></td>
-          </tr>
-          <tr>
-            <th>栽培開始日：</th>
-            <td><%= crop_folder.new_crop_date %></td>
-          </tr>
-          <tr>
-            <th>場所：</th>
-            <td><%= crop_folder.place %></td>
-          </tr>
-          <tr>
-            <th>メモ：</th>
-            <td><%= crop_folder.memo %></td>
-          </tr>
-        </table>
-        <%= link_to "成長を記録する", crop_folder_path(crop_folder.id) %>
-      </div>
-      <% end %>
+      <%= render 'index', crop_folders: @crop_folders %>
     </div>
   </div>
 </div>

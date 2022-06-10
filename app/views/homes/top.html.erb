@@ -1,2 +1,13 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<% if user_signed_in? %>
+
+  <p>マイーページ</p>
+
+
+<% else %>
+
+  <div class="jumbotron">
+    <h1>あなたの大切な作物を</h1>
+    <p>もっともっと輝かせる</p>
+  </div>
+
+ <% end %>

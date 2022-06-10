@@ -1,0 +1,18 @@
+ja:
+  activerecord:
+    attributes:
+      crop_folder:
+        crop_name: 作物名
+        place: 栽培場所
+        memo: メモ
+        new_crop_date: 栽培開始日
+      diary:
+        title: 題名
+        weather: 天気
+        body: 本文
+        diary_date: 日付
+        crop_image: 画像
+      plan:
+        action: やること
+        start_time: 予定日
+
