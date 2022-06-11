@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  
+
 
   root to: 'homes#top'
   resources :crop_folders, only: [:index, :show, :create] do
@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users, only: [:index, :show]
+  get 'users/:id/about', to: 'users#about',as: 'user_about'
 
 end

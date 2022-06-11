@@ -7,4 +7,12 @@ class UsersController < ApplicationController
     @crop_folders = @user.crop_folders
     @crop_folder = CropFolder.new
   end
+
+  def about
+    @user = User.find(params[:id])
+  end
+
+
+  def edit
+  end
 end

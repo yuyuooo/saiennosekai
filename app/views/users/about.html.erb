@@ -1,0 +1,36 @@
+<div class = "container">
+  <div class ="row">
+    <div class="col-lg-4">
+      <p>マイーページ</p>
+      <table class="table">
+        <%= image_tag @user.get_profile_image(300,300), class: "img" %>
+        <tr>
+          <th>名前</th>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <th>自己紹介</th>
+          <td><%= @user.introduction %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-lg-4">
+      <%= link_to "新しい作物の栽培を始める", user_path(current_user), class: "btn btn-info" %>
+      <p>〜今までの栽培〜</p>
+      <% @user.crop_folders.each do |crop_folder| %>
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <th>●<%= crop_folder.crop_name %></th>
+              <td><%= link_to "日記", crop_folder_path(crop_folder.id) %></td>
+              <td><%= link_to "計画", crop_folder_plans_path(crop_folder.id) %></td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+    <div class="col-lg-4">
+      <p>出品した商品</p>
+    </div>
+  </div>
+</div>
