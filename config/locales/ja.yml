@@ -6,6 +6,7 @@ ja:
         place: 栽培場所
         memo: メモ
         new_crop_date: 栽培開始日
+        crop_image: 画像
       diary:
         title: 題名
         weather: 天気

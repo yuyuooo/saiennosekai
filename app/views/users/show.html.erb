@@ -17,6 +17,10 @@
           <%= f.select :place, ['畑', '庭', '屋上・ベランダ', '屋内', 'その他'], { include_blank: '選択してください'}, { class: 'form-control'} %>
         </div>
         <div class="form-group">
+          <%= f.label :crop_image %>
+          <%= f.file_field :crop_image, class: "form-control-file", accept: 'image/*' %>
+        </div>
+        <div class="form-group">
           <%= f.label :memo %>
           <%= f.text_area :memo, class: 'form-control' %>
         </div>

@@ -40,7 +40,7 @@
   //   background-blend-mode:lighten;
   // }
 
-  .crop_box {
+  .crop_container {
     position: relative;
     background: #fff0cd;
     box-shadow: 0px 0px 0px 5px #fff0cd;
@@ -49,9 +49,11 @@
     color: #454545;
     height: auto;
     margin_bottom: 100px;
+    display: flex;
+    flex-wrap: wrap;
   }
 
-  .crop_box:after {
+  .crop_container:after {
     position: absolute;
     content: '';
     right: -7px;
@@ -61,6 +63,15 @@
     border-color: #ffdb88 #fff #ffdb88;
     box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15);
   }
+
+  .crop_box {
+    max-width: 63%;
+  }
+
+  .crop_folder_image {
+    padding: 4% 3%;
+  }
+
 
   .diary_box {
     background-color: #fff;
