@@ -1,6 +1,19 @@
 <% crop_folders.each do |crop_folder| %>
   <%= image_tag crop_folder.user.get_profile_image(80,80) %>
   <%= crop_folder.user.name %>さん家の作物
+    <% if crop_folder.favorited_by?(current_user) %>
+    <p>
+      <%= link_to crop_folder_favorites_path(crop_folder), method: :delete do %>
+        ♥<%= crop_folder.favorites.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to crop_folder_favorites_path(crop_folder), method: :post do %>
+        ♡<%= crop_folder.favorites.count %> いいね
+      <% end %>
+    </p>
+    <% end %>
   <div class="crop_container mb-5">
     <table class="table crop_box">
       <tr>

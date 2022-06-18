@@ -14,7 +14,7 @@
         </tr>
         <tr>
           <th style="width: 40%">お気に入り</th>
-          <td style="width: 60%"></td>
+          <td style="width: 60%"><%= link_to "#{@user.favorites.count}", user_favorites_path %></td>
         </tr>
       </table>
       <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block" do %>

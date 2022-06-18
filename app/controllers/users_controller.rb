@@ -27,6 +27,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def favorites
+    @user = current_user
+    @crop_folder = @user.crop_folders
+    favorites = Favorite.where(user_id: current_user.id).pluck(:crop_folder_id)
+    @favorite_list = CropFolder.find(favorites)
+  end
+
    private
 
   def user_params

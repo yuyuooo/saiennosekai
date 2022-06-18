@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :crop_folders, dependent: :destroy
   has_many :diaries, dependent: :destroy
   has_many :plans, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   #validates :nickname, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :name, presence: true

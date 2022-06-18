@@ -3,6 +3,7 @@ class CropFolder < ApplicationRecord
   belongs_to :user
   has_many :diaries, dependent: :destroy
   has_many :plans, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   validates :crop_name, length: { minimum: 1, maximum: 20 }
   validates :place, presence: true
@@ -17,6 +18,10 @@ class CropFolder < ApplicationRecord
       crop_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     crop_image.variant(resize_to_limit: [width, height]).processed
+  end
+
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
   end
 
 end
