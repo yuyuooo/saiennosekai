@@ -14,6 +14,7 @@
       <% end %>
     </p>
     <% end %>
+    <p><%= link_to "#{crop_folder.crop_comments.count} コメント", crop_folder_path(crop_folder.id) %></p>
   <div class="crop_container mb-5">
     <table class="table crop_box">
       <tr>
