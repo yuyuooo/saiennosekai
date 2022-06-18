@@ -1,25 +1,7 @@
 <div class = "container">
   <div class ="row">
     <div class="col-lg-5">
-      <p>マイーページ</p>
-      <table class="table">
-        <%= image_tag @user.get_profile_image(300,300), class: "img" %>
-        <tr>
-          <th style="width: 40%">名前</th>
-          <td style="width: 60%"><%= @user.name %></td>
-        </tr>
-        <tr>
-          <th style="width: 40%">自己紹介</th>
-          <td style="width: 60%"><%= @user.introduction %></td>
-        </tr>
-        <tr>
-          <th style="width: 40%">お気に入り</th>
-          <td style="width: 60%"><%= link_to "#{@user.favorites.count}", user_favorites_path %></td>
-        </tr>
-      </table>
-      <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block" do %>
-        <i class="fas fa-user-cog"></i> 会員情報編集
-      <% end %>
+      <%= render "info" %>
     </div>
     <div class="col-lg-6 offset-lg-1">
       <p>〜今までの栽培〜</p>

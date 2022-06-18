@@ -1,5 +1,11 @@
-<h2>お気に入り一覧</h2>
-    <% @favorite_list.each do |favorite| %>
-      <%= favorite.user.name %>さん家の作物
-    <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-5">
+      <%= render "info" %>
+    </div>
+    <div class="col-lg-6 offset-lg-1">
+      <h2>お気に入り一覧</h2>
+      <%= render "crop_folders/index", crop_folders: @favorite_list %>
+    </div>
+  </div>
 </div>
