@@ -30,38 +30,11 @@
           </div>
         <% end %>
       <% end %>
-      <div>
-        <p>コメント件数：<%= @crop_folder.crop_comments.count %></p>
-        <% @crop_folder.crop_comments.each do |crop_comment| %>
-          <p><%= image_tag crop_comment.user.get_profile_image(30,30) %></p>
-          <%= crop_comment.user.name %>
-          <%= crop_comment.created_at.strftime('%Y/%m/%d') %><%= crop_comment.comment %>
-        <% end %>
-      </div>
-      <div>
-        <%= form_with model: [@crop_folder, @crop_comment] do |f| %>
-          <%= f.text_area :comment, rows: '3', placeholder: "コメントをここに",class: 'form-control' %>
-          <%= f.submit "コメントを送信", class: 'btn btn-success' %>
-        <% end %>
-      </div>
-    </div>
-    <div class="col-md-7 offset-md-1">
-      <p><%= @crop_folder.crop_name %>の栽培計画</p>
       <% if @crop_folder.user == current_user %>
         <%= link_to"予定を立てる", crop_folder_plans_path(@crop_folder), class: 'btn btn-info' %>
       <% end %>
-      <%= month_calendar events: @crop_folder.plans do |date, plans| %>
-        <%= date.day %>
-		    <% plans.each do |plan| %>
-		      <div>
-		        <%= plan.action %>
-		      </div>
-		    <% end %>
-      <% end %>
     </div>
-  </div>
-  <div class="row">
-    <div class="col">
+    <div class="col-md-4 offset-md-1">
       <% @crop_folder.diaries.each do |diary| %>
       <div class="diary_box">
         <div class="crop_image">
@@ -91,6 +64,21 @@
       </div>
       <% end %>
     </div>
+    <div class="col-md-3">
+     <div>
+      <p>コメント件数：<%= @crop_folder.crop_comments.count %></p>
+      <% @crop_folder.crop_comments.each do |crop_comment| %>
+        <p><%= image_tag crop_comment.user.get_profile_image(30,30) %></p>
+        <%= crop_comment.user.name %>
+        <%= crop_comment.created_at.strftime('%Y/%m/%d') %><%= crop_comment.comment %>
+      <% end %>
+      </div>
+      <div>
+      <%= form_with model: [@crop_folder, @crop_comment] do |f| %>
+        <%= f.text_area :comment, rows: '3', placeholder: "コメントをここに",class: 'form-control' %>
+        <%= f.submit "コメントを送信", class: 'btn btn-success' %>
+      <% end %>
+      </div>
+    </div>
   </div>
 </div>
-

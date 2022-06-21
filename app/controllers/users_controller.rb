@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to user_path(@user), notice: "会員情報の登録内容を更新しました"
+      redirect_to user_about_path(@user), notice: "会員情報の登録内容を更新しました"
     else
       render "edit"
     end
