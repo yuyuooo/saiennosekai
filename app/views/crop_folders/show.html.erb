@@ -74,7 +74,8 @@
       <% end %>
       </div>
       <div>
-      <%= form_with model: [@crop_folder, @crop_comment] do |f| %>
+      <%= render 'layouts/errors', obj: @crop_comment %>
+      <%= form_with model: [@crop_folder, @crop_comment], url: crop_folder_crop_comments_path(@crop_folder.id) do |f| %>
         <%= f.text_area :comment, rows: '3', placeholder: "コメントをここに",class: 'form-control' %>
         <%= f.submit "コメントを送信", class: 'btn btn-success' %>
       <% end %>

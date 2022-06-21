@@ -5,7 +5,6 @@ class CropFoldersController < ApplicationController
 
   def index
     @crop_folders = CropFolder.all
-    
   end
 
   def show

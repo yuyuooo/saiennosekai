@@ -16,4 +16,6 @@ ja:
       plan:
         action: やること
         start_time: 予定日
+      crop_comment:
+        comment: コメント
 
