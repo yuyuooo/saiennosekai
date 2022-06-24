@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :plans, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :crop_comments, dependent: :destroy
+  has_many :items, dependent: :destroy 
 
   #validates :nickname, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :name, presence: true

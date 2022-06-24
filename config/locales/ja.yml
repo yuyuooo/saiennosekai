@@ -18,4 +18,15 @@ ja:
         start_time: 予定日
       crop_comment:
         comment: コメント
+      item:
+        item_name: 商品名
+        item_count: 個数
+        sales_method: 受渡方法
+        sales_area: 販売地域
+        item_price: 金額
+        item_image: 商品画像
+        introduction: 商品説明
+        is_active: 販売状況
+
+
 

@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index, :show, :edit, :update]
+  resources :items, only: [:index, :show, :create, :edit, :update]
+
   get 'users/:id/about', to: 'users#about', as: 'user_about'
   get 'users/:id/favorites', to: 'users#favorites', as: 'user_favorites'
 
