@@ -17,4 +17,7 @@ Rails.application.routes.draw do
   get 'users/:id/about', to: 'users#about', as: 'user_about'
   get 'users/:id/favorites', to: 'users#favorites', as: 'user_favorites'
 
+  get 'chat/:id' => 'chats#show', as: 'chat'
+  resources :chats, only: [:create]
+
 end

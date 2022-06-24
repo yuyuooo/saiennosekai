@@ -1,0 +1,19 @@
+  <% chats.each do |chat|%>
+    <% if chat.user_id != current_user.id %>
+    <tbody>
+      <tr>
+        <td class="icon_1"><%= image_tag @user.get_profile_image(50,50), class: "message_icon" %></td>
+        <td><div class="message_box_1"><%= chat.message %></div></td>
+        <td></td>
+        <td></td>
+      </tr>
+    <% else %>
+      <tr>
+        <td></td>
+        <td></td>
+        <td class="message_2"><div class="message_box_2"><%= chat.message %></div></td>
+        <td class="icon_2"><%= image_tag @user.get_profile_image(50,50), class: "message_icon" %></td>
+      </tr>
+    </tbody>
+    <% end %>
+  <% end %>

@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+    <h2><%= @user.name %>さんとのチャット</h2>
+      <div class="message">
+        <table class="table table-borderless message_table">
+          <thead>
+            <tr>
+              <th><%= @user.name %></th>
+              <th></th>
+              <th></th>
+              <th><%= current_user.name %></th>
+            </tr>
+          </thead>
+          <div class="chats_index">
+            <%= render "index", chats: @chats %>
+          </div>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 offset-3">
+      <div class="errors">
+        <%= render "layouts/errors", obj: @chat %>
+      </div>
+      <div class="message_form mt-5">
+        <%= render "form", chat: @chat %>
+      </div>
+    </div>
+  </div>
+</div>

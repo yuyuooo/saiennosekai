@@ -1,6 +1,9 @@
 <p>マイーページ</p>
 <table class="table">
   <%= image_tag @user.get_profile_image(300,300), class: "img" %>
+  <% if current_user != @user %>
+    <%= link_to "チャットを始める", chat_path(@user.id) %>
+  <% end %>
   <tr>
     <th style="width: 40%">名前</th>
     <td style="width: 60%"><%= @user.name %></td>
