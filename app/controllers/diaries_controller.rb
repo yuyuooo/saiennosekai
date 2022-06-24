@@ -9,6 +9,7 @@ before_action :authenticate_user!
     if @diary.save
       redirect_to crop_folder_path(@crop_folder.id)
     else
+      @crop_comment = CropComment.new
       render 'crop_folders/show'
     end
   end

@@ -4,7 +4,7 @@
       <% if @crop_folder.user == current_user %>
         <%= @crop_folder.crop_name %>の栽培日記をつける
         <%= render 'layouts/errors', obj: @diary %>
-        <%= form_with model:[@crop_folder, @diary], local:true do |f| %>
+        <%= form_with model:[@crop_folder, @diary], url: crop_folder_diaries_path(@crop_folder.id), local:true do |f| %>
           <div class="form-group">
             <%= f.label :diary_date %>
             <%= f.date_field :diary_date, class: 'form-control' %>

@@ -40,6 +40,13 @@
   //   background-blend-mode:lighten;
   // }
 
+  .field_with_errors {
+    display: contents;
+    input {
+    @extend .is-invalid;
+    }
+  }
+
   .crop_container {
     position: relative;
     background: #fff0cd;
@@ -48,12 +55,13 @@
     padding: 0.2em 0.5em;
     color: #454545;
     height: auto;
+    width: 100%;
     margin_bottom: 100px;
     display: flex;
     flex-wrap: wrap;
   }
 
-  .crop_container:after {
+   .crop_container:after {
     position: absolute;
     content: '';
     right: -7px;
@@ -71,6 +79,7 @@
   .crop_folder_image {
     padding: 4% 3%;
   }
+
 
 
   .diary_box {

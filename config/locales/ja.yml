@@ -23,7 +23,7 @@ ja:
         item_count: 個数
         sales_method: 受渡方法
         sales_area: 販売地域
-        item_price: 金額
+        price: 金額
         item_image: 商品画像
         introduction: 商品説明
         is_active: 販売状況

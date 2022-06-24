@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-5">
+    <div class="col">
       <%= render 'layouts/errors', obj: @item %>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-8 mx-auto">
       <%= form_with model: @item, local:true do |f| %>
         <div class="form-group row form-inline mb-4">
           <%= f.label :item_name, class: "col-sm-3" %>
@@ -43,52 +43,7 @@
           <%= f.label :is_active, "販売停止中", value: :false %>
         </div>
         <div class="form-group row col-sm-2 offset-sm-3">
-          <%= f.submit "出品する", class: 'btn btn-success' %>
-        </div>
-      <% end %>
-    </div>
-    <div class="co-md-6 offset-md-1">
-      <% @items.each do |item| %>
-        <%= link_to user_about_path(item.user) do %>
-          <%= image_tag item.user.get_profile_image(80,80) %>
-        <% end %>
-        <%= link_to "#{item.user.name}さん家の作物", user_path(item.user) %>
-        <div class="row">
-          <div class="crop_container mb-5">
-            <table class="table crop_box col-md-9">
-              <tr>
-                <th style="width: 33%">商品名：</th>
-                <td style="width: 67%"><%= item.item_name %></td>
-              </tr>
-              <tr>
-                <th>個数：</th>
-                <td><%= item.item_count %> 個</td>
-              </tr>
-              <tr>
-                <th>金額：</th>
-                <td><%= item.price.to_s(:delimited) %> 円</td>
-              </tr>
-              <tr>
-                <th>受渡方法：</th>
-                <td><%= item.sales_method %></td>
-              </tr>
-              <tr>
-                <th>販売地域：</th>
-                <td><%= item.sales_area %></td>
-              </tr>
-              <tr>
-                <th>商品説明：</th>
-                <td><%= item.introduction %></td>
-              </tr>
-            </table>
-            <div class="col-md-3 item_image">
-              <div class="sales_status <%= item.is_active_color %>"><%= item.is_active ? "販売中" : "販売停止中" %></div>
-              <div><%= image_tag item.get_item_image(170,170) %></div>
-              <% if item.user == current_user %>
-                <%= link_to "編集", edit_item_path(item) %>
-              <% end %>
-            </div>
-          </div>
+          <%= f.submit "更新する", class: 'btn btn-success' %>
         </div>
       <% end %>
     </div>
