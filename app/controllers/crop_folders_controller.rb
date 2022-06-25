@@ -11,6 +11,7 @@ class CropFoldersController < ApplicationController
     @crop_folder = CropFolder.find(params[:id])
     @crop_comment = CropComment.new
     @diary = Diary.new
+    @user = User.find(params[:id])
   end
 
   def create

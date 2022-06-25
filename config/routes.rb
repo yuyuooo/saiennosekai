@@ -12,10 +12,13 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index, :show, :edit, :update]
-  resources :items, only: [:index, :show, :create, :edit, :update]
+  resources :items, only: [:index, :show, :create, :edit, :update] do
+    resource :likes, only: [:create, :destroy]
+  end
 
   get 'users/:id/about', to: 'users#about', as: 'user_about'
   get 'users/:id/favorites', to: 'users#favorites', as: 'user_favorites'
+  get 'users/:id/likes', to: 'users#likes', as: 'user_likes'
 
   get 'chat/:id' => 'chats#show', as: 'chat'
   resources :chats, only: [:create]

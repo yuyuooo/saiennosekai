@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user
+  has_many :likes, dependent: :destroy
 
   validates :item_name, presence: true
   validates :item_count, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 9_999_999 },format: { with: /\A[0-9]+\z/ }
@@ -20,7 +21,11 @@ class Item < ApplicationRecord
   end
 
   def is_active_color
-    is_active ? "font-weight-bold text-success" :"font-weight-bold text-muted"
+    is_active ? "font-weight-bold text-success":"font-weight-bold text-muted"
+  end
+
+  def liked_by?(user)
+    likes.exists?(user_id: user.id)
   end
 
 end

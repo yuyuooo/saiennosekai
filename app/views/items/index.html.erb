@@ -2,10 +2,6 @@
   <div class="row">
     <div class="col-md-5">
       <%= render 'layouts/errors', obj: @item %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-5">
       <%= form_with model: @item, local:true do |f| %>
         <div class="form-group row form-inline mb-4">
           <%= f.label :item_name, class: "col-sm-3" %>
@@ -48,45 +44,7 @@
       <% end %>
     </div>
     <div class="co-md-6 offset-md-1">
-      <% @items.each do |item| %>
-        <%= link_to user_about_path(item.user) do %>
-          <%= image_tag item.user.get_profile_image(80,80) %>
-        <% end %>
-        <%= link_to "#{item.user.name}さん家の作物", user_path(item.user) %>
-        <div class="row">
-          <div class="item_container mb-4">
-            <table class="table item_box col-md-9">
-              <tr>
-                <td width="35%"><%= item.item_name %></td>
-                <td width="65%"><%= item.item_count %> 個</td>
-              </tr>
-              <tr>
-                <td><%= item.price.to_s(:delimited) %> 円</td>
-                <td>(１つあたり<%= (item.price.div(item.item_count)).to_s(:delimited) %>円 ) </td>
-              </tr>
-              <tr>
-                <th>地域：</th>
-                <td><%= item.sales_area %></td>
-              </tr>
-              <tr>
-                <th>受渡：</th>
-                <td><%= item.sales_method %></td>
-              </tr>
-              <tr>
-                <th>説明：</th>
-                <td class="long_text"><%= item.introduction %></td>
-              </tr>
-            </table>
-            <div class="col-md-3 item_image">
-              <div class="sales_status <%= item.is_active_color %>"><%= item.is_active ? "販売中" : "販売停止中" %></div>
-              <div><%= image_tag item.get_item_image(170,170) %></div>
-              <% if item.user == current_user %>
-                <%= link_to "編集", edit_item_path(item) %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      <% end %>
+      <%=  render 'index', items: @items %>
     </div>
   </div>
 </div>

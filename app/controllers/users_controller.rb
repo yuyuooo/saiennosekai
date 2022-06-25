@@ -34,6 +34,13 @@ class UsersController < ApplicationController
     @favorite_list = CropFolder.find(favorites)
   end
 
+  def likes
+    @user = User.find(params[:id])
+    @item = @user.items
+    likes = Like.where(user_id: @user.id).pluck(:item_id)
+    @like_list = Item.find(likes)
+  end
+
    private
 
   def user_params
