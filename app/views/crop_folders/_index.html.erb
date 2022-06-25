@@ -33,7 +33,7 @@
       </tr>
       <tr>
         <th style="width: 35%">メモ：</th>
-        <td style="width: 65%"><%= crop_folder.memo %></td>
+        <td style="width: 65%" class="long_text"><%= crop_folder.memo %></td>
       </tr>
     </table>
     <div class="crop_folder_image"><%= image_tag crop_folder.get_crop_image(150,150) %></div>
@@ -64,4 +64,3 @@
 <% end %>
 
 
-      

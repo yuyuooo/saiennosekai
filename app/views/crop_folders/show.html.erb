@@ -42,23 +42,21 @@
         </div>
         <table class="table">
           <span class="masking-tape">
-            <%= diary.id %>
+          <% (1..3).each do |count| %>
+            <%= count %>
+          <% end %>
           </span>
           <tr>
-            <th>日付：</th>
             <td><%= diary.diary_date %></td>
-          </tr>
-          <tr>
-            <th>天気：</th>
             <td><%= diary.weather %></td>
           </tr>
+        </table>
+        <table class="table">
           <tr>
-            <th>題名：</th>
             <td><%= diary.title %></td>
           </tr>
           <tr>
-            <th>本文：</th>
-            <td><%= diary.body %></td>
+            <td class="long_text"><%= diary.body %></td>
           </tr>
         </table>
       </div>

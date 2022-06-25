@@ -10,11 +10,11 @@
   </tr>
   <tr>
     <th style="width: 40%">自己紹介</th>
-    <td style="width: 60%"><%= @user.introduction %></td>
+    <td style="width: 60%" class="long_text"><%= @user.introduction %></td>
   </tr>
   <tr>
     <th style="width: 40%">お気に入り</th>
-    <td style="width: 60%"><%= link_to "#{@user.favorites.count} 件", user_favorites_path %></td>
+    <td style="width: 60%"><%= link_to "#{@user.favorites.count} 件", user_favorites_path(@user) %></td>
   </tr>
 </table>
 <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block" do %>
