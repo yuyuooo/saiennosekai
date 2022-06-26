@@ -1,2 +1,57 @@
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class-"crop_item_info">
+        <%= link_to user_about_path(@item.user) do %>
+          <%= image_tag @item.user.get_profile_image(80,80) %>
+        <% end %>
+        <%= link_to "#{@item.user.name}さん家の商品", user_path(@item.user), class: "link" %>
+          <% if @item.liked_by?(current_user) %>
+            <%= link_to item_likes_path(@item), method: :delete, class: "ml-5 link" do %>
+             気になる ★<%= @item.likes.count %>
+            <% end %>
+          <% else %>
+            <%= link_to item_likes_path(@item), method: :post, class: "ml-5 link" do %>
+             気になる ☆<%= @item.likes.count %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="row">
+          <div class="item_container mb-4">
+            <table class="table item_box col-md-9">
+              <tr>
+                <td width="35%"><%= @item.item_name %></td>
+                <td width="65%"><%= @item.item_count %> 個</td>
+              </tr>
+              <tr>
+                <td><%= @item.price.to_s(:delimited) %> 円</td>
+                <td>(１つあたり<%= (@item.price.div(@item.item_count)).to_s(:delimited) %>円 ) </td>
+              </tr>
+              <tr>
+                <th>地域：</th>
+                <td><%= @item.sales_area %></td>
+              </tr>
+              <tr>
+                <th>受渡：</th>
+                <td><%= @item.sales_method %></td>
+              </tr>
+              <tr>
+                <th>説明：</th>
+                <td class="long_text"><%= @item.introduction %></td>
+              </tr>
+            </table>
+            <div class="col-md-3 item_image">
+              <div class="sales_status <%= @item.is_active_color %>"><%= @item.is_active ? "販売中" : "販売停止中" %></div>
+              <div><%= image_tag @item.get_item_image(170,170) %></div>
+              <% if @item.user == current_user %>
+                <%= link_to "編集", edit_item_path(@item) %>
+              <% end %>
+              <% if current_user != @item.user %>
+                <%= link_to "チャットを始める", chat_path(@item.user) %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

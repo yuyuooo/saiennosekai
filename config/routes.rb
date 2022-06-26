@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     resource :plans, only:[:index, :show, :create]
   end
 
-  resources :users, only: [:index, :show, :edit, :update]
+  resources :users, only: [:index, :show, :edit, :update] do
+    resources :items, only: [:index]
+  end
   resources :items, only: [:index, :show, :create, :edit, :update] do
     resource :likes, only: [:create, :destroy]
   end

@@ -25,24 +25,28 @@
         </table>
       <% end %>
       <%= link_to "新しい作物の栽培を始める", user_path(current_user), class: "btn btn-info" %>
-       <p class="mt-5">〜出品した商品〜</p>
-       <p>販売中</p>
-       <% @user.items.each do |item| %>
-         <% if item.is_active? %>
-          <table class="table table-borderless">
-            <tbody>
-              <tr>
-                <th style="width: 50%">●<%= item.item_name %></th>
-                <td style="width: 50%">
-                  <%= link_to item_path(item.id), class: "btn btn-outline-secondary btn-block" do %>
-                    出品した商品をみる
-                  <% end %>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        <% end %>
-      <% end%>
+      <p class="mt-5">〜出品した商品〜</p>
+      <p>販売中</p>
+      <% @user.items.each do |item| %>
+        <%# if item.is_active ? "販売中".nil? %>
+        <!--<p>販売中の商品はありません</p>-->
+        <%# else %>
+          <% if item.is_active? %>
+              <table class="table table-borderless">
+                <tbody>
+                  <tr>
+                    <th style="width: 50%">●<%= item.item_name %></th>
+                    <td style="width: 50%">
+                      <%= link_to item_path(item.id), class: "btn btn-outline-secondary btn-block" do %>
+                        出品した商品をみる
+                      <% end %>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+          <% end %>
+        <%# end %>
+      <% end %>
       <p>販売停止中</p>
       <% @user.items.each do |item| %>
         <% unless item.is_active? %>

@@ -1,22 +1,20 @@
 <% crop_folders.each do |crop_folder| %>
+  <div class="crop_item_info">
   <%= link_to user_about_path(crop_folder.user) do %>
     <%= image_tag crop_folder.user.get_profile_image(80,80) %>
   <% end %>
-  <%= link_to "#{crop_folder.user.name}さん家の作物", user_path(crop_folder.user) %>
+  <%= link_to "#{crop_folder.user.name}さん家の作物", user_path(crop_folder.user), class: "link" %>
     <% if crop_folder.favorited_by?(current_user) %>
-    <p>
-      <%= link_to crop_folder_favorites_path(crop_folder), method: :delete do %>
+      <%= link_to crop_folder_favorites_path(crop_folder), method: :delete, class: "ml-5 link" do %>
         ♥<%= crop_folder.favorites.count %> いいね
       <% end %>
-    </p>
     <% else %>
-    <p>
-      <%= link_to crop_folder_favorites_path(crop_folder), method: :post do %>
+      <%= link_to crop_folder_favorites_path(crop_folder), method: :post, class: "ml-5 link" do %>
         ♡<%= crop_folder.favorites.count %> いいね
       <% end %>
-    </p>
     <% end %>
-    <p><%= link_to "#{crop_folder.crop_comments.count} コメント", crop_folder_path(crop_folder.id) %></p>
+    <%= link_to "#{crop_folder.crop_comments.count} コメント", crop_folder_path(crop_folder.id), class: "ml-3 link" %>
+  </div>
   <div class="crop_container mb-5">
     <table class="table crop_box">
       <tr>

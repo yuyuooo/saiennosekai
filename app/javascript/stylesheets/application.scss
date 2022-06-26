@@ -47,6 +47,17 @@
     }
   }
 
+  .link {
+    font-weight: bold;
+    text-decoration: none;
+    color: #703b32;
+  }
+
+  .crop_item_info {
+    display: flex;
+    align-items: center;
+  }
+
   .crop_container {
     position: relative;
     background: #fff0cd;
