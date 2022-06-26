@@ -11,9 +11,7 @@ Rails.application.routes.draw do
     resource :plans, only:[:index, :show, :create]
   end
 
-  resources :users, only: [:index, :show, :edit, :update] do
-    resources :items, only: [:index]
-  end
+  resources :users, only: [:index, :show, :edit, :update]
   resources :items, only: [:index, :show, :create, :edit, :update] do
     resource :likes, only: [:create, :destroy]
   end
@@ -21,6 +19,7 @@ Rails.application.routes.draw do
   get 'users/:id/about', to: 'users#about', as: 'user_about'
   get 'users/:id/favorites', to: 'users#favorites', as: 'user_favorites'
   get 'users/:id/likes', to: 'users#likes', as: 'user_likes'
+  get 'users/:id/items', to: 'users#items', as: 'user_items'
 
   get 'chat/:id' => 'chats#show', as: 'chat'
   resources :chats, only: [:create]

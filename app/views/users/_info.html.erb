@@ -1,29 +1,29 @@
 <p>マイーページ</p>
 <table class="table">
-  <%= image_tag @user.get_profile_image(300,300), class: "img" %>
-  <% if current_user != @user %>
-    <%= link_to chat_path(@user.id), class: "btn btn-submit btn-sm ml-5" do %>
+  <%= image_tag user.get_profile_image(300,300), class: "img" %>
+  <% if current_user != user %>
+    <%= link_to chat_path(user.id), class: "btn btn-submit btn-sm ml-5" do %>
       <i class="fas fa-envelope"></i><br>
       メッセージ
     <% end %>
   <% end %>
   <tr>
     <th style="width: 40%">名前</th>
-    <td style="width: 60%"><%= @user.name %></td>
+    <td style="width: 60%"><%= user.name %></td>
   </tr>
   <tr>
     <th style="width: 40%">自己紹介</th>
-    <td style="width: 60%" class="long_text"><%= @user.introduction %></td>
+    <td style="width: 60%" class="long_text"><%= user.introduction %></td>
   </tr>
   <tr>
     <th style="width: 40%">作物お気に入り</th>
-    <td style="width: 60%"><strong><i class="fas fa-heart"></i></strong><span>　</span><%= link_to "#{@user.favorites.count} 件", user_favorites_path(@user) %></td>
+    <td style="width: 60%"><strong><i class="fas fa-heart"></i></strong><span>　</span><%= link_to "#{user.favorites.count} 件", user_favorites_path(user) %></td>
   </tr>
   <tr>
     <th style="width: 40%">商品気になる</th>
-    <td style="width: 60%"><strong><i class="fas fa-star"></i></strong><span>　</span><%= link_to "#{@user.likes.count} 件", user_likes_path(@user) %></td>
+    <td style="width: 60%"><strong><i class="fas fa-star"></i></strong><span>　</span><%= link_to "#{user.likes.count} 件", user_likes_path(user) %></td>
   </tr>
 </table>
-<%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block" do %>
+<%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
   <i class="fas fa-user-cog"></i> 会員情報編集
 <% end %>

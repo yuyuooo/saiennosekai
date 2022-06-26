@@ -1,0 +1,40 @@
+<%= form_with model: item, local:true do |f| %>
+  <div class="form-group row form-inline mb-4">
+    <%= f.label :item_name, class: "col-sm-3" %>
+    <%= f.text_field :item_name, class: 'form-control' %>
+  </div>
+  <div class="form-group row form-inline mb-4">
+    <%= f.label :item_count, class: "col-sm-3" %>
+    <%= f.text_field :item_count, placeholder: '1 ~ 入力可能', class: 'form-control mr-2', style: "width: 40%" %>個
+  </div>
+  <div class="form-group row form-inline mb-4">
+    <%= f.label :price, class: "col-sm-3" %>
+    <%= f.text_field :price, placeholder: '0 ~ 入力可能', class: 'form-control mr-2', style: "width: 40%" %><sapan> 円</span>
+  </div>
+  <div class="form-group row form-inline mb-4">
+    <%= f.label :item_image, class: "col-sm-3" %>
+    <%= f.file_field :item_image, class: "form-control-file", accept: 'image/*', style: "width: 60%" %>
+  </div>
+  <div class="form-group row form-inline mb-4">
+    <%= f.label :sales_method, class: "col-sm-3" %>
+    <%= f.select :sales_method, ['取りに来てもらう', '配送'], { include_blank: '選択してください'},  class: 'form-control' %>
+  </div>
+  <div class="form-group row form-inline mb-4">
+    <%= f.label :sales_area, class: "col-sm-3" %>
+    <%= f.text_field :sales_area, placeholder: '市町村まで入力', class: "form-control" %>
+  </div>
+  <div class="form-group row form-inline mb-4">
+    <%= f.label :introduction, class: "col-sm-3" %>
+    <%= f.text_area :introduction, class: 'form-control' %>
+  </div>
+  <div class="form-group row form-inline mb-4">
+    <%= f.label :is_active, class: "col-sm-3" %>
+    <%= f.radio_button :is_active, :true %>
+    <%= f.label :is_active, "販売中", value: :true, class: 'mr-3' %>
+    <%= f.radio_button :is_active, :false %>
+    <%= f.label :is_active, "販売停止中", value: :false %>
+  </div>
+  <div class="form-group row col-sm-2 offset-sm-3">
+    <%= f.submit "出品する", class: 'btn btn-success' %>
+  </div>
+<% end %>

@@ -41,6 +41,12 @@ class UsersController < ApplicationController
     @like_list = Item.find(likes)
   end
 
+  def items
+    @user = User.find(params[:id])
+    @items = @user.items
+    @new_item = Item.new
+  end
+
    private
 
   def user_params

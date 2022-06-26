@@ -1,36 +1,38 @@
 <div class = "container">
   <div class ="row">
     <div class="col-lg-5">
-      <%= render "info" %>
+      <%= render "info", user: @user %>
     </div>
     <div class="col-lg-6 offset-lg-1">
       <p>〜今までの栽培〜</p>
-      <% @user.crop_folders.each do |crop_folder| %>
-        <table class="table table-borderless">
-          <tbody>
-            <tr>
-              <th style="width: 40%">●<%= crop_folder.crop_name %></th>
-              <td style="width: 30%">
-                <%= link_to crop_folder_path(crop_folder.id), class: "btn btn-outline-secondary btn-block" do %>
-                 <i class="fas fa-pen"></i> 日記
-                <% end %>
-              </td>
-              <td style="width: 30%">
-                <%= link_to  crop_folder_plans_path(crop_folder.id), class: "btn btn-outline-secondary btn-block"   do %>
-                  <i class="fas fa-calendar"></i> 計画
-                <% end %>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <% if @user.crop_folders.length > 0 %>
+        <% @user.crop_folders.each do |crop_folder| %>
+          <table class="table table-borderless">
+            <tbody>
+              <tr>
+                <th style="width: 40%">●<%= crop_folder.crop_name %></th>
+                <td style="width: 30%">
+                  <%= link_to crop_folder_path(crop_folder.id), class: "btn btn-outline-secondary btn-block" do %>
+                   <i class="fas fa-pen"></i> 日記
+                  <% end %>
+                </td>
+                <td style="width: 30%">
+                  <%= link_to  crop_folder_plans_path(crop_folder.id), class: "btn btn-outline-secondary btn-block"   do %>
+                    <i class="fas fa-calendar"></i> 計画
+                  <% end %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        <% end %>
+      <% else %>
+        <p>=== 栽培した作物はありません ===</p>
       <% end %>
       <%= link_to "新しい作物の栽培を始める", user_path(current_user), class: "btn btn-info" %>
       <p class="mt-5">〜出品した商品〜</p>
       <p>販売中</p>
-      <% @user.items.each do |item| %>
-        <%# if item.is_active ? "販売中".nil? %>
-        <!--<p>販売中の商品はありません</p>-->
-        <%# else %>
+      <% if @user.items.filter{|i| i.is_active?}.length > 0 %>
+        <% @user.items.each do |item| %>
           <% if item.is_active? %>
               <table class="table table-borderless">
                 <tbody>
@@ -45,26 +47,33 @@
                 </tbody>
               </table>
           <% end %>
-        <%# end %>
+        <% end %>
+      <% else %>
+        <p>=== 販売中の商品はありません ===</p>
       <% end %>
       <p>販売停止中</p>
-      <% @user.items.each do |item| %>
-        <% unless item.is_active? %>
-          <table class="table table-borderless">
-            <tbody>
-              <tr>
-                <th style="width: 50%">●<%= item.item_name %></th>
-                <td style="width: 50%">
-                  <%= link_to item_path(item.id), class: "btn btn-outline-secondary btn-block" do %>
-                    出品した商品をみる
-                  <% end %>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+      <% if @user.items.filter{|i| i.is_active?}.length > 0 %>
+        <% @user.items.each do |item| %>
+          <% unless item.is_active? %>
+            <table class="table table-borderless">
+              <tbody>
+                <tr>
+                  <th style="width: 50%">●<%= item.item_name %></th>
+                  <td style="width: 50%">
+                    <%= link_to item_path(item.id), class: "btn btn-outline-secondary btn-block" do %>
+                      出品した商品をみる
+                    <% end %>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          <% end %>
         <% end %>
+      <% else %>
+        <p>=== 販売停止中の商品はありません ===</p>
       <% end %>
       <%= link_to "新しい商品を出品する", items_path, class: "btn btn-info" %>
+      <%= link_to "全ての出品", user_items_path(@user) %>
     </div>
   </div>
 </div>

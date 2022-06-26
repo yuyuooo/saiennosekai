@@ -3,7 +3,7 @@
     <%= link_to user_about_path(item.user) do %>
       <%= image_tag item.user.get_profile_image(80,80) %>
     <% end %>
-    <%= link_to "#{item.user.name}さん家の商品", user_path(item.user), class: "link" %>
+    <%= link_to "#{item.user.name}さん家の商品", user_items_path(item.user), class: "link" %>
     <% if item.liked_by?(current_user) %>
       <%= link_to item_likes_path(item), method: :delete, class: "ml-5 link" do %>
        気になる ★<%= item.likes.count %>
