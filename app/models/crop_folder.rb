@@ -25,25 +25,48 @@ class CropFolder < ApplicationRecord
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
-  
-  def create_notification_comment!(current_user, book_comment_id)
-    comment_users = BookComment.select(:user_id).where(book_id: id).where.not(user_id: current_user.id).distinct
+
+  def create_notification_comment!(current_user, crop_comment_id)
+    # 自分以外のコメント者を取得
+    comment_users = CropComment.select(:user_id).where(crop_folder_id: id).where.not(user_id: current_user.id).distinct
     comment_users.each do |comment_user|
-      save_notification_comment!(current_user, book_comment_id, comment_user['user_id']) if comment_users.blank?
+      save_notification_comment!(current_user, crop_comment_id, comment_user['user_id']) if comment_users.blank?
     end
-      save_notification_comment!(current_user, book_comment_id, user_id) if comment_users.blank?
+    # comment_usersがいない＝初めてのコメントを取得
+      save_notification_comment!(current_user, crop_comment_id, user_id) if comment_users.blank?
   end
-  
-  def save_notification_comment!(current_user, book_comment_id, visited_id)
+    # 複数回のコメントも通知
+  def save_notification_comment!(current_user, crop_comment_id, visited_id)
     notification = current_user.active_notifications.new(
-      book_id: id,
-      book_comment_id: book_comment_id,
+      crop_folder_id: id,
+      crop_comment_id: crop_comment_id,
       visited_id: visited_id,
       action: 'comment',
       checked: false
     )
+     # 自分の投稿に対するコメントは、通知済み
+    if notification.visitor_id == notification.visited_id
+      notification.checked = true
+    end
     notification.save! if notification.valid?
   end
 
+
+  def create_notification_favorite!(current_user)
+  favorite_exist = Notification.where("visitor_id = ? and visited_id = ? and crop_folder_id = ? and action = ? ", current_user.id, user.id, id, 'favorite') # いいねしているか検索
+    if favorite_exist.blank? # いいねしていない場合に通知を作成
+      notification = current_user.active_notifications.new(
+      crop_folder_id: id,
+      visited_id: user_id, # 通知相手に相手のidを指定
+      action: 'favorite', # helperにて使用
+      checked: false # defaultでfalse「未確認」を設定
+      )
+      # 自分の投稿に対するいいねは、通知済み
+      if notification.visitor_id == notification.visited_id
+        notification.checked = true
+      end
+      notification.save! if notification.valid?
+    end
+  end
 end
 

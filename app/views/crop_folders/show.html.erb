@@ -29,9 +29,9 @@
             <%= f.submit class: 'btn btn-success' %>
           </div>
         <% end %>
-      <% end %>
-      <% if @crop_folder.user == current_user %>
-        <%= link_to"予定を立てる", crop_folder_plans_path(@crop_folder), class: 'btn btn-info' %>
+          <%= link_to"予定を立てる", crop_folder_plans_path(@crop_folder), class: 'btn btn-info' %>
+      <% else %>
+          <%= render 'users/info', user: @crop_folder.user %>
       <% end %>
     </div>
     <div class="col-md-4 offset-md-1">
