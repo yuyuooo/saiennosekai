@@ -7,7 +7,15 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto pl-5">
         <% if user_signed_in? %>
-          <li class="nav-item active">
+          <li class="nav-item">
+            <% if unchecked_notifications.any? %>
+              <%= link_to notifications_path, class: "nav-link" do %>
+                <i class="fa fa-circle" style="color: gold;"></i>
+              <% end %>
+            <% end %>
+            <%= link_to "通知", notifications_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
             <%= link_to user_about_path(current_user), class: "nav-link" do %>
               マイページ<span class="sr-only">(current)</span>
             <% end %>

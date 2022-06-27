@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   belongs_to :user
   has_many :likes, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   validates :item_name, presence: true
   validates :item_count, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 9_999_999 },format: { with: /\A[0-9]+\z/ }

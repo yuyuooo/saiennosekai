@@ -10,9 +10,11 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :crop_comments, dependent: :destroy
   has_many :items, dependent: :destroy
-  has_many :user_rooms, dependent: :destroy
-  has_many :chats
   has_many :likes, dependent: :destroy
+  has_many :user_rooms, dependent: :destroy
+  has_many :chats,dependent: :destroy
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
   #validates :nickname, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :name, presence: true

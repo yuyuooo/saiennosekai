@@ -24,6 +24,7 @@ class ChatsController < ApplicationController
     unless @chat.save
       render :validater
     end
+    @chat.room.create_notification_dm!(current_user, @chat.room_id, @chat.id)
   end
 
   private

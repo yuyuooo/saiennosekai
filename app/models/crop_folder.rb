@@ -5,6 +5,7 @@ class CropFolder < ApplicationRecord
   has_many :plans, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :crop_comments, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   validates :crop_name, length: { minimum: 1, maximum: 20 }
   validates :place, presence: true
@@ -23,6 +24,25 @@ class CropFolder < ApplicationRecord
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
+  end
+  
+  def create_notification_comment!(current_user, book_comment_id)
+    comment_users = BookComment.select(:user_id).where(book_id: id).where.not(user_id: current_user.id).distinct
+    comment_users.each do |comment_user|
+      save_notification_comment!(current_user, book_comment_id, comment_user['user_id']) if comment_users.blank?
+    end
+      save_notification_comment!(current_user, book_comment_id, user_id) if comment_users.blank?
+  end
+  
+  def save_notification_comment!(current_user, book_comment_id, visited_id)
+    notification = current_user.active_notifications.new(
+      book_id: id,
+      book_comment_id: book_comment_id,
+      visited_id: visited_id,
+      action: 'comment',
+      checked: false
+    )
+    notification.save! if notification.valid?
   end
 
 end

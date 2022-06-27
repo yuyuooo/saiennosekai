@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'notifications/index'
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   devise_for :users
@@ -23,5 +24,11 @@ Rails.application.routes.draw do
 
   get 'chat/:id' => 'chats#show', as: 'chat'
   resources :chats, only: [:create]
+
+  resources :notifications, only: [:index] do
+    collection do
+      delete 'destroy_all'
+    end
+  end
 
 end
