@@ -14,50 +14,60 @@
       <% end %>
     <% end %>
     <%= link_to "#{crop_folder.crop_comments.count} コメント", crop_folder_path(crop_folder.id), class: "ml-3 link" %>
+    <% unless crop_folder.is_published_flag? %>
+      <div class="ml-3"><i class="fas fa-lock"></i></div>
+    <% end %>
   </div>
-  <div class="crop_container mb-5">
-    <table class="table crop_box">
-      <tr>
-        <th style="width: 35%">作物名：</th>
-        <td style="width: 65%"><%= crop_folder.crop_name %></td>
-      </tr>
-      <tr>
-        <th style="width: 35%">栽培開始：</th>
-        <td style="width: 65%"><%= crop_folder.new_crop_date %></td>
-      </tr>
-      <tr>
-        <th style="width: 35%">場所：</th>
-        <td style="width: 65%"><%= crop_folder.place %></td>
-      </tr>
-      <tr>
-        <th style="width: 35%">メモ：</th>
-        <td style="width: 65%" class="long_text"><%= crop_folder.memo %></td>
-      </tr>
-    </table>
-    <div class="crop_folder_image"><%= image_tag crop_folder.get_crop_image(150,150) %></div>
-    <% if crop_folder.user == current_user %>
-      <td style="width: 30%">
-        <%= link_to crop_folder_path(crop_folder.id), class: "btn btn-outline-info btn-block" do %>
+  <div class="row">
+    <div class="crop_container mb-5">
+      <table class="table crop_box col-md-9">
+        <tr>
+          <th style="width: 35%">作物名：</th>
+          <td style="width: 65%"><%= crop_folder.crop_name %></td>
+        </tr>
+        <tr>
+          <th>栽培開始：</th>
+          <td><%= crop_folder.new_crop_date %></td>
+        </tr>
+        <tr>
+          <th>場所：</th>
+          <td><%= crop_folder.place %></td>
+        </tr>
+        <tr>
+          <th>メモ：</th>
+          <td class="long_text"><%= crop_folder.memo %></td>
+        </tr>
+      </table>
+      <div class="col-md-3">
+        <% if crop_folder.user == current_user %>
+          <%= form_with model: crop_folder, url:crop_folder_path(crop_folder), method: :patch  do |f| %>
+              <%= f.select :is_active, ['栽培中', '栽培完了'] %>
+              <%= f.submit "更新", class: "btn btn-success ml-3" %>
+          <% end %>
+        <% else %>
+          <div class="crop_status <%= crop_folder.is_active_color %>"><%= crop_folder.is_active ? "栽培中" : "栽培完了" %></div>
+        <% end %>
+          <div class="crop_folder_image"><%= image_tag crop_folder.get_crop_image(150,150) %></div>
+        <% if crop_folder.user == current_user %>
+          <%= link_to "編集", edit_crop_folder_path(crop_folder) %>
+        <% end %>
+      </div>
+      <% if crop_folder.user == current_user %>
+        <%= link_to crop_folder_path(crop_folder.id), class: "btn btn-outline-info btn-block", style: "width:30%" do %>
          <i class="fas fa-pen"></i> 日記を書く
         <% end %>
-      </td>
-      <td style="width: 30%">
-        <%= link_to  crop_folder_plans_path(crop_folder.id), class: "btn btn-outline-info btn-block" do %>
+        <%= link_to  crop_folder_plans_path(crop_folder.id), class: "btn btn-outline-info btn-block mt-0 ml-2", style: "width:30%" do %>
           <i class="fas fa-calendar"></i> 計画を立てる
         <% end %>
-      </td>
-    <% else %>
-      <td style="width: 30%">
-        <%= link_to crop_folder_path(crop_folder.id), class: "btn btn-outline-secondary btn-block" do %>
+      <% else %>
+        <%= link_to crop_folder_path(crop_folder.id), class: "btn btn-outline-secondary btn-block", style: "width:30%" do %>
          <i class="fas fa-pen"></i> 日記を見る
         <% end %>
-      </td>
-      <td style="width: 30%">
-        <%= link_to  crop_folder_plans_path(crop_folder.id), class: "btn btn-outline-secondary btn-block"   do %>
+        <%= link_to  crop_folder_plans_path(crop_folder.id), class: "btn btn-outline-secondary btn-block mt-0 ml-2", style: "width:30%"   do %>
           <i class="fas fa-calendar"></i> 計画を見る
         <% end %>
-      </td>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 <% end %>
 

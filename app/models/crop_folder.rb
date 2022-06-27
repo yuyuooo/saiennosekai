@@ -12,6 +12,9 @@ class CropFolder < ApplicationRecord
   validates :new_crop_date, presence: true
   validates :memo, length: { maximum: 150 }
 
+  scope :published, -> {where(is_published_flag: true)}
+  scope :unpublished, -> {where(is_published_flag: false)}
+
   has_one_attached :crop_image
 
   def get_crop_image(width, height)
@@ -24,6 +27,10 @@ class CropFolder < ApplicationRecord
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
+  end
+
+  def is_active_color
+    is_active ? "font-weight-bold text-success":"font-weight-bold text-muted"
   end
 
   def create_notification_comment!(current_user, crop_comment_id)

@@ -4,7 +4,7 @@ class CropFoldersController < ApplicationController
 
 
   def index
-    @crop_folders = CropFolder.all
+    @crop_folders = CropFolder.published
   end
 
   def show
@@ -26,10 +26,24 @@ class CropFoldersController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @crop_folder.update(crop_folder_params)
+    redirect_to user_path(@crop_folder)
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+  end
+
   private
 
   def crop_folder_params
-    params.require(:crop_folder).permit(:crop_name, :new_crop_date, :place, :memo)
+    params.require(:crop_folder).permit(:crop_name, :new_crop_date, :place, :memo, :is_published_flag, :is_active)
   end
 
 end

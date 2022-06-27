@@ -57,11 +57,13 @@ ActiveRecord::Schema.define(version: 2022_06_26_225652) do
   end
 
   create_table "crop_folders", force: :cascade do |t|
-    t.string "crop_name"
-    t.string "place"
-    t.text "memo"
-    t.date "new_crop_date"
-    t.integer "user_id"
+    t.string "crop_name", null: false
+    t.string "place", null: false
+    t.text "memo", null: false
+    t.date "new_crop_date", null: false
+    t.integer "user_id", null: false
+    t.boolean "is_active", default: true, null: false
+    t.boolean "is_published_flag", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

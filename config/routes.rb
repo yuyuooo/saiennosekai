@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   root to: 'homes#top'
-  resources :crop_folders, only: [:index, :show, :create] do
+  resources :crop_folders, only: [:index, :show, :create, :edit, :update, :destroy] do
     resources :diaries, only: [:create, :edit, :destroy]
     resources :crop_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
