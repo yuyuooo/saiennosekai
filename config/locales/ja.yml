@@ -7,6 +7,7 @@ ja:
         memo: メモ
         new_crop_date: 栽培開始日
         crop_image: 画像
+        is_active: 栽培状況
         is_published_flag: 公開設定
       diary:
         title: 題名

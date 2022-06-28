@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      redirect_to items_path(@item), notice: "会員情報の登録内容を更新しました"
+      redirect_to items_path(@item), notice: "商品の登録内容を更新しました"
     else
       render "edit"
     end

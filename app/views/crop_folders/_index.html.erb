@@ -39,15 +39,8 @@
         </tr>
       </table>
       <div class="col-md-3">
-        <% if crop_folder.user == current_user %>
-          <%= form_with model: crop_folder, url:crop_folder_path(crop_folder), method: :patch  do |f| %>
-              <%= f.select :is_active, ['栽培中', '栽培完了'] %>
-              <%= f.submit "更新", class: "btn btn-success ml-3" %>
-          <% end %>
-        <% else %>
-          <div class="crop_status <%= crop_folder.is_active_color %>"><%= crop_folder.is_active ? "栽培中" : "栽培完了" %></div>
-        <% end %>
-          <div class="crop_folder_image"><%= image_tag crop_folder.get_crop_image(150,150) %></div>
+        <div class="crop_status <%= crop_folder.is_active_color %>"><%= crop_folder.is_active ? "栽培中" : "栽培完了" %></div>
+        <div class="crop_folder_image"><%= image_tag crop_folder.get_crop_image(150,150) %></div>
         <% if crop_folder.user == current_user %>
           <%= link_to "編集", edit_crop_folder_path(crop_folder) %>
         <% end %>

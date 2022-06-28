@@ -1,6 +1,7 @@
-
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+// 全体
 
   html {
     height: 100%;
@@ -30,15 +31,9 @@
     height: 100px;
   }
 
-  // .jumbotron {
-  //   height: 200px;
-  //   width: 100%;
-  //   background: url(/images/main_image.jpg);
-  //   background-repeat: no-repeat;
-  //   background-position: 90% 30%;
-  //   background-color:rgba(255,255,255,0.4);
-  //   background-blend-mode:lighten;
-  // }
+  .container {
+    margin-top: 3%;
+  }
 
   .field_with_errors {
     display: contents;
@@ -52,6 +47,155 @@
     text-decoration: none;
     color: #703b32;
   }
+
+
+// トップ
+
+  .main_container{
+    position: relative;
+  }
+
+  .main_image {
+    height: 900px;
+    width: 100%;
+    background: url(/images/main_image.jpg);
+    background-size: cover;
+  }
+
+  .main_text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-family: "游ゴシック","ヒラギノ角ゴ ProN",sans-serif;
+    text-align: center;
+  }
+
+  .main_text h1, h2 {
+    font-size: 60px;
+    font-weight: 900;
+  }
+
+  .main_text p span {
+    font-size: 30px;
+    font-weight: 900;
+  }
+
+  .main_text p,.main_about {
+    font-size: 40px;
+    font-weight: 900;
+    transform: rotate(-4deg);
+    position: relative;
+    display: inline-block;
+    padding: 0 30px;
+    margin-bottom: 36px;
+  }
+
+  .main_text p:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: "";
+    width: 1px;
+    height: 100%;
+    background: #000;
+    border-radius: 3px;
+    transform: rotate(-25deg);
+  }
+
+
+  .main_text p:after {
+    position: absolute;
+    content: "";
+    right: 0;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background: #000;
+    border-radius: 3px;
+    transform: rotate(25deg);
+  }
+
+  .main_about {
+    font-size: 30px;
+  }
+
+  .main_about:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: "";
+    width: 1px;
+    height: 100%;
+    background: #000;
+    border-radius: 3px;
+    transform: rotate(-25deg);
+  }
+
+
+  .main_about:after {
+    position: absolute;
+    content: "";
+    right: 0;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background: #000;
+    border-radius: 3px;
+    transform: rotate(25deg);
+  }
+  
+  .who-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .who-box {
+    width: 300px;
+    background-color: #eeeeee;
+    margin-right: 30px;
+    position: relative;
+    padding: 10px;
+  }
+
+  .who-box:last-child {
+    margin-right: 0;
+  }
+
+  .user-1-box {
+    height: 150px;
+    background-image: url(/images/user1.jpg);
+    background-position: bottom;
+    background-size: cover;
+  }
+
+  .user-2-box {
+    height: 150px;
+    background-image: url(/images/user2.jpg);
+    background-position: bottom;
+    background-size: cover;
+  }
+
+  .user-3-box {
+    height: 150px;
+    background-image: url(/images/user3.jpg);
+    background-position: bottom;
+    background-size: cover;
+  }
+
+  .top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: white;
+    background-color: #ff9a4b;
+    padding: 3%;
+  }
+
+  .title {
+    margin: 15px 0 5px;
+  }
+
 
   .crop_item_info {
     display: flex;

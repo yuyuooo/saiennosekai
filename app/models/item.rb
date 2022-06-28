@@ -32,7 +32,7 @@ class Item < ApplicationRecord
   def liked_by?(user)
     likes.exists?(user_id: user.id)
   end
-  
+
   def create_notification_like!(current_user)
   like_exist = Notification.where("visitor_id = ? and visited_id = ? and item_id = ? and action = ? ", current_user.id, user.id, id, 'like') # いいねしているか検索
     if like_exist.blank? # 気になるしていない場合に通知を作成

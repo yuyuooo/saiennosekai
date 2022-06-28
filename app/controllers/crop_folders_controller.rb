@@ -11,7 +11,7 @@ class CropFoldersController < ApplicationController
     @crop_folder = CropFolder.find(params[:id])
     @crop_comment = CropComment.new
     @diary = Diary.new
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
   end
 
   def create
@@ -27,11 +27,14 @@ class CropFoldersController < ApplicationController
   end
 
   def edit
+    @crop_folder = CropFolder.find(params[:id])
   end
 
   def update
+    @crop_folder = CropFolder.find(params[:id])
+    @user = User.find_by(id: params[:id])
     if @crop_folder.update(crop_folder_params)
-    redirect_to user_path(@crop_folder)
+    redirect_to user_path(@crop_folder.user)
     else
       render 'edit'
     end
