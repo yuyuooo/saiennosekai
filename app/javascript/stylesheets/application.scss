@@ -26,9 +26,7 @@
   footer {
     width: 100%;
     background: #98d98e;
-    background: url(/images/syokubutsu_nae.png);
-    background-repeat: no-repeat;
-    height: 100px;
+    height: 80px;
   }
 
   .container {
@@ -48,6 +46,17 @@
     color: #703b32;
   }
 
+  h4 {
+    padding: 1% 2%;
+    border-left: 6px double #000;
+    background: #f4f4f4;
+  }
+
+  h5 {
+    padding: 1% 2%;
+    border-top: 3px dashed #000;
+    background: #f4f4f4;
+  }
 
 // トップ
 
@@ -71,7 +80,7 @@
     text-align: center;
   }
 
-  .main_text h1, h2 {
+  .main_text h1, .main_text h2 {
     font-size: 60px;
     font-weight: 900;
   }
@@ -144,7 +153,7 @@
     border-radius: 3px;
     transform: rotate(25deg);
   }
-  
+
   .who-container {
     display: flex;
     justify-content: center;
@@ -193,7 +202,10 @@
   }
 
   .title {
-    margin: 15px 0 5px;
+    font-weight: 600;
+    margin: 15px 0 10px;
+    border-bottom: 2px dashed #000;
+    padding-bottom: 3px;
   }
 
 
