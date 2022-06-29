@@ -5,7 +5,11 @@
     </div>
     <div class="col-lg-6 offset-lg-1">
       <h5>気になる商品一覧</h5>
-      <%= render "items/index", items: @like_list %>
+      <% if @user.likes.length > 0 %>
+        <%= render "items/index", items: @like_list %>
+      <% else %>
+        <p>=== 「気になる」した商品はありません ===</p>
+      <% end %>
     </div>
   </div>
 </div>

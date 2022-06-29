@@ -7,7 +7,7 @@ before_action :authenticate_user!
     @diary = current_user.diaries.new(diary_params)
     @diary.crop_folder_id = @crop_folder.id
     if @diary.save
-      redirect_to crop_folder_path(@crop_folder.id)
+      redirect_to crop_folder_path(@crop_folder.id), success: "栽培日記を登録しました"
     else
       @crop_comment = CropComment.new
       render 'crop_folders/show'

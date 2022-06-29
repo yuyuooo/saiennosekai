@@ -8,15 +8,18 @@ class CropFolder < ApplicationRecord
   has_many :notifications, dependent: :destroy
 
   validates :crop_name, length: { minimum: 1, maximum: 20 }
-  validates :place, presence: true
   validates :new_crop_date, presence: true
-  validates :memo, length: { maximum: 150 }
+  validates :place, presence: true
+  validates :memo, length: { maximum: 100 }
 
   scope :published, -> {where(is_published_flag: true)}
   scope :unpublished, -> {where(is_published_flag: false)}
 
   scope :active, -> {where(is_active: true)}
   scope :unactive, -> {where(is_active: false)}
+
+  #scope :search_crop, -> (crop) { where(crop_folder_id: crop) }
+  #scope :search_crop_diary, -> (crop) { published.search_crop(crop) }
 
   has_one_attached :crop_image
 

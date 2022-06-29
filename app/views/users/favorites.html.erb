@@ -5,7 +5,11 @@
     </div>
     <div class="col-lg-6 offset-lg-1">
       <h5>お気に入り一覧</h5>
-      <%= render "crop_folders/index", crop_folders: @favorite_list %>
+      <% if @user.favorites.length > 0 %>
+        <%= render "crop_folders/index", crop_folders: @favorite_list %>
+      <% else%>
+        <p>=== お気に入りした作物はありません ===</p>
+      <% end %>
     </div>
   </div>
 </div>

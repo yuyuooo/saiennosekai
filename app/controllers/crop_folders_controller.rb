@@ -2,7 +2,6 @@ class CropFoldersController < ApplicationController
 
   before_action :authenticate_user!
 
-
   def index
     @crop_folders = CropFolder.published
   end
@@ -18,7 +17,7 @@ class CropFoldersController < ApplicationController
     @crop_folder = CropFolder.new(crop_folder_params)
     @crop_folder.user_id = current_user.id
     if @crop_folder.save
-      redirect_to user_path(current_user)
+      redirect_to user_path(current_user), success: "栽培作物を投稿しました"
     else
       @user = current_user
       @crop_folders = @user.crop_folders.all
@@ -34,8 +33,9 @@ class CropFoldersController < ApplicationController
     @crop_folder = CropFolder.find(params[:id])
     @user = User.find_by(id: params[:id])
     if @crop_folder.update(crop_folder_params)
-    redirect_to user_path(@crop_folder.user)
+    redirect_to user_path(@crop_folder.user), success: "作物の内容を更新しました"
     else
+      flash.now[:alert] = "作物の内容更新に失敗しました"
       render 'edit'
     end
   end
