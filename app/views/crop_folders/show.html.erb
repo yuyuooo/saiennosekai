@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-4">
       <% if @crop_folder.user == current_user %>
-        <%= @crop_folder.crop_name %>の栽培日記をつける
+        <h4><%= @crop_folder.crop_name %>の栽培日記</h4>
         <%= render 'layouts/errors', obj: @diary %>
         <%= form_with model:[@crop_folder, @diary], url: crop_folder_diaries_path(@crop_folder.id), local:true do |f| %>
           <div class="form-group">
@@ -29,35 +29,39 @@
             <%= f.submit class: 'btn btn-success' %>
           </div>
         <% end %>
-          <%= link_to"予定を立てる", crop_folder_plans_path(@crop_folder), class: 'btn btn-info' %>
+          <%= link_to"予定を立てる", crop_folder_plans_path(@crop_folder), class: 'btn btn-info mb-5' %>
       <% else %>
           <%= render 'users/info', user: @crop_folder.user %>
       <% end %>
     </div>
     <div class="col-md-4 offset-md-1">
-      <% @crop_folder.diaries.each do |diary| %>
-      <div class="diary_box">
-        <div class="crop_image">
-          <%= image_tag diary.get_crop_image(300,300), class: "img" %>
+      <% if @crop_folder.diaries.length > 0 %>
+        <% @crop_folder.diaries.each do |diary| %>
+        <div class="diary_box">
+          <table class="table table-borderless">
+            <span class="masking-tape">
+              <%#= diary.id %>
+            </span>
+            <tr>
+              <td><%= diary.diary_date %></td>
+              <td><%= diary.weather %></td>
+            </tr>
+          </table>
+          <div class="crop_image">
+            <%= image_tag diary.get_crop_image(300,250), class: "img" %>
+          </div>
+          <table class="table">
+            <tr>
+              <td class="font-weight-bold">|| <%= diary.title %> ||</td>
+            </tr>
+            <tr>
+              <td class="long_text"><%= diary.body %></td>
+            </tr>
+          </table>
         </div>
-        <table class="table">
-          <span class="masking-tape">
-            <%#= diary.id %>
-          </span>
-          <tr>
-            <td><%= diary.diary_date %></td>
-            <td><%= diary.weather %></td>
-          </tr>
-        </table>
-        <table class="table">
-          <tr>
-            <td><%= diary.title %></td>
-          </tr>
-          <tr>
-            <td class="long_text"><%= diary.body %></td>
-          </tr>
-        </table>
-      </div>
+        <% end %>
+      <% else %>
+        === 登録された栽培日記はありません ===
       <% end %>
     </div>
     <div class="col-md-3">
@@ -73,7 +77,7 @@
       <%= render 'layouts/errors', obj: @crop_comment %>
       <%= form_with model: [@crop_folder, @crop_comment], url: crop_folder_crop_comments_path(@crop_folder.id) do |f| %>
         <%= f.text_area :comment, rows: '3', placeholder: "コメントをここに",class: 'form-control' %>
-        <%= f.submit "コメントを送信", class: 'btn btn-success' %>
+        <%= f.submit "コメントを送信", class: 'btn btn-submit' %>
       <% end %>
       </div>
     </div>

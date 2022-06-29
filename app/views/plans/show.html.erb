@@ -1,9 +1,11 @@
 <div class="container">
   <div class="row">
-     <div class="col">
-      <div class="crop_message">
-        <h3><%= @crop_folder.crop_name %>の栽培計画</h3>
-      </div>
+    <div class="col-md-7">
+      <h4><%= @crop_folder.crop_name %>の栽培計画</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5">
       <% if @crop_folder.user == current_user %>
         <%= render 'layouts/errors', obj: @plan %>
         <%= form_with(model:[@crop_folder, @plan], url: crop_folder_plans_path(@crop_folder), local:true) do |f| %>
@@ -16,7 +18,7 @@
             <%= f.text_area :action, class: 'form-control' %>
           </div>
           <div class="form-group">
-            <%= f.submit class: 'btn btn-success' %>
+            <%= f.submit class: 'btn btn-success mb-4' %>
           </div>
         <% end %>
       <% end %>

@@ -46,7 +46,7 @@ class CropFoldersController < ApplicationController
   private
 
   def crop_folder_params
-    params.require(:crop_folder).permit(:crop_name, :new_crop_date, :place, :memo, :is_published_flag, :is_active)
+    params.require(:crop_folder).permit(:crop_name, :new_crop_date, :place, :memo, :is_published_flag, :is_active, :crop_image)
   end
 
 end

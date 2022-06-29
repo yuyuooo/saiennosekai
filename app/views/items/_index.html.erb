@@ -1,7 +1,7 @@
  <% items.each do |item| %>
   <div class-"crop_item_info">
     <%= link_to user_about_path(item.user) do %>
-      <%= image_tag item.user.get_profile_image(80,80) %>
+      <%= image_tag item.user.get_profile_image(70,70), class: "user_profile_image" %>
     <% end %>
     <%= link_to "#{item.user.name}さん家の商品", user_items_path(item.user), class: "link" %>
     <% if item.liked_by?(current_user) %>

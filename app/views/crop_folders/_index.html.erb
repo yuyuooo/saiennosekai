@@ -1,7 +1,7 @@
 <% crop_folders.each do |crop_folder| %>
   <div class="crop_item_info">
   <%= link_to user_about_path(crop_folder.user) do %>
-    <%= image_tag crop_folder.user.get_profile_image(80,80) %>
+    <%= image_tag crop_folder.user.get_profile_image(70,70), class: "user_profile_image" %>
   <% end %>
   <%= link_to "#{crop_folder.user.name}さん家の作物", user_path(crop_folder.user), class: "link" %>
     <% if crop_folder.favorited_by?(current_user) %>

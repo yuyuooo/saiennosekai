@@ -60,6 +60,11 @@
     margin-bottom: 5%;
   }
 
+  .user_profile_image {
+    border-radius: 50%;
+    margin: 0 5px 5px 0;
+  }
+
 // トップ
 
   .main_container{
@@ -215,7 +220,7 @@
   .user_image {
     text-align: center;
   }
-  
+
   .user_about_image {
     border-radius: 50%;
   }
@@ -226,7 +231,7 @@
   	border-radius: 110px;
   	background-color: #ffebcd;
   }
-  
+
 
   .crop_item_info {
     display: flex;
@@ -309,7 +314,7 @@
 
   .crop_image {
     width: 300px;
-    height: 300px;
+    height: 250px;
     margin: 20px 0;
   }
 
