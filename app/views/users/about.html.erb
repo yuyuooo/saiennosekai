@@ -5,7 +5,8 @@
     </div>
     <div class="col-lg-6 offset-lg-1">
       <h5>今までの栽培</h5>
-      <% if @user.crop_folders.length > 0 %>
+      <p class="user_about_text">栽培中</p>
+      <% if @user.crop_folders.active.length > 0 %>
         <% @user.crop_folders.each do |crop_folder| %>
           <table class="table table-borderless">
             <tbody>
@@ -26,12 +27,36 @@
           </table>
         <% end %>
       <% else %>
-        <p>=== 栽培した作物はありません ===</p>
+        <p class="ml-5 my-4">=== 栽培中の作物はありません ===</p>
+      <% end %>
+      <p class="user_about_text">栽培完了</p>
+      <% if @user.crop_folders.unactive.length > 0 %>
+        <% @user.crop_folders.each do |crop_folder| %>
+          <table class="table table-borderless">
+            <tbody>
+              <tr>
+                <th style="width: 40%">●<%= crop_folder.crop_name %></th>
+                <td style="width: 30%">
+                  <%= link_to crop_folder_path(crop_folder.id), class: "btn btn-outline-secondary btn-block" do %>
+                   <i class="fas fa-pen"></i> 日記
+                  <% end %>
+                </td>
+                <td style="width: 30%">
+                  <%= link_to  crop_folder_plans_path(crop_folder.id), class: "btn btn-outline-secondary btn-block"   do %>
+                    <i class="fas fa-calendar"></i> 計画
+                  <% end %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        <% end %>
+      <% else %>
+        <p  class="ml-5 my-4">=== 栽培完了した作物はありません ===</p>
       <% end %>
       <%= link_to "新しい作物の栽培を始める", user_path(current_user), class: "btn btn-info" %>
       <h5 class="mt-5">出品した商品</h5>
-      <p>販売中</p>
-      <% if @user.items.filter{|i| i.is_active?}.length > 0 %>
+      <p class="user_about_text">販売中</p>
+      <% if @user.items.active.length > 0 %>
         <% @user.items.each do |item| %>
           <% if item.is_active? %>
               <table class="table table-borderless">
@@ -49,10 +74,10 @@
           <% end %>
         <% end %>
       <% else %>
-        <p>=== 販売中の商品はありません ===</p>
+        <p class="ml-5 my-4">=== 販売中の商品はありません ===</p>
       <% end %>
-      <p>販売停止中</p>
-      <% if @user.items.filter{|i| i.is_active?}.length > 0 %>
+      <p class="user_about_text">販売停止中</p>
+      <% if @user.items.unactive.length > 0 %>
         <% @user.items.each do |item| %>
           <% unless item.is_active? %>
             <table class="table table-borderless">
@@ -70,10 +95,10 @@
           <% end %>
         <% end %>
       <% else %>
-        <p>=== 販売停止中の商品はありません ===</p>
+        <p class="ml-5 my-4">=== 販売停止中の商品はありません ===</p>
       <% end %>
-      <%= link_to "新しい商品を出品する", items_path, class: "btn btn-info" %>
-      <%= link_to "全ての出品", user_items_path(@user) %>
+      <%= link_to "新しい商品を出品する", items_path, class: "btn btn-info mr-5" %>
+      <%= link_to "あなたの全ての出品 >>", user_items_path(@user) %>
     </div>
   </div>
 </div>

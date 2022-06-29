@@ -50,12 +50,14 @@
     padding: 1% 2%;
     border-left: 6px double #000;
     background: #f4f4f4;
+    margin-bottom: 5%;
   }
 
   h5 {
     padding: 1% 2%;
     border-top: 3px dashed #000;
     background: #f4f4f4;
+    margin-bottom: 5%;
   }
 
 // トップ
@@ -208,6 +210,23 @@
     padding-bottom: 3px;
   }
 
+  // users/about
+
+  .user_image {
+    text-align: center;
+  }
+  
+  .user_about_image {
+    border-radius: 50%;
+  }
+
+  .user_about_text {
+    text-align: center;
+    width: 110px;
+  	border-radius: 110px;
+  	background-color: #ffebcd;
+  }
+  
 
   .crop_item_info {
     display: flex;

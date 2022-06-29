@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-5">
       <% if @user == current_user %>
-        <p>新しい商品を登録</p>
+        <h4>新しく作物を出品する</h4>
         <%= render 'layouts/errors', obj: @new_item %>
         <%= render 'items/form', item: @new_item %>
       <% else %>
@@ -10,6 +10,7 @@
       <% end %>
     </div>
     <div class="col-md-6 offset-md-1">
+      <h5>あなたの出品した作物</h5>
       <%= render 'items/index', items: @items %>
     </div>
   </div>

@@ -1,6 +1,8 @@
 <h4>会員情報</h4>
-<table class="table">
-  <%= image_tag user.get_profile_image(300,300), class: "img" %>
+<div class="user_image">
+    <%= image_tag user.get_profile_image(150,150), class: "user_about_image" %>
+</div>
+<table class="table mt-3">
   <% if current_user != user %>
     <%= link_to chat_path(user.id), class: "btn btn-submit btn-sm ml-5" do %>
       <i class="fas fa-envelope"></i><br>
@@ -24,6 +26,6 @@
     <td style="width: 60%"><strong><i class="fas fa-star"></i></strong><span>　</span><%= link_to "#{user.likes.count} 件", user_likes_path(user) %></td>
   </tr>
 </table>
-<%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
+<%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block mb-5" do %>
   <i class="fas fa-user-cog"></i> 会員情報編集
 <% end %>

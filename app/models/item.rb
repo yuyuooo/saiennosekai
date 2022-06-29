@@ -25,9 +25,8 @@ class Item < ApplicationRecord
     is_active ? "font-weight-bold text-success":"font-weight-bold text-muted"
   end
 
-  # def have_is_active?(is_active)
-  #   is_actives.exists?(is_active: "販売中")
-  # end
+  scope :active, -> {where(is_active: true)}
+  scope :unactive, -> {where(is_active: false)}
 
   def liked_by?(user)
     likes.exists?(user_id: user.id)

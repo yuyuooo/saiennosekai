@@ -1,15 +1,16 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-4">
       <% if @user == current_user %>
-       <p>新しい作物の栽培を登録</p>
+       <h4>新しい作物の栽培を登録</h4>
        <%= render 'layouts/errors', obj: @crop_folder %>
        <%= render 'crop_folders/form', crop_folder: @crop_folder%>
       <% else %>
         <%= render "info", user: @user %>
       <% end %>
     </div>
-    <div class="col-md-6 offset-md-1">
+    <div class="col-md-6 offset-md-2">
+      <h5>あなたの栽培作物</h5>
       <% if @user.crop_folders.length > 0 %>
         <%= render 'crop_folders/index', crop_folders: @crop_folders %>
       <% else %>

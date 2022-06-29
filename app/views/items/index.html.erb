@@ -1,10 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-md-5">
+      <h4>新しく作物を出品する</h4>
       <%= render 'layouts/errors', obj: @item %>
       <%= render 'form', item: @item %>
     </div>
     <div class="col-md-6 offset-md-1">
+      <h5>みんなの出品した作物</h5>
       <%=  render 'index', items: @items %>
     </div>
   </div>

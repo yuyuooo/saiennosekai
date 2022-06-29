@@ -15,6 +15,9 @@ class CropFolder < ApplicationRecord
   scope :published, -> {where(is_published_flag: true)}
   scope :unpublished, -> {where(is_published_flag: false)}
 
+  scope :active, -> {where(is_active: true)}
+  scope :unactive, -> {where(is_active: false)}
+
   has_one_attached :crop_image
 
   def get_crop_image(width, height)

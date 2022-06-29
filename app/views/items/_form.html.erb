@@ -1,15 +1,15 @@
 <%= form_with model: item, local:true do |f| %>
   <div class="form-group row form-inline mb-4">
     <%= f.label :item_name, class: "col-sm-3" %>
-    <%= f.text_field :item_name, class: 'form-control', style: "width: 40%" %>
+    <%= f.text_field :item_name, class: 'form-control' %>
   </div>
   <div class="form-group row form-inline mb-4">
     <%= f.label :item_count, class: "col-sm-3" %>
-    <%= f.text_field :item_count, placeholder: '1 ~ 入力可能', class: 'form-control mr-2', style: "width: 40%" %>個
+    <%= f.text_field :item_count, placeholder: '1 ~ 入力可能', class: 'form-control mr-2' %>個
   </div>
   <div class="form-group row form-inline mb-4">
     <%= f.label :price, class: "col-sm-3" %>
-    <%= f.text_field :price, placeholder: '0 ~ 入力可能', class: 'form-control mr-2', style: "width: 40%" %><sapan> 円</span>
+    <%= f.text_field :price, placeholder: '0 ~ 入力可能', class: 'form-control mr-2' %><sapan> 円</span>
   </div>
   <div class="form-group row form-inline mb-4">
     <%= f.label :item_image, class: "col-sm-3" %>
@@ -21,11 +21,11 @@
   </div>
   <div class="form-group row form-inline mb-4">
     <%= f.label :sales_area, class: "col-sm-3" %>
-    <%= f.text_field :sales_area, placeholder: '市町村まで入力', class: "form-control", style: "width: 60%" %>
+    <%= f.text_field :sales_area, placeholder: '市町村まで入力', class: "form-control" %>
   </div>
   <div class="form-group row form-inline mb-4">
     <%= f.label :introduction, class: "col-sm-3" %>
-    <%= f.text_area :introduction, class: 'form-control', style: "width: 60%" %>
+    <%= f.text_area :introduction, class: 'form-control' %>
   </div>
   <div class="form-group row form-inline mb-4">
     <%= f.label :is_active, class: "col-sm-3" %>
