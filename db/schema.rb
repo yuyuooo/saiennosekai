@@ -114,6 +114,8 @@ ActiveRecord::Schema.define(version: 2022_06_26_225652) do
     t.integer "crop_comment_id"
     t.integer "room_id"
     t.integer "chat_id"
+    t.integer "favorite_id"
+    t.integer "like_id"
     t.string "action", default: "", null: false
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", precision: 6, null: false

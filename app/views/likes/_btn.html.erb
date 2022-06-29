@@ -1,0 +1,9 @@
+<% if item.liked_by?(current_user) %>
+  <%= link_to item_likes_path(item), method: :delete, class: "ml-5 link", remote: true do %>
+   気になる ★<%= item.likes.count %>
+  <% end %>
+<% else %>
+  <%= link_to item_likes_path(item), method: :post, class: "ml-5 link", remote: true do %>
+   気になる ☆<%= item.likes.count %>
+  <% end %>
+<% end %>

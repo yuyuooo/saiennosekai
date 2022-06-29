@@ -4,15 +4,7 @@
     <%= image_tag crop_folder.user.get_profile_image(70,70), class: "user_profile_image" %>
   <% end %>
   <%= link_to "#{crop_folder.user.name}さん家の作物", user_path(crop_folder.user), class: "link" %>
-    <% if crop_folder.favorited_by?(current_user) %>
-      <%= link_to crop_folder_favorites_path(crop_folder), method: :delete, class: "ml-5 link" do %>
-        ♥<%= crop_folder.favorites.count %> いいね
-      <% end %>
-    <% else %>
-      <%= link_to crop_folder_favorites_path(crop_folder), method: :post, class: "ml-5 link" do %>
-        ♡<%= crop_folder.favorites.count %> いいね
-      <% end %>
-    <% end %>
+    <span id = "favorite_buttons_<%= crop_folder.id %>"><%= render "favorites/btn", crop_folder: crop_folder %></span>
     <%= link_to "#{crop_folder.crop_comments.count} コメント", crop_folder_path(crop_folder.id), class: "ml-3 link" %>
     <% unless crop_folder.is_published_flag? %>
       <div class="ml-3"><i class="fas fa-lock"></i></div>
