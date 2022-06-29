@@ -10,7 +10,7 @@
       <% end %>
     </div>
     <div class="col-md-6 offset-md-2">
-      <h5>あなたの栽培作物</h5>
+      <h5><%= @user.name %>の栽培作物</h5>
       <% if @user.crop_folders.length > 0 %>
         <%= render 'crop_folders/index', crop_folders: @crop_folders %>
       <% else %>

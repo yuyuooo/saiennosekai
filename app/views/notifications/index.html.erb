@@ -16,7 +16,7 @@
             <% @notifications.each do |notification|%>
               <tr>
                 <td style="text-align: right;"><%= link_to user_path(notification.visitor) do %>
-                      <%= image_tag notification.visitor.get_profile_image(50,50) %>
+                      <%= image_tag notification.visitor.get_profile_image(50,50), class: "user_profile_image" %>
                     <% end %>
                 </td>
                 <td><p><%= notification_form(notification) %>

@@ -10,7 +10,7 @@
       <% end %>
     </div>
     <div class="col-md-6 offset-md-1">
-      <h5>あなたの出品した作物</h5>
+      <h5><%= @user.name %>の出品した作物</h5>
       <%= render 'items/index', items: @items %>
     </div>
   </div>
