@@ -52,21 +52,31 @@
                   <% end %>
                 </div>
               </div>
-              <% if crop_folder.user == current_user %>
-                <%= link_to crop_folder_path(crop_folder.id), class: "btn btn-outline-info btn-block", style: "width:30%" do %>
-                 <i class="fas fa-pen"></i> 日記を書く
+              <table class="table table-borderless">
+                <% if crop_folder.user == current_user %>
+                  <tr>
+                    <td><%= link_to crop_folder_path(crop_folder.id), class: "btn btn-outline-info btn-block" do %>
+                      <i class="fas fa-pen"></i> 日記を書く
+                      <% end %>
+                    </td>
+                    <td><%= link_to  crop_folder_plans_path(crop_folder.id), class: "btn btn-outline-info btn-block mt-0 ml-2" do %>
+                      <i class="fas fa-calendar"></i> 計画を立てる
+                      <% end %>
+                    </td>
+                  </tr>
+                <% else %>
+                  <tr>
+                    <td><%= link_to crop_folder_path(crop_folder.id), class: "btn btn-outline-secondary btn-block" do %>
+                        <i class="fas fa-pen"></i> 日記を見る
+                        <% end %>
+                    </td>
+                    <td><%= link_to  crop_folder_plans_path(crop_folder.id), class: "btn btn-outline-secondary btn-block mt-0 ml-2" do %>
+                        <i class="fas fa-calendar"></i> 計画を見る
+                        <% end %>
+                    </td>
+                  </tr>
                 <% end %>
-                <%= link_to  crop_folder_plans_path(crop_folder.id), class: "btn btn-outline-info btn-block mt-0 ml-2", style: "width:30%" do %>
-                  <i class="fas fa-calendar"></i> 計画を立てる
-                <% end %>
-              <% else %>
-                <%= link_to crop_folder_path(crop_folder.id), class: "btn btn-outline-secondary btn-block", style: "width:30%" do %>
-                 <i class="fas fa-pen"></i> 日記を見る
-                <% end %>
-                <%= link_to  crop_folder_plans_path(crop_folder.id), class: "btn btn-outline-secondary btn-block mt-0 ml-2", style: "width:30%"   do %>
-                  <i class="fas fa-calendar"></i> 計画を見る
-                <% end %>
-              <% end %>
+              </table>
             </div>
           </div>
           <div class="col-md-5 offset-md-1">
