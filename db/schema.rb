@@ -49,9 +49,9 @@ ActiveRecord::Schema.define(version: 2022_06_26_225652) do
   end
 
   create_table "crop_comments", force: :cascade do |t|
-    t.text "comment"
-    t.integer "user_id"
-    t.integer "crop_folder_id"
+    t.text "comment", null: false
+    t.integer "user_id", null: false
+    t.integer "crop_folder_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -69,19 +69,19 @@ ActiveRecord::Schema.define(version: 2022_06_26_225652) do
   end
 
   create_table "diaries", force: :cascade do |t|
-    t.string "title"
-    t.string "weather"
-    t.text "body"
-    t.date "diary_date"
-    t.integer "user_id"
-    t.integer "crop_folder_id"
+    t.string "title", null: false
+    t.string "weather", null: false
+    t.text "body", null: false
+    t.date "diary_date", null: false
+    t.integer "user_id", null: false
+    t.integer "crop_folder_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "crop_folder_id"
+    t.integer "user_id", null: false
+    t.integer "crop_folder_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -100,8 +100,8 @@ ActiveRecord::Schema.define(version: 2022_06_26_225652) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "item_id"
+    t.integer "user_id", null: false
+    t.integer "item_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -123,11 +123,10 @@ ActiveRecord::Schema.define(version: 2022_06_26_225652) do
   end
 
   create_table "plans", force: :cascade do |t|
-    t.string "crop_title"
-    t.text "action"
-    t.datetime "start_time"
-    t.integer "user_id"
-    t.integer "crop_folder_id"
+    t.text "action", null: false
+    t.datetime "start_time", null: false
+    t.integer "user_id", null: false
+    t.integer "crop_folder_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -152,6 +151,7 @@ ActiveRecord::Schema.define(version: 2022_06_26_225652) do
     t.datetime "remember_created_at"
     t.string "name"
     t.text "introduction"
+    t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true

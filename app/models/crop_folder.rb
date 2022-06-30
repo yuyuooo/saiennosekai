@@ -18,9 +18,6 @@ class CropFolder < ApplicationRecord
   scope :active, -> {where(is_active: true)}
   scope :unactive, -> {where(is_active: false)}
 
-  #scope :search_crop, -> (crop) { where(crop_folder_id: crop) }
-  #scope :search_crop_diary, -> (crop) { published.search_crop(crop) }
-
   has_one_attached :crop_image
 
   def get_crop_image(width, height)
