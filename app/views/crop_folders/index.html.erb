@@ -78,8 +78,8 @@
                        <p>New</p>
                     </span>
                     <tr>
-                      <td><%= diary.diary_date %></td>
-                      <td><%= diary.weather %></td>
+                      <td><%= diary.diary_date.strftime('%Y/%m/%d') %></td>
+                      <td>天気：<%= diary.weather %></td>
                     </tr>
                   </table>
                   <div class="crop_image">
