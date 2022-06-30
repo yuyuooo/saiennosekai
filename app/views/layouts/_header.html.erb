@@ -9,15 +9,17 @@
         <% if user_signed_in? %>
           <li class="nav-item">
             <% if unchecked_notifications.any? %>
-              <%= link_to notifications_path, class: "nav-link" do %>
+              <%= link_to notifications_path, class: "nav-link notice_circle" do %>
                 <i class="fa fa-circle" style="color: gold;"></i>
               <% end %>
             <% end %>
-            <%= link_to "通知", notifications_path, class: "nav-link" %>
+            <%= link_to notifications_path, class: "nav-link" do %>
+              <i class="fas fa-bell"></i> 通知
+            <% end %>
           </li>
           <li class="nav-item">
             <%= link_to user_about_path(current_user), class: "nav-link" do %>
-              マイページ<span class="sr-only">(current)</span>
+              <%= image_tag current_user.get_profile_image(20,20), class: "user_profile_image" %>マイページ<span class="sr-only">(current)</span>
             <% end %>
           </li>
           <li class="nav-item">
@@ -25,10 +27,6 @@
               あなたの作物<span class="sr-only">(current)</span>
             <% end %>
           </li>
-          <!--<li class="nav-item">-->
-          <!--  <%#= link_to plans_path, class: "nav-link" do %>-->
-          <!--    栽培計画表<span class="sr-only">(current)</span>-->
-          <!--  <%# end %>-->
           </li>
           <li class="nav-item">
             <%= link_to crop_folders_path, class: "nav-link" do %>

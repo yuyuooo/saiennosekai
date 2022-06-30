@@ -7,20 +7,40 @@
       <h5>今までの栽培</h5>
       <p class="user_about_text">栽培中</p>
       <% if @user.crop_folders.active.length > 0 %>
-        <% @user.crop_folders.each do |crop_folder| %>
+        <% @user.crop_folders.active.first(3).each do |crop_folder| %>
           <% if crop_folder.is_active? %>
             <%= render 'users/crop', crop_folder: crop_folder %>
           <% end %>
+        <% end %>
+        <% if @user.crop_folders.active.length > 3 %>
+          <details>
+            <summary class="mb-5">全ての作物を表示</summary>
+            <% @user.crop_folders.active.offset(3).each do |crop_folder| %>
+              <% if crop_folder.is_active? %>
+                <%= render 'users/crop', crop_folder: crop_folder %>
+              <% end %>
+            <% end %>
+          </details>
         <% end %>
       <% else %>
         <p class="ml-5 my-4">=== 栽培中の作物はありません ===</p>
       <% end %>
       <p class="user_about_text">栽培完了</p>
       <% if @user.crop_folders.unactive.length > 0 %>
-        <% @user.crop_folders.each do |crop_folder| %>
+        <% @user.crop_folders.unactive.first(3).each do |crop_folder| %>
           <% unless crop_folder.is_active? %>
             <%= render 'users/crop', crop_folder: crop_folder %>
           <% end %>
+        <% end %>
+        <% if @user.crop_folders.unactive.length > 3 %>
+          <details>
+            <summary class="mb-5">全ての作物を表示</summary>
+            <% @user.crop_folders.unactive.offset(3).each do |crop_folder| %>
+              <% unless crop_folder.is_active? %>
+                <%= render 'users/crop', crop_folder: crop_folder %>
+              <% end %>
+            <% end %>
+          </details>
         <% end %>
       <% else %>
         <p  class="ml-5 my-4">=== 栽培完了した作物はありません ===</p>
@@ -29,42 +49,40 @@
       <h5 class="mt-5">出品した商品</h5>
       <p class="user_about_text">販売中</p>
       <% if @user.items.active.length > 0 %>
-        <% @user.items.each do |item| %>
+        <% @user.items.active.first(3).each do |item| %>
           <% if item.is_active? %>
-              <table class="table table-borderless">
-                <tbody>
-                  <tr>
-                    <th style="width: 50%">●<%= item.item_name %></th>
-                    <td style="width: 50%">
-                      <%= link_to item_path(item.id), class: "btn btn-outline-secondary btn-block" do %>
-                        出品した商品をみる
-                      <% end %>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              <%= render 'users/item', item: item %>
           <% end %>
+        <% end %>
+        <% if @user.items.active.length > 3 %>
+          <details>
+            <summary class="mb-5">全ての作物を表示</summary>
+            <% @user.items.active.offset(3).each do |item| %>
+              <% if item.is_active? %>
+                <%= render 'users/item', item: item %>
+              <% end %>
+            <% end %>
+          </details>
         <% end %>
       <% else %>
         <p class="ml-5 my-4">=== 販売中の商品はありません ===</p>
       <% end %>
       <p class="user_about_text">販売停止中</p>
       <% if @user.items.unactive.length > 0 %>
-        <% @user.items.each do |item| %>
+        <% @user.items.unactive.first(3).each do |item| %>
           <% unless item.is_active? %>
-            <table class="table table-borderless">
-              <tbody>
-                <tr>
-                  <th style="width: 50%">●<%= item.item_name %></th>
-                  <td style="width: 50%">
-                    <%= link_to item_path(item.id), class: "btn btn-outline-secondary btn-block" do %>
-                      出品した商品をみる
-                    <% end %>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <%= render 'users/item', item: item %>
           <% end %>
+        <% end %>
+        <% if @user.items.unactive.length > 3 %>
+          <details>
+            <summary class="mb-5">全ての作物を表示</summary>
+            <% @user.items.unactive.offset(3).each do |item| %>
+              <% unless item.is_active? %>
+                <%= render 'users/item', item: item %>
+              <% end %>
+            <% end %>
+          </details>
         <% end %>
       <% else %>
         <p class="ml-5 my-4">=== 販売停止中の商品はありません ===</p>

@@ -12,10 +12,10 @@
   </div>
   <div class="row">
     <div class="crop_container mb-5">
-      <table class="table crop_box col-md-9">
+      <table class="table crop_box col-md-7">
         <tr>
-          <th style="width: 35%">作物名：</th>
-          <td style="width: 65%"><%= crop_folder.crop_name %></td>
+          <th>作物名：</th>
+          <td><%= crop_folder.crop_name %></td>
         </tr>
         <tr>
           <th>栽培開始：</th>
@@ -30,7 +30,7 @@
           <td class="long_text"><%= crop_folder.memo %></td>
         </tr>
       </table>
-      <div class="col-md-3">
+      <div class="col-md-4 offset-md-1">
         <div class="crop_status <%= crop_folder.is_active_color %>"><%= crop_folder.is_active ? "栽培中" : "栽培完了" %></div>
         <div class="crop_folder_image"><%= image_tag crop_folder.get_crop_image(150,150) %></div>
         <% if crop_folder.user == current_user %>

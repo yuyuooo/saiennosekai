@@ -7,11 +7,11 @@
     <span id = "like_buttons_<%= item.id %>"><%= render "likes/btn", item: item %></span>
   </div>
   <div class="row">
-    <div class="item_container mb-4">
-      <table class="table item_box col-md-9">
+    <div class="item_container mb-5">
+      <table class="table item_box col-md-7">
         <tr>
-          <td width="35%"><%= item.item_name %></td>
-          <td width="65%"><%= item.item_count %> 個</td>
+          <td><%= item.item_name %></td>
+          <td><%= item.item_count %> 個</td>
         </tr>
         <tr>
           <td><%= item.price.to_s(:delimited) %> 円</td>
@@ -30,7 +30,7 @@
           <td class="long_text"><%= item.introduction %></td>
         </tr>
       </table>
-      <div class="col-md-3">
+      <div class="col-md- offset-md-1">
         <div class="sales_status <%= item.is_active_color %>"><%= item.is_active ? "販売中" : "販売停止中" %></div>
         <div class="crop_item_image"><%= image_tag item.get_item_image(150,150) %></div>
         <% if item.user == current_user %>
