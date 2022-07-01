@@ -1,6 +1,7 @@
 class CropFoldersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+  before_action :ensure_public_crop_folder, only: [:show]
 
   def index
     @crop_folders = CropFolder.published.order(created_at: :desc).page(params[:page]).per(5)
@@ -55,6 +56,15 @@ private
     @crop_folder = CropFolder.find(params[:id])
     unless @crop_folder.user == current_user
       redirect_to crop_folders_path
+    end
+  end
+
+  def ensure_public_crop_folder
+    @crop_folder = CropFolder.find(params[:id])
+    unless @crop_folder.user == current_user
+      unless @crop_folder.is_published_flag?
+        redirect_to crop_folders_path
+      end
     end
   end
 
