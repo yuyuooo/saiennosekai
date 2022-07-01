@@ -51,16 +51,20 @@
             </td>
           </tr>
         <% else %>
-          <tr>
-            <td><%= link_to crop_folder_path(crop_folder.id), class: "btn btn-outline-secondary btn-block" do %>
-                  <i class="fas fa-pen"></i> 日記を見る
-                <% end %>
-            </td>
-            <td><%= link_to  crop_folder_plans_path(crop_folder.id), class: "btn btn-outline-secondary btn-block mt-0 ml-2" do %>
-                  <i class="fas fa-calendar"></i> 計画を見る
-                <% end %>
-            </td>
-          </tr>
+          <% if crop_folder.is_published_flag? %>
+            <tr>
+              <td><%= link_to crop_folder_path(crop_folder.id), class: "btn btn-outline-secondary btn-block" do %>
+                    <i class="fas fa-pen"></i> 日記を見る
+                  <% end %>
+              </td>
+              <td><%= link_to  crop_folder_plans_path(crop_folder.id), class: "btn btn-outline-secondary btn-block mt-0 ml-2" do %>
+                    <i class="fas fa-calendar"></i> 計画を見る
+                  <% end %>
+              </td>
+            </tr>
+          <% else %>
+            ===　非公開設定をしています ===
+          <% end %>
         <% end %>
       </table>
     </div>

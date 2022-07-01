@@ -7,7 +7,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @crop_folders = @user.crop_folders.order(created_at: :desc).page(params[:page]).per(5)
+    if @user == current_user
+      @crop_folders = @user.crop_folders.order(created_at: :desc).page(params[:page]).per(5)
+    else
+      @crop_folders = @user.crop_folders.published.order(created_at: :desc).page(params[:page]).per(5)
+    end
     @crop_folder = CropFolder.new
   end
 
@@ -29,21 +33,21 @@ class UsersController < ApplicationController
 
   def favorites
     @user = User.find(params[:id])
-    @crop_folder = @user.crop_folders
+    @crop_folder = @user.crop_folders.order(created_at: :desc).page(params[:page]).per(5)
     favorites = Favorite.where(user_id: @user.id).pluck(:crop_folder_id)
     @favorite_list = CropFolder.find(favorites)
   end
 
   def likes
     @user = User.find(params[:id])
-    @item = @user.items
+    @item = @user.items.order(created_at: :desc).page(params[:page]).per(5)
     likes = Like.where(user_id: @user.id).pluck(:item_id)
     @like_list = Item.find(likes)
   end
 
   def items
     @user = User.find(params[:id])
-    @items = @user.items
+    @items = @user.items.order(created_at: :desc).page(params[:page]).per(5)
     @new_item = Item.new
   end
 

@@ -1,17 +1,43 @@
-<table class="table table-borderless">
-  <tbody>
-    <tr>
-      <th style="width: 40%">●<%= crop_folder.crop_name %></th>
-      <td style="width: 30%">
-        <%= link_to crop_folder_path(crop_folder.id), class: "btn btn-outline-secondary btn-block" do %>
-         <i class="fas fa-pen"></i> 日記
-        <% end %>
-      </td>
-      <td style="width: 30%">
-        <%= link_to  crop_folder_plans_path(crop_folder.id), class: "btn btn-outline-secondary btn-block"   do %>
-          <i class="fas fa-calendar"></i> 計画
-        <% end %>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<% if current_user == @user %>
+  <table class="table table-borderless">
+    <tbody>
+      <tr>
+        <th style="width: 40%">●<span> </span><%= crop_folder.crop_name %></th>
+        <td style="width: 30%">
+          <%= link_to crop_folder_path(crop_folder.id), class: "btn btn-outline-secondary btn-block" do %>
+           <i class="fas fa-pen"></i> 日記
+          <% end %>
+        </td>
+        <td style="width: 30%">
+          <%= link_to  crop_folder_plans_path(crop_folder.id), class: "btn btn-outline-secondary btn-block"   do %>
+            <i class="fas fa-calendar"></i> 計画
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<% else %>
+  <table class="table table-borderless">
+    <% if crop_folder.is_published_flag? %>
+      <tbody>
+        <tr>
+          <th style="width: 40%">●<span> </span><%= crop_folder.crop_name %></th>
+          <td style="width: 30%">
+            <%= link_to crop_folder_path(crop_folder.id), class: "btn btn-outline-secondary btn-block" do %>
+             <i class="fas fa-pen"></i> 日記
+            <% end %>
+          </td>
+          <td style="width: 30%">
+            <%= link_to  crop_folder_plans_path(crop_folder.id), class: "btn btn-outline-secondary btn-block"   do %>
+              <i class="fas fa-calendar"></i> 計画
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    <% else %>
+      <tr>
+        <th>●<span> </span>非公開の作物</th>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
