@@ -1,11 +1,5 @@
 class PlansController < ApplicationController
-
-  def index
-    @user = current_user
-    @plans = @user.plans.all
-    @plan = Plan.new
-    @crop_folders = @user.crop_folders.all
-  end
+  before_action :authenticate_user!
 
   def show
     @crop_folder = CropFolder.find_by(id: params[:crop_folder_id])
@@ -23,9 +17,11 @@ class PlansController < ApplicationController
     end
   end
 
-  private
+private
+
    def plan_params
      params.require(:plan).permit(:crop_title, :action, :start_time)
    end
+   
 end
 

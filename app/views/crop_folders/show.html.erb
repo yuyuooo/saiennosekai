@@ -47,7 +47,11 @@
             </span>
             <tr>
               <td><%= diary.diary_date %></td>
-              <td><%= diary.weather %></td>
+              <td>天気：<%= diary.weather %></td>
+              <td><% if diary.user == current_user %>
+                    <%= link_to "削除", crop_folder_diary_path(@crop_folder, diary), method: :delete, class: "btn btn-danger btn-sm" %>
+                  <% end %>
+              </td>
             </tr>
           </table>
           <div class="crop_image">

@@ -47,7 +47,7 @@ class UsersController < ApplicationController
     @new_item = Item.new
   end
 
-   private
+private
 
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image)

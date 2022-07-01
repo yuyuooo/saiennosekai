@@ -1,6 +1,5 @@
 class DiariesController < ApplicationController
-
-before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def create
     @crop_folder = CropFolder.find(params[:crop_folder_id])
@@ -14,10 +13,11 @@ before_action :authenticate_user!
     end
   end
 
-  def edit
-  end
-
   def destroy
+    @crop_folder = CropFolder.find(params[:crop_folder_id])
+    @diary = Diary.find(params[:id])
+    @diary.destroy
+    redirect_to crop_folder_path(@crop_folder), success: "日記を削除しました"
   end
 
 private

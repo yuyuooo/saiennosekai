@@ -1,4 +1,5 @@
 class CropCommentsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     @crop_folder = CropFolder.find(params[:crop_folder_id])

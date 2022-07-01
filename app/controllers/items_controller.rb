@@ -1,4 +1,7 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:create, :edit, :update, :destroy]
+
   def show
     @item = Item.find_by(id: params[:id])
   end
@@ -32,11 +35,23 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to user_items_path(@item.user), success: "栽培作物を削除しました"
+  end
+
 private
 
   def item_params
     params.require(:item).permit(:item_name, :item_count, :sales_method, :sales_area, :introduction, :price, :is_active, :item_image)
   end
 
+  def ensure_correct_user
+    @item = Item.find(params[:id])
+    unless @item.user == current_user
+      redirect_to items_path
+    end
+  end
 
 end

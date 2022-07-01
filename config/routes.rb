@@ -1,19 +1,18 @@
 Rails.application.routes.draw do
-  get 'notifications/index'
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   devise_for :users
 
   root to: 'homes#top'
   resources :crop_folders, only: [:index, :show, :create, :edit, :update, :destroy] do
-    resources :diaries, only: [:create, :edit, :destroy]
+    resources :diaries, only: [:create, :destroy]
     resources :crop_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
-    resource :plans, only:[:index, :show, :create]
+    resource :plans, only:[:show, :create]
   end
 
   resources :users, only: [:index, :show, :edit, :update]
-  resources :items, only: [:index, :show, :create, :edit, :update] do
+  resources :items, only: [:index, :show, :create, :edit, :update, :destroy] do
     resource :likes, only: [:create, :destroy]
   end
 

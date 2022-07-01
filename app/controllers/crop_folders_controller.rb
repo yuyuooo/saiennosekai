@@ -1,6 +1,6 @@
 class CropFoldersController < ApplicationController
-
   before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:create, :edit, :update, :destroy]
 
   def index
     @crop_folders = CropFolder.published
@@ -35,18 +35,27 @@ class CropFoldersController < ApplicationController
     if @crop_folder.update(crop_folder_params)
     redirect_to user_path(@crop_folder.user), success: "作物の内容を更新しました"
     else
-      flash.now[:alert] = "作物の内容更新に失敗しました"
       render 'edit'
     end
   end
 
   def destroy
+    @crop_folder = CropFolder.find(params[:id])
+    @crop_folder.destroy
+    redirect_to user_path(@crop_folder.user), success: "栽培作物を削除しました"
   end
 
-  private
+private
 
   def crop_folder_params
     params.require(:crop_folder).permit(:crop_name, :new_crop_date, :place, :memo, :is_published_flag, :is_active, :crop_image)
+  end
+
+  def ensure_correct_user
+    @crop_folder = CropFolder.find(params[:id])
+    unless @crop_folder.user == current_user
+      redirect_to crop_folders_path
+    end
   end
 
 end

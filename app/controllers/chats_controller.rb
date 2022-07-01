@@ -1,4 +1,6 @@
 class ChatsController < ApplicationController
+  before_action :authenticate_user!
+  
   def show
     @user = User.find(params[:id])
     rooms = current_user.user_rooms.pluck(:room_id)
@@ -27,7 +29,8 @@ class ChatsController < ApplicationController
     @chat.room.create_notification_dm!(current_user, @chat.room_id, @chat.id)
   end
 
-  private
+private
+
   def chat_params
     params.require(:chat).permit(:message, :room_id, :user_id)
   end

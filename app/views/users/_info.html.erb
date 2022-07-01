@@ -26,6 +26,8 @@
     <td style="width: 60%"><strong><i class="fas fa-star"></i></strong><span>　</span><%= link_to "#{user.likes.count} 件", user_likes_path(user) %></td>
   </tr>
 </table>
-<%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block mb-5" do %>
-  <i class="fas fa-user-cog"></i> 会員情報編集
+<% if current_user == user %>
+  <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block mb-5" do %>
+    <i class="fas fa-user-cog"></i> 会員情報編集
+  <% end %>
 <% end %>

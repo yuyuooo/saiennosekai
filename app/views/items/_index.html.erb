@@ -30,11 +30,12 @@
           <td class="long_text"><%= item.introduction %></td>
         </tr>
       </table>
-      <div class="col-md- offset-md-1">
+      <div class="col-md-4 offset-md-1">
         <div class="sales_status <%= item.is_active_color %>"><%= item.is_active ? "販売中" : "販売停止中" %></div>
-        <div class="crop_item_image"><%= image_tag item.get_item_image(150,150) %></div>
+        <div><%= image_tag item.get_item_image(150,150) %></div>
         <% if item.user == current_user %>
           <%= link_to "編集", edit_item_path(item) %>
+          <%= link_to "削除",item_path(item), method: :delete, data: { confirm: '本当に消しますか？' }, class: "ml-5" %>
         <% end %>
         <% if current_user != item.user %>
           <%= link_to chat_path(item.user), class: "btn btn-submit" do %>
