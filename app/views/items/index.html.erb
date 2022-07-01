@@ -8,6 +8,7 @@
     <div class="col-md-6 offset-md-1">
       <h5>みんなの出品した作物</h5>
       <%=  render 'index', items: @items %>
+      <%= paginate @items %>
     </div>
   </div>
 </div>

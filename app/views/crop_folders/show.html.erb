@@ -39,27 +39,54 @@
         <h5 class="mb-5"><%= @crop_folder.crop_name %>の栽培日記</h5>
       <% end %>
       <% if @crop_folder.diaries.length > 0 %>
-        <% @crop_folder.diaries.each do |diary| %>
-        <div class="diary_box">
-          <table class="table table-borderless">
-            <span class="masking-tape">
-              <%#= diary.id %>
-            </span>
-            <tr>
-              <td><%= diary.diary_date %></td>
-              <td>天気：<%= diary.weather %></td>
-              <td><% if diary.user == current_user %>
-                    <%= link_to "削除", crop_folder_diary_path(@crop_folder, diary), method: :delete, class: "btn btn-danger btn-sm" %>
-                  <% end %>
-              </td>
-            </tr>
-          </table>
-          <div class="crop_image">
-            <%= image_tag diary.get_crop_image(300,200) %>
+        <% @crop_folder.diaries.first(3).each do |diary| %>
+          <div class="diary_box">
+            <table class="table table-borderless">
+              <span class="masking-tape">
+                <%#= diary.id %>
+              </span>
+              <tr>
+                <td><%= diary.diary_date %></td>
+                <td>天気：<%= diary.weather %></td>
+                <td><% if diary.user == current_user %>
+                      <%= link_to "削除", crop_folder_diary_path(@crop_folder, diary), method: :delete, class: "btn btn-danger btn-sm" %>
+                    <% end %>
+                </td>
+              </tr>
+            </table>
+            <div class="crop_image">
+              <%= image_tag diary.get_crop_image(300,200) %>
+            </div>
+            <p class="daiary_title"><%= diary.title %></p>
+            <p class="long_text"><%= diary.body %></p>
           </div>
-          <p class="daiary_title"><%= diary.title %></p>
-          <p class="long_text"><%= diary.body %></p>
-        </div>
+        <% end %>
+        <% if @crop_folder.diaries.length > 3 %>
+          <details>
+            <summary class="mb-5">全ての日記を表示</summary>
+            <% @crop_folder.diaries.offset(3).each do |diary| %>
+              <div class="diary_box">
+                <table class="table table-borderless">
+                  <span class="masking-tape">
+                    <%#= diary.id %>
+                  </span>
+                  <tr>
+                    <td><%= diary.diary_date %></td>
+                    <td>天気：<%= diary.weather %></td>
+                    <td><% if diary.user == current_user %>
+                          <%= link_to "削除", crop_folder_diary_path(@crop_folder, diary), method: :delete, class: "btn btn-danger btn-sm" %>
+                        <% end %>
+                    </td>
+                  </tr>
+                </table>
+                <div class="crop_image">
+                  <%= image_tag diary.get_crop_image(300,200) %>
+                </div>
+                <p class="daiary_title"><%= diary.title %></p>
+                <p class="long_text"><%= diary.body %></p>
+              </div>
+            <% end %>
+          </details>
         <% end %>
       <% else %>
         === 登録された栽培日記はありません ===

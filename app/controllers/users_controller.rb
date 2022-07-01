@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @crop_folders = @user.crop_folders
+    @crop_folders = @user.crop_folders.order(created_at: :desc).page(params[:page]).per(5)
     @crop_folder = CropFolder.new
   end
 

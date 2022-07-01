@@ -1,9 +1,9 @@
 class CropFoldersController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_correct_user, only: [:create, :edit, :update, :destroy]
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @crop_folders = CropFolder.published
+    @crop_folders = CropFolder.published.order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def show

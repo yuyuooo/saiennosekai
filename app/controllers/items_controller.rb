@@ -1,13 +1,13 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_correct_user, only: [:create, :edit, :update, :destroy]
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def show
     @item = Item.find_by(id: params[:id])
   end
 
   def index
-    @items = Item.all
+    @items = Item.all.order(created_at: :desc).page(params[:page]).per(5)
     @item = Item.new
   end
 
