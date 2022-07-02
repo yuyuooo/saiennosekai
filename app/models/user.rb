@@ -16,7 +16,6 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
-  #validates :nickname, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :name, presence: true
   validates :introduction, length: { maximum: 50 }
 
@@ -28,6 +27,13 @@ class User < ApplicationRecord
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
+  end
+
+  def self.guest
+    find_or_create_by!(name: "ゲスト" ,email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "ゲスト"
+    end
   end
 
 end
