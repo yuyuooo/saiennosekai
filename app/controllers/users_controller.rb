@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_correct_user, only: [:edit, :update]
-  before_action :ensure_guest_user, only: [:edit]
+  before_action :ensure_correct_user, only: [:edit, :update, :quit]
+  before_action :ensure_guest_user, only: [:edit, :quit]
 
   def index
   end
@@ -50,6 +50,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @items = @user.items.order(created_at: :desc).page(params[:page]).per(5)
     @new_item = Item.new
+  end
+  
+  def quit
+  end
+
+  def out
+    @user = User.find(params[:id])
+    @user.update(is_active: false)
+    reset_session
+    redirect_to root_path, success: "ありがとうございました。またのご利用を心よりお待ちしております。"
   end
 
 private

@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   get 'users/:id/favorites', to: 'users#favorites', as: 'user_favorites'
   get 'users/:id/likes', to: 'users#likes', as: 'user_likes'
   get 'users/:id/items', to: 'users#items', as: 'user_items'
+  get 'users/:id/quit' => 'users#quit', as: 'quit'
+  patch 'users/:id/out' => 'users#out', as: 'out'
 
   get 'chat/:id' => 'chats#show', as: 'chat'
   resources :chats, only: [:create]
