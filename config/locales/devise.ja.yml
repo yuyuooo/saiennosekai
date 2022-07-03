@@ -13,6 +13,7 @@ ja:
         introduction: 自己紹介
         profile_image: 画像
         email: Eメール
+        is_active: 会員ステータス
         encrypted_password: 暗号化パスワード
         failed_attempts: 失敗したログイン試行回数
         last_sign_in_at: 最終ログイン時刻

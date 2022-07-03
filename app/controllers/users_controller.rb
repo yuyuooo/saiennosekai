@@ -51,7 +51,7 @@ class UsersController < ApplicationController
     @items = @user.items.order(created_at: :desc).page(params[:page]).per(5)
     @new_item = Item.new
   end
-  
+
   def quit
   end
 
@@ -70,15 +70,15 @@ private
 
   def ensure_correct_user
     @user = User.find(params[:id])
-    unless @user == current_user
-      redirect_to user_about_path(current_user)
+    unless current_user.admin?
+      redirect_to user_about_path(current_user) unless current_user?(@user)
     end
   end
-  
+
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.name == "ゲスト"
       redirect_to user_about_path(current_user) , danger: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
-  end  
+  end
 end

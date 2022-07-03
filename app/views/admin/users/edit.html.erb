@@ -1,0 +1,31 @@
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <h5><%= @user.name %>さんの編集</h5>
+      <%= form_with model:[:admin, @user], local:true do |f| %>
+        <%= render 'layouts/errors', obj: @user %>
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: "form-control name" %>
+        </div>
+       <div class="form-group">
+          <%= f.label :profile_image %>
+          <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
+        </div>
+        <div class="form-group mb-4">
+          <%= f.label :introduction %>
+          <%= f.text_area :introduction, class: "form-control introduction" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :is_active %></br>
+          <%= f.radio_button :is_active, :true %>
+          <%= f.label :is_active, "有効", class: 'mr-3' %>
+          <%= f.radio_button :is_active, :false %>
+          <%= f.label :is_active, "退会" %>
+        <div class="form-group mt-4">
+          <%= f.submit class: 'btn btn-secondary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

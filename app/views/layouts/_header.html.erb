@@ -7,7 +7,16 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto pl-5">
-        <% if user_signed_in? %>
+        <% if admin_signed_in? %>
+          <% if request.fullpath.include? "/admin" %>
+            <li class="nav-item">
+              <%= link_to destroy_admin_session_path, class: "nav-link ml-3", method: :delete do %>
+                ログアウト<span class="sr-only">(current)</span>
+              <% end %>
+            </li>
+          <% else %>
+          <% end %>
+        <% elsif user_signed_in? %>
           <li class="nav-item">
             <% if unchecked_notifications.any? %>
               <%= link_to notifications_path, class: "nav-link" do %>

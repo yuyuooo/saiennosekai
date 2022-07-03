@@ -39,6 +39,10 @@ class User < ApplicationRecord
   def active_for_authentication?
     super && (self.is_active == true)
   end
+  
+  def is_active_color
+    is_active ? "font-weight-bold text-success":"font-weight-bold text-muted"
+  end
 
 end
 
