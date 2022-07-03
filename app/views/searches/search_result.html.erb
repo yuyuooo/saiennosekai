@@ -1,26 +1,93 @@
 <div class="container">
   <div class="col-xs-12">
     <% if @model == "User" %>
-      <h5>'<%= @content %>'の検索結果</h5>
+      <% if @content.length > 0 %>
+        <h5>'<%= @content %>'の検索結果</h5>
+        <table class="table">
+          <thead>
+            <tr>
+              <th width="15%"></th>
+              <th width="20%">名前</th>
+              <th width="40%">自己紹介</th>
+              <th width="15%">作物件数(公開中)</th>
+              <th width="10%">出品件数</th>
+            </tr>
+          </thead>
           <% @users.each do |user| %>
-          <%= image_tag user.get_profile_image(100,100) %>
-          <%= link_to user.name, user_about_path(user) %>
-          <%= user.introduction %>
+            <tbody>
+              <tr>
+                <td><%= image_tag user.get_profile_image(70,70) %></td>
+                <td><%= link_to user.name, user_about_path(user) %></td>
+                <td><%= user.introduction %></td>
+                <td class="text-center"><%= link_to user.crop_folders.published.count, user_path(user) %></td>
+                <td class="text-center"><%= link_to user.items.count, user_items_path(user) %></td>
+              </tr>
+            </tbody>
           <% end %>
+        </table>
+      <% else %>
+        <h5>検索フォームにユーザー名を入力してください</h5>
+      <% end %>
     <% elsif @model == "CropFolder" %>
-      <h5>'<%= @content %>'の検索結果</h5>
-        <% @crop_folders.each do |crop_folder| %>
-        <%= image_tag crop_folder.get_crop_image(100,100) %>
-        <%= crop_folder.user.name %>
-        <%= link_to crop_folder.crop_name,crop_folder_path(crop_folder) %>
-        <% end %>
+      <% if @content.length > 0 %>
+        <h5>'<%= @content %>'の作物検索結果</h5>
+        <table class="table">
+          <thead>
+            <tr>
+              <th width="10%"></th>
+              <th width="20%">作物名</th>
+              <th width="20%">栽培者</th>
+              <th width="20%">栽培開始</th>
+              <th width="15%">いいね件数</th>
+              <th width="15%">日記件数</th>
+            </tr>
+          </thead>
+          <% @crop_folders.published.each do |crop_folder| %>
+            <tbody>
+              <tr>
+                <td><%= image_tag crop_folder.get_crop_image(100,100) %></td>
+                <td><%= link_to crop_folder.crop_name,crop_folder_path(crop_folder) %></td>
+                <td><%= link_to crop_folder.user.name,user_about_path(crop_folder.user) %></td>
+                <td><%= crop_folder.new_crop_date %></td>
+                <td><%= crop_folder.favorites.count %></td>
+                <td><%= crop_folder.diaries.count %></td>
+              </tr>
+            </tbody>
+          <% end %>
+        </table>
+      <% else %>
+        <h5>検索フォームに作物名を入力してください</h5>
+      <% end %>
     <% else %>
-      <h5>'<%= @content %>'の検索結果</h5>
-        <% @items.each do |item| %>
-        <%= image_tag item.get_item_image(100,100) %>
-        <%= item.user.name %>
-        <%= link_to item.item_name,item_path(item) %>
-        <% end %>
+      <% if @content.length > 0 %>
+        <h5>'<%= @content %>'の商品検索結果</h5>
+        <table class="table">
+          <thead>
+            <tr>
+              <th width="10%"></th>
+              <th width="20%">商品名</th>
+              <th width="15%">個数</th>
+              <th width="20%">価格</th>
+              <th width="20%">販売状況</th>
+              <th width="15%">気になる件数</th>
+            </tr>
+          </thead>
+          <% @items.each do |item| %>
+            <tbody>
+              <tr>
+                <td><%= image_tag item.get_item_image(100,100) %><%= link_to item.user.name, user_about_path(item.user) %></td>
+                <td><%= link_to item.item_name,item_path(item) %></td>
+                <td><%= item.item_count %>個</td>
+                <td><%= item.price.to_s(:delimited) %>円</td>
+                <td class="sales_status <%= item.is_active_color %>"><%= item.is_active ? "販売中" : "販売停止中" %>
+                <td><%= item.likes.count %></td>
+              </tr>
+            <tbody>
+          <% end %>
+        </table>
+      <% else %>
+        <h5>検索フォームに商品名を入力してください</h5>
+      <% end %>
     <% end %>
   </div>
 </div>
