@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   get 'chat/:id' => 'chats#show', as: 'chat'
   resources :chats, only: [:create]
 
+  get "search" => "searches#search_result"
+
   resources :notifications, only: [:index] do
     collection do
       delete 'destroy_all'

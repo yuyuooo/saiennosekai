@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="col-xs-12">
+    <% if @model == "User" %>
+      <h5>'<%= @content %>'の検索結果</h5>
+          <% @users.each do |user| %>
+          <%= image_tag user.get_profile_image(100,100) %>
+          <%= link_to user.name, user_about_path(user) %>
+          <%= user.introduction %>
+          <% end %>
+    <% elsif @model == "CropFolder" %>
+      <h5>'<%= @content %>'の検索結果</h5>
+        <% @crop_folders.each do |crop_folder| %>
+        <%= image_tag crop_folder.get_crop_image(100,100) %>
+        <%= crop_folder.user.name %>
+        <%= link_to crop_folder.crop_name,crop_folder_path(crop_folder) %>
+        <% end %>
+    <% else %>
+      <h5>'<%= @content %>'の検索結果</h5>
+        <% @items.each do |item| %>
+        <%= image_tag item.get_item_image(100,100) %>
+        <%= item.user.name %>
+        <%= link_to item.item_name,item_path(item) %>
+        <% end %>
+    <% end %>
+  </div>
+</div>
+

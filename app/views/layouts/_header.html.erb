@@ -1,6 +1,7 @@
 <div class="header-container">
   <nav class="navbar navbar-expand-lg navbar-light bg-light pl-5">
     <a class="navbar-brand" href="#">菜園の世界</a>
+    <%= render 'searches/search' %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,38 +10,39 @@
         <% if user_signed_in? %>
           <li class="nav-item">
             <% if unchecked_notifications.any? %>
-              <%= link_to notifications_path, class: "nav-link notice_circle" do %>
-                <i class="fa fa-circle" style="color: gold;"></i>
+              <%= link_to notifications_path, class: "nav-link" do %>
+                <i class="fa fa-circle" style="color: gold;"></i><i class="fas fa-bell"></i> 通知
               <% end %>
-            <% end %>
-            <%= link_to notifications_path, class: "nav-link" do %>
-              <i class="fas fa-bell"></i> 通知
+            <% else %>
+              <%= link_to notifications_path, class: "nav-link ml-3" do %>
+                <i class="fas fa-bell"></i> 通知
+              <% end %>
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to user_about_path(current_user), class: "nav-link" do %>
+            <%= link_to user_about_path(current_user), class: "nav-link ml-3" do %>
               <%= image_tag current_user.get_profile_image(20,20), class: "user_profile_image" %>マイページ<span class="sr-only">(current)</span>
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to user_path(current_user), class: "nav-link" do %>
+            <%= link_to user_path(current_user), class: "nav-link ml-3" do %>
               あなたの作物<span class="sr-only">(current)</span>
             <% end %>
           </li>
           </li>
           <li class="nav-item">
-            <%= link_to crop_folders_path, class: "nav-link" do %>
+            <%= link_to crop_folders_path, class: "nav-link ml-3" do %>
              みんなの作物<span class="sr-only">(current)</span>
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to items_path, class: "nav-link" do %>
+            <%= link_to items_path, class: "nav-link ml-3" do %>
               商品一覧<span class="sr-only">(current)</span>
             <% end %>
           </li>
           </li>
           <li class="nav-item">
-            <%= link_to destroy_user_session_path, class: "nav-link", method: :delete do %>
+            <%= link_to destroy_user_session_path, class: "nav-link ml-3", method: :delete do %>
               ログアウト<span class="sr-only">(current)</span>
             <% end %>
           </li>
