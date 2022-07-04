@@ -28,7 +28,7 @@ class Admin::SessionsController < Devise::SessionsController
     case resource
       when Admin
         admin_users_path
-      end
     end
+  end
   
 end

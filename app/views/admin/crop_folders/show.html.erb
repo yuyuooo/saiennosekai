@@ -1,33 +1,37 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <h5 class="text-center"><%= @user.name %>さんの<%= @crop_folder.crop_name %>作物日記一覧</h5>
+      <h5 class="text-center"><%= @crop_folder.user.name %>さんの<%= @crop_folder.crop_name %>日記一覧</h5>
     </div>
   </div>
   <div class="row">
     <div class="col-12">
-      <table class="table">
-        <thead>
-          <tr>
-            <th width="15%"></th>
-            <th width="20%">日付</th>
-            <th width="20%">タイトル</th>
-            <th width="30%">本文</th>
-            <th width="15%"></th>
-          </tr>
-        </thead>
-        <% @crop_folder.diaries.each do |diary| %>
-          <tbody>
+      <% if @crop_folder.diaries.length > 0 %>
+        <table class="table">
+          <thead>
             <tr>
-              <td><%= image_tag diary.get_crop_image(70,70) %></td>
-              <td><%= diary.diary_date %></td>
-              <td><%= diary.title %></td>
-              <td><%= diary.body %></td>
-              <td><%= link_to "削除", admin_crop_folder_diary_path(diary), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger" %></td>
+              <th width="15%"></th>
+              <th width="20%">日付</th>
+              <th width="20%">タイトル</th>
+              <th width="30%">本文</th>
+              <th width="15%"></th>
             </tr>
-          </tbody>
-        <% end %>
-      </table>
+          </thead>
+          <% @crop_folder.diaries.each do |diary| %>
+            <tbody>
+              <tr>
+                <td><%= image_tag diary.get_crop_image(70,70) %></td>
+                <td><%= diary.diary_date %></td>
+                <td><%= diary.title %></td>
+                <td><%= diary.body %></td>
+                <td><%= link_to "削除", admin_crop_folder_diary_path(diary), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger" %></td>
+              </tr>
+            </tbody>
+          <% end %>
+        </table>
+      <% else %>
+        <p>===　作物日記の投稿はありません　===</p>
+      <% end %>
     </div>
   </div>
   <div class="row mt-5">
@@ -37,28 +41,32 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <table class="table">
-        <thead>
-          <tr>
-            <th width="15%">ユーザー</th>
-            <th width="20%"></th>
-            <th width="20%">日付</th>
-            <th width="30%">コメント</th>
-            <th width="15%"></th>
-          </tr>
-        </thead>
-        <% @crop_folder.crop_comments.each do |crop_comment| %>
-          <tbody>
+      <% if @crop_folder.crop_comments.length > 0 %>
+        <table class="table">
+          <thead>
             <tr>
-              <td><%= image_tag crop_comment.user.get_profile_image(70,70) %></td>
-              <td><%= crop_comment.user.name %></td>
-              <td><%= crop_comment.created_at.strftime('%Y-%m-%d') %></td>
-              <td><%= crop_comment.comment %></td>
-              <td><%= link_to "削除", admin_crop_folder_crop_comment_path(crop_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger" %></td>
+              <th width="15%">ユーザー</th>
+              <th width="20%"></th>
+              <th width="20%">日付</th>
+              <th width="30%">コメント</th>
+              <th width="15%"></th>
             </tr>
-          </tbody>
-        <% end %>
-      </table>
+          </thead>
+          <% @crop_folder.crop_comments.each do |crop_comment| %>
+            <tbody>
+              <tr>
+                <td><%= image_tag crop_comment.user.get_profile_image(70,70) %></td>
+                <td><%= crop_comment.user.name %></td>
+                <td><%= crop_comment.created_at.strftime('%Y-%m-%d') %></td>
+                <td><%= crop_comment.comment %></td>
+                <td><%= link_to "削除", admin_crop_folder_crop_comment_path(crop_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger" %></td>
+              </tr>
+            </tbody>
+          <% end %>
+        </table>
+      <% else %>
+        <p>===　コメントはありません　===</p>
+      <% end %>
     </div>
   </div>
 </div>

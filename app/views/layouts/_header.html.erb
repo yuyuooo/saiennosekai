@@ -10,6 +10,16 @@
         <% if admin_signed_in? %>
           <% if request.fullpath.include? "/admin" %>
             <li class="nav-item">
+              <%= link_to admin_users_path, class: "nav-link ml-3" do %>
+                会員一覧<span class="sr-only">(current)</span>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to admin_crop_folders_path, class: "nav-link ml-3" do %>
+                作物一覧<span class="sr-only">(current)</span>
+              <% end %>
+            </li>
+            <li class="nav-item">
               <%= link_to destroy_admin_session_path, class: "nav-link ml-3", method: :delete do %>
                 ログアウト<span class="sr-only">(current)</span>
               <% end %>

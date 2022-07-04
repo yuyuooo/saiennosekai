@@ -7,10 +7,12 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only: [:index, :edit, :update, :show]
-    resources :crop_folders, only: [:show, :destroy] do
+    resources :crop_folders, only: [:index, :show, :destroy] do
       resources :diaries, only: [:destroy]
       resources :crop_comments, only: [:destroy]
     end
+    resources :items, only: [:index, :destroy]
+    get 'users/:id/items', to: 'users#items', as: 'user_items'
   end
 
   devise_for :users

@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h5 class="text-center"><%= @user.name %>さんの商品一覧</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th width="10%"></th>
+            <th width="15%">商品名</th>
+            <th width="10%">個数</th>
+            <th width="15%">値段</th>
+            <th width="15%">地域</th>
+            <th width="25%">説明</th>
+            <th width="10%"></th>
+          </tr>
+        </thead>
+        <% @items.each do |item| %>
+          <tbody>
+            <tr>
+              <td><%= image_tag item.get_item_image(70,70) %></td>
+              <td><%= item.item_name %></td>
+              <td><%= item.item_count %></td>
+              <td><%= item.price.to_s(:delimited) %></td>
+              <td><%= item.sales_area %></td>
+              <td><%= item.introduction %></td>
+              <td><%= link_to "削除", admin_item_path(item), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger" %></td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

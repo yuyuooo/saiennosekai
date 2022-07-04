@@ -22,10 +22,15 @@ class Admin::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @crop_folders = @user.crop_folders.all.order(created_at: :desc).page(params[:page]).per(5)
+  end
+  
+  def items
+    @user = User.find(params[:id])
     @items = @user.items.all.order(created_at: :desc).page(params[:page]).per(5)
+    @new_item = Item.new
   end
 
-  private
+private
 
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image, :is_active)
