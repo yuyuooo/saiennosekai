@@ -70,8 +70,8 @@ private
 
   def ensure_correct_user
     @user = User.find(params[:id])
-    unless current_user.admin?
-      redirect_to user_about_path(current_user) unless current_user?(@user)
+    unless current_user == @user
+      redirect_to user_about_path(current_user), danger: "他人情報の編集はできません。"
     end
   end
 
