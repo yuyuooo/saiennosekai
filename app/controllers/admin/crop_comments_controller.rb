@@ -3,6 +3,6 @@ class Admin::CropCommentsController < ApplicationController
 
   def destroy
     CropComment.find(params[:id]).destroy
-    redirect_to request.referer, success: "コメントを削除しました。"
+    redirect_to request.referer, success: "コメントを削除しました"
   end
 end

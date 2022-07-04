@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
   before_action :ensure_admin_user, only: [:edit, :update, :quit]
 
   def index
-      @users = User.all.page(params[:page]).per(10)
+      @users = User.all.page(params[:page]).per(5)
   end
 
   def edit
@@ -13,7 +13,7 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to admin_users_path, success: "会員情報の編集が完了しました。"
+      redirect_to admin_users_path, success: "会員情報の編集が完了しました"
     else
       render :edit
     end
@@ -23,7 +23,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     @crop_folders = @user.crop_folders.all.order(created_at: :desc).page(params[:page]).per(5)
   end
-  
+
   def items
     @user = User.find(params[:id])
     @items = @user.items.all.order(created_at: :desc).page(params[:page]).per(5)
