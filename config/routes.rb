@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     end
     resources :items, only: [:index, :destroy]
     get 'users/:id/items', to: 'users#items', as: 'user_items'
+    resources :month_crops, only: [:new, :create, :index, :show, :edit, :update, :destroy]
   end
 
   devise_for :users

@@ -1,0 +1,8 @@
+<h6><%= @month_crop.month %>のおすすめ栽培</h6>
+<p><%= @month_crop.crop_name %></p>
+  <%= image_tag @month_crop.get_crop_image(250,250) %>
+  <p>収穫時期は<%= @month_crop.harvest_time %>です。</p>
+  <p><%= @month_crop.crop_name %>はどんな作物？？</p>
+  <p class="long_text"><%= @month_crop.introduction %></p>
+  <p class="long_text"><%= @month_crop.crop_name %>の栽培方法</p>
+  <p><%= @month_crop.method %></p>

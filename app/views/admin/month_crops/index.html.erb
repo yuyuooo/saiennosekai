@@ -1,0 +1,6 @@
+<% @month_crops.each do |month_crop| %>
+  <h6><%= month_crop.month %>のおすすめ栽培</h6>
+  <p><%= link_to month_crop.crop_name, admin_month_crop_path(month_crop) %></p>
+  <%= image_tag month_crop.get_crop_image(250,250) %>
+<% end %>
+<%= link_to "今月のおすすめ栽培を追加", new_admin_month_crop_path %>
