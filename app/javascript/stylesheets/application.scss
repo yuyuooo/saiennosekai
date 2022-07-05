@@ -257,6 +257,9 @@
 
   // crop_folder, item
 
+  .new_crop_button, .new_diary_button {
+    display: none;
+  }
 
   .crop_item_info {
     display: flex;
@@ -363,6 +366,10 @@
     font-size: 20px;
     line-height: 1.4;
     text-align: center;
+  }
+
+  .diary_crop_name {
+    display: none;
   }
 
 
@@ -576,6 +583,35 @@
     font-size: 16px;
   }
 
+  // crop_folder
+
+  .new_crop_form {
+    display: none;
+  }
+
+  .new_crop_button, .new_diary_button {
+    display: block;
+    text-align: right;
+  }
+
+  // diary
+
+  .diary_container {
+    display: none;
+  }
+
+  .diary_crop_name {
+    display: block;
+  }
+
+  .diary_folder {
+    text-align: center;
+  }
+  
+  .diary_folder p {
+    text-align: left;
+  }
+
 
 }
 
@@ -688,6 +724,23 @@
     width: 120px;
   	border-radius: 120px;
   	background-color: #ffebcd;
+  }
+
+  .new_crop_form {
+    display: none;
+  }
+
+  .new_crop_button {
+    display: block;
+    text-align: right;
+  }
+
+  .link {
+    font-size: 14px;
+  }
+
+  .crop_folder_item_image {
+    text-align: center;
   }
 
 }

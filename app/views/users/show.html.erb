@@ -1,16 +1,23 @@
-<div class="container">
+<div class="container crop_folder_container">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-lg-4 new_crop_form">
       <% if @user == current_user %>
-       <h4>新しい作物の栽培を登録</h4>
-       <%= render 'layouts/errors', obj: @crop_folder %>
-       <%= render 'crop_folders/form', crop_folder: @crop_folder%>
+        <h4>新しい作物の栽培を登録</h4>
+        <%= render 'layouts/errors', obj: @crop_folder %>
+        <%= render 'crop_folders/form', crop_folder: @crop_folder%>
       <% else %>
         <%= render "info", user: @user %>
       <% end %>
     </div>
-    <div class="col-md-6 offset-md-2">
+    <div class="col-md-10 mx-auto col-lg-6 offset-lg-2">
       <h5><%= @user.name %>の栽培作物</h5>
+      <% if @user == current_user %>
+        <div class="new_crop_button">
+          <%= link_to new_crop_folder_path , class: "btn btn-info" do %>
+            <i class="fas fa-seedling"></i> 追加
+          <% end %>
+        </div>
+      <% end %>
       <% if @user.crop_folders.length > 0 %>
         <%= render 'crop_folders/index', crop_folders: @crop_folders %>
       <% else %>

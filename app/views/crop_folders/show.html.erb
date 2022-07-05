@@ -1,64 +1,43 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
-      <% if @crop_folder.user == current_user %>
-        <h4><%= @crop_folder.crop_name %>の栽培日記</h4>
-        <%= render 'layouts/errors', obj: @diary %>
-        <%= form_with model:[@crop_folder, @diary], url: crop_folder_diaries_path(@crop_folder.id), local:true do |f| %>
-          <div class="form-group">
-            <%= f.label :diary_date %>
-            <%= f.date_field :diary_date, class: 'form-control' %>
-          </div>
-          <div class="form-group">
-            <%= f.label :weather %>
-            <%= f.select :weather, ['晴れ', 'くもり', '雨', '雪', 'その他'], { include_blank: '選択してください'}, { class: 'form-control'} %>
-          </div>
-          <div class="form-group">
-            <%= f.label :title %>
-            <%= f.text_field :title, class: 'form-control' %>
-          </div>
-          <div class="form-group">
-            <%= f.label :crop_image %>
-            <%= f.file_field :crop_image, class: "form-control-file", accept: 'image/*' %>
-          </div>
-          <div class="form-group">
-            <%= f.label :body %>
-            <%= f.text_area :body, class: 'form-control' %>
-          </div>
-          <div class="form-group">
-            <%= f.submit class: 'btn btn-success' %>
-          </div>
-        <% end %>
-          <%= link_to"予定を立てる", crop_folder_plans_path(@crop_folder), class: 'btn btn-info mb-5' %>
-      <% else %>
-          <%= render 'users/info', user: @crop_folder.user %>
-      <% end %>
+    <div class="col-lg-4 diary_container">
+      <%=  render 'diaries/form' %>
     </div>
-    <div class="col-md-4 offset-md-1">
+    <div class="col-md-10 mx-auto col-lg-4 offset-lg-1 mb-5">
       <% unless @crop_folder.user == current_user %>
-        <h5 class="mb-5"><%= @crop_folder.crop_name %>の栽培日記</h5>
+        <h5 class="mb-5 diary_cotainer"><%= @crop_folder.crop_name %>の栽培日記</h5>
+      <% end %>
+      <h5 class="mb-5 diary_crop_name"><%= @crop_folder.crop_name %>の栽培日記</h5>
+      <% if @crop_folder.user == current_user %>
+        <div class="new_diary_button mb-4">
+          <%= link_to new_crop_folder_diary_path(@crop_folder), class: "btn btn-info" do %>
+            <i class="fas fa-seedling"></i> 追加
+          <% end %>
+        </div>
       <% end %>
       <% if @crop_folder.diaries.length > 0 %>
         <% @crop_folder.diaries.first(3).each do |diary| %>
-          <div class="diary_box">
-            <table class="table table-borderless">
-              <span class="masking-tape">
-                <%#= diary.id %>
-              </span>
-              <tr>
-                <td><%= diary.diary_date %></td>
-                <td>天気：<%= diary.weather %></td>
-                <td><% if diary.user == current_user %>
-                      <%= link_to "削除", crop_folder_diary_path(@crop_folder, diary), method: :delete, class: "btn btn-danger btn-sm" %>
-                    <% end %>
-                </td>
-              </tr>
-            </table>
-            <div class="crop_image">
-              <%= image_tag diary.get_crop_image(300,200) %>
+          <div class="diary_folder">
+            <div class="diary_box">
+              <table class="table table-borderless">
+                <span class="masking-tape">
+                  <%#= diary.id %>
+                </span>
+                <tr>
+                  <td><%= diary.diary_date %></td>
+                  <td>天気：<%= diary.weather %></td>
+                  <td><% if diary.user == current_user %>
+                        <%= link_to "削除", crop_folder_diary_path(@crop_folder, diary), method: :delete, class: "btn btn-danger btn-sm" %>
+                      <% end %>
+                  </td>
+                </tr>
+              </table>
+              <div class="crop_image">
+                <%= image_tag diary.get_crop_image(300,200) %>
+              </div>
+              <p class="daiary_title"><%= diary.title %></p>
+              <p class="long_text"><%= diary.body %></p>
             </div>
-            <p class="daiary_title"><%= diary.title %></p>
-            <p class="long_text"><%= diary.body %></p>
           </div>
         <% end %>
         <% if @crop_folder.diaries.length > 3 %>
@@ -89,10 +68,10 @@
           </details>
         <% end %>
       <% else %>
-        === 登録された栽培日記はありません ===
+        <p class="text-center">=== 登録された栽培日記はありません ===</p>
       <% end %>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-8 mx-auto col-lg-3">
      <div>
       <p>コメント件数：<%= @crop_folder.crop_comments.count %></p>
       <% @crop_folder.crop_comments.each do |crop_comment| %>
@@ -101,7 +80,7 @@
         <%= link_to "#{crop_comment.user.name}", user_about_path(crop_comment.user) %>
       </div>
         <p class="mb-0"><%= crop_comment.comment %></p>
-        <p>(<%= crop_comment.created_at.strftime('%Y/%m/%d') %>)</p>
+        <p>(<%= crop_comment.created_at.strftime('%Y-%m-%d') %>)</p>
       <% end %>
       </div>
       <div>

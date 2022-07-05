@@ -3,6 +3,10 @@ class CropFoldersController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   before_action :ensure_public_crop_folder, only: [:show]
 
+  def new
+    @crop_folder = CropFolder.new
+  end
+
   def index
     @crop_folders = CropFolder.published.order(created_at: :desc).page(params[:page]).per(5)
   end

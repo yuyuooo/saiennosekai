@@ -23,8 +23,8 @@ Rails.application.routes.draw do
 
   root to: 'homes#top'
   get '/month_crop', to: 'homes#month_crop', as: 'month_crop'
-  resources :crop_folders, only: [:index, :show, :create, :edit, :update, :destroy] do
-    resources :diaries, only: [:create, :destroy]
+  resources :crop_folders, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
+    resources :diaries, only: [:new, :create, :destroy]
     resources :crop_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
     resource :plans, only:[:show, :create]

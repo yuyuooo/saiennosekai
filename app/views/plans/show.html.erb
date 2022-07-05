@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-7 col-lg-6">
       <h4><%= @crop_folder.crop_name %>の栽培計画</h4>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-7 col-lg-6">
       <% if @crop_folder.user == current_user %>
         <%= render 'layouts/errors', obj: @plan %>
         <%= form_with(model:[@crop_folder, @plan], url: crop_folder_plans_path(@crop_folder), local:true) do |f| %>
