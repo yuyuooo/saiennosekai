@@ -87,8 +87,14 @@
       <% else %>
         <p class="ml-5 my-4">=== 販売停止中の商品はありません ===</p>
       <% end %>
-      <%= link_to "新しい商品を出品する", items_path, class: "btn btn-info mr-5" %>
-      <%= link_to "あなたの全ての出品 >>", user_items_path(@user) %>
+      <table>
+        <tr>
+          <td><%= link_to "新しい商品を出品", items_path, class: "btn btn-info mr-5" %>
+          <td><%= link_to user_items_path(@user), class: "btn btn-outline-secondary btn-block" do %>
+                <i class="fas fa-check"></i> 全ての出品
+          </td><% end %>
+        </tr>
+      </table>
     </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col">
-      <h3 class="text-center">通知</h3>
+    <div class="col-md-8 mx-auto">
+      <h5 class="text-center">通知</h5>
     </div>
   </div>
   <div class="row">
@@ -15,7 +15,7 @@
           <table class="table table-borderless">
             <% @notifications.each do |notification|%>
               <tr>
-                <td style="text-align: right;"><%= link_to user_path(notification.visitor) do %>
+                <td style="text-align: right;"><%= link_to user_about_path(notification.visitor) do %>
                       <%= image_tag notification.visitor.get_profile_image(50,50), class: "user_profile_image" %>
                     <% end %>
                 </td>
@@ -28,7 +28,7 @@
           </table>
         </div>
       <% else %>
-        <p>通知はありません</p>
+        <p class="text-center">=== 通知はありません ===</p>
       <% end %>
     </div>
   </div>

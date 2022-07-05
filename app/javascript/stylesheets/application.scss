@@ -511,3 +511,183 @@
   	border-radius: 150px;
   	background-color: #ffebcd;
   }
+
+
+
+
+@media screen and (max-width:768px) {
+
+  // トップ
+
+  .main_image {
+    height: 500px;
+    width: 100%;
+    background: url(/images/main_image.jpg);
+    background-size: cover;
+  }
+
+  .main_text h1,.main_text h2 {
+    font-size: 38px;
+  }
+
+  .main_text p span {
+    font-size: 20px;
+    font-weight: 900;
+  }
+
+  .main_text p,.main_about {
+    font-size: 25px;
+    font-weight: 900;
+    transform: rotate(-4deg);
+    position: relative;
+    display: inline-block;
+    padding: 0 20px;
+    margin-bottom: 20px;
+  }
+
+  .main_text p:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: "";
+    width: 1px;
+    height: 100%;
+    background: #000;
+    border-radius: 3px;
+    transform: rotate(-25deg);
+  }
+
+
+  .main_text p:after {
+    position: absolute;
+    content: "";
+    right: 0;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background: #000;
+    border-radius: 3px;
+    transform: rotate(25deg);
+  }
+
+  // 今月のおすすめ
+
+  .ribbon h3 {
+    font-size: 16px;
+  }
+
+
+}
+
+
+@media screen and (max-width:425px) {
+
+  //　全体
+
+  h4 {
+    padding: 1% 2%;
+    border-left: 6px double #000;
+    background: #f4f4f4;
+    margin-bottom: 6%;
+    font-size: 21px;
+  }
+
+
+  h5 {
+    padding: 1% 2%;
+    border-top: 3px dashed #000;
+    background: #f4f4f4;
+    margin-bottom: 5%;
+    font-size: 19px;
+  }
+
+  // トップ
+
+  .main_image {
+    height: 300px;
+    width: 100%;
+    background: url(/images/main_image.jpg);
+    background-size: cover;
+  }
+
+  .main_text h1,.main_text h2 {
+    font-size: 20px;
+  }
+
+  .main_text p span {
+    font-size: 15px;
+    font-weight: 900;
+  }
+
+  .main_text p,.main_about {
+    font-size: 18px;
+    font-weight: 900;
+    transform: rotate(-4deg);
+    position: relative;
+    display: inline-block;
+    padding: 0 20px;
+    margin-bottom: 16px;
+  }
+
+  .main_text p:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: "";
+    width: 1px;
+    height: 100%;
+    background: #000;
+    border-radius: 3px;
+    transform: rotate(-25deg);
+  }
+
+
+  .main_text p:after {
+    position: absolute;
+    content: "";
+    right: 0;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background: #000;
+    border-radius: 3px;
+    transform: rotate(25deg);
+  }
+
+  .main_about_text, .main_who_text {
+    font-size: 12px;
+  }
+
+  .who-box {
+    width: 300px;
+    background-color: #eeeeee;
+    margin-right: 0px;
+    position: relative;
+    padding: 10px;
+  }
+
+  .guest_text {
+    font-size: 15px;
+    font-weight: bold;
+    background: linear-gradient(transparent 60%, #ff6 60%);
+  }
+
+  // 今月のおすすめ
+
+  .ribbon h3 {
+    font-size: 15px;
+  }
+
+  .month_crop_container p {
+    font-size: 14px;
+  }
+
+  .month_crop {
+    font-size: 18px;
+    text-align: center;
+    width: 120px;
+  	border-radius: 120px;
+  	background-color: #ffebcd;
+  }
+
+}
