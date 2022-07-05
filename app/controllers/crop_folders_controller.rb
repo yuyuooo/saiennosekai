@@ -34,7 +34,7 @@ class CropFoldersController < ApplicationController
     @crop_folder = CropFolder.find(params[:id])
     @user = User.find_by(id: params[:id])
     if @crop_folder.update(crop_folder_params)
-    redirect_to user_path(@crop_folder.user), success: "作物の内容を更新しました"
+      redirect_to user_path(@crop_folder.user), success: "作物の内容を更新しました"
     else
       render 'edit'
     end

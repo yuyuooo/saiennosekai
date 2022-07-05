@@ -9,6 +9,10 @@ class MonthCrop < ApplicationRecord
   scope :published, -> {where(is_published_flag: true)}
   scope :unpublished, -> {where(is_published_flag: false)}
 
+  def is_published_flag_color
+    is_published_flag ? "font-weight-bold text-success":"font-weight-bold text-muted"
+  end
+
   has_one_attached :crop_image
 
   def get_crop_image(width, height)

@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 mx-auto">
+      <div class="ribbon mb-5">
+        <h3>今月のおすすめ栽培</h3>
+      </div>
+    </div>
+  </div>
+  <% if @month_crops.length > 0%>
+    <% @month_crops.each do |month_crop| %>
+      <div class="row mb-5 mt-2">
+        <div class="col-md-7 mx-auto">
+          <div class="row">
+            <div class="col-md-6">
+              <%= image_tag month_crop.get_crop_image(250,250) %>
+            </div>
+            <div class="col-md-6">
+              <h6 class="month_crop mb-4"><%= month_crop.month %>の栽培</h6>
+              <p class="font-weight-bold"><%= month_crop.crop_name %></p>
+              <p>収穫時期は<%= month_crop.harvest_time %>です。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-10 mx-auto">
+          <h5><%= month_crop.crop_name %>はどんな作物？？</h5>
+          <p class="long_text mb-5"><%= month_crop.introduction %></p>
+          <h5><%= month_crop.crop_name %>の栽培方法</h5>
+          <p class="long_text"><%= month_crop.method %></p>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p class="text-center">=== まだ今月のおすすめ栽培が登録されていません  ===</p>
+  <% end %>
+</div>

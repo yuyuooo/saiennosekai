@@ -25,6 +25,11 @@
               <% end %>
             </li>
             <li class="nav-item">
+              <%= link_to admin_month_crops_path, class: "nav-link ml-3" do %>
+                今月のおすすめ<span class="sr-only">(current)</span>
+              <% end %>
+            </li>
+            <li class="nav-item">
               <%= link_to destroy_admin_session_path, class: "nav-link ml-3", method: :delete do %>
                 ログアウト<span class="sr-only">(current)</span>
               <% end %>
@@ -71,17 +76,23 @@
             <% end %>
           </li>
         <% else %>
-            <%= link_to root_path, class: "nav-link" do %>
+          <li class="nav-item">
+            <%= link_to root_path, class: "nav-link ml-3" do %>
               ホーム<span class="sr-only">(current)</span>
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to new_user_session_path, class: "nav-link" do %>
+              <%= link_to month_crop_path, class: "nav-link ml-3" do %>
+                今月のおすすめ<span class="sr-only">(current)</span>
+              <% end %>
+            </li>
+          <li class="nav-item">
+            <%= link_to new_user_session_path, class: "nav-link ml-3" do %>
               ログイン<span class="sr-only">(current)</span>
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to new_user_registration_path, class: "nav-link" do %>
+            <%= link_to new_user_registration_path, class: "nav-link ml-3" do %>
               新規登録<span class="sr-only">(current)</span>
             <% end %>
           </li>

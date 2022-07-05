@@ -28,12 +28,17 @@ class Admin::MonthCropsController < ApplicationController
 
   def update
     @month_crop = MonthCrop.find(params[:id])
+    if @month_crop.update(month_crop_params)
+      redirect_to admin_month_crop_path(@month_crop), success: "今月のおすすめ栽培を更新しました"
+    else
+      render 'edit'
+    end
   end
 
   def destroy
     @month_crop = MonthCrop.find(params[:id])
     @month_crop.destroy
-    redirect_to request.referer, success: "月のおすすめ栽培を削除しました"
+    redirect_to request.referer, success: "今月のおすすめ栽培を削除しました"
   end
 
 private
