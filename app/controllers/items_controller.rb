@@ -2,6 +2,10 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
+  def new
+    @item = Item.new
+  end
+
   def show
     @item = Item.find_by(id: params[:id])
   end
@@ -17,8 +21,8 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to items_path, success: "栽培作物を投稿しました"
     else
-      @items = Item.all
-      render "index"
+      @items = Item.all.order(created_at: :desc).page(params[:page]).per(5)
+      render "new"
     end
   end
 

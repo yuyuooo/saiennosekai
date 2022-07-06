@@ -1,6 +1,6 @@
 class DiariesController < ApplicationController
   before_action :authenticate_user!
-  
+
   def new
     @crop_folder = CropFolder.find(params[:crop_folder_id])
     @diary = Diary.new
@@ -14,7 +14,7 @@ class DiariesController < ApplicationController
       redirect_to crop_folder_path(@crop_folder.id), success: "栽培日記を登録しました"
     else
       @crop_comment = CropComment.new
-      render 'crop_folders/show'
+      render 'new'
     end
   end
 

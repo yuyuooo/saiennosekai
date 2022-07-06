@@ -257,7 +257,7 @@
 
   // crop_folder, item
 
-  .new_crop_button, .new_diary_button {
+  .new_crop_button, .new_diary_button, .new_item_button {
     display: none;
   }
 
@@ -422,8 +422,9 @@
 
   .message_box_1,.message_box_2 {
     border-radius: 240px 15px 100px 15px / 15px 200px 15px 185px;
-    padding: 2%;
+    padding: 1%;
     margin: 10px;
+    font-size: 14px;
     display: inline-block;
     // word-break: break-word;
     //white-space: pre-wrap;
@@ -589,14 +590,14 @@
     display: none;
   }
 
-  .new_crop_button, .new_diary_button {
+  .new_crop_button, .new_diary_button, .new_item_button {
     display: block;
     text-align: right;
   }
 
   // diary
 
-  .diary_container {
+  .diary_container, .diary_title {
     display: none;
   }
 
@@ -607,9 +608,19 @@
   .diary_folder {
     text-align: center;
   }
-  
+
   .diary_folder p {
     text-align: left;
+  }
+
+  .new_diary_container {
+    display: none;
+  }
+
+  // item
+
+  .item_form {
+    display: none;
   }
 
 
@@ -725,6 +736,8 @@
   	border-radius: 120px;
   	background-color: #ffebcd;
   }
+
+  // crop_folder
 
   .new_crop_form {
     display: none;

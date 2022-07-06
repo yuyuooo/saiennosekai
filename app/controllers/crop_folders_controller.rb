@@ -26,7 +26,7 @@ class CropFoldersController < ApplicationController
     else
       @user = current_user
       @crop_folders = @user.crop_folders.all
-      render 'users/show'
+      render 'new'
     end
   end
 

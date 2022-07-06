@@ -5,7 +5,7 @@
     </div>
     <div class="col-md-10 mx-auto col-lg-4 offset-lg-1 mb-5">
       <% unless @crop_folder.user == current_user %>
-        <h5 class="mb-5 diary_cotainer"><%= @crop_folder.crop_name %>の栽培日記</h5>
+        <h5 class="mb-5 diary_title"><%= @crop_folder.crop_name %>の栽培日記</h5>
       <% end %>
       <h5 class="mb-5 diary_crop_name"><%= @crop_folder.crop_name %>の栽培日記</h5>
       <% if @crop_folder.user == current_user %>

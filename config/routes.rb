@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index, :show, :edit, :update]
-  resources :items, only: [:index, :show, :create, :edit, :update, :destroy] do
+  resources :items, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
     resource :likes, only: [:create, :destroy]
   end
 

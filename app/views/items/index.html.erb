@@ -1,12 +1,17 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-lg-5 item_form">
       <h4>新しく作物を出品する</h4>
       <%= render 'layouts/errors', obj: @item %>
       <%= render 'form', item: @item %>
     </div>
-    <div class="col-md-6 offset-md-1">
+    <div class="col-md-10 mx-auto col-lg-6 offset-lg-1">
       <h5>みんなの出品した作物</h5>
+        <div class="new_item_button mb-4">
+          <%= link_to new_item_path, class: "btn btn-info" do %>
+            <i class="fas fa-seedling"></i> 追加
+          <% end %>
+        </div>
       <%=  render 'index', items: @items %>
       <%= paginate @items %>
     </div>

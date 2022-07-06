@@ -1,19 +1,19 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-lg-6">
       <h5>みんなの栽培作物</h5>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-10 mx-auto col-lg-12">
       <% @crop_folders.each do |crop_folder| %>
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-lg-6">
             <div class="crop_item_info">
               <%= link_to user_about_path(crop_folder.user) do %>
                 <%= image_tag crop_folder.user.get_profile_image(70,70), class: "user_profile_image" %>
               <% end %>
-              <%= link_to "#{crop_folder.user.name}さん家の作物", user_path(crop_folder.user), class: "link" %>
+              <%= link_to "#{crop_folder.user.name}の作物", user_path(crop_folder.user), class: "link" %>
                 <span id = "favorite_buttons_<%= crop_folder.id %>"><%= render "favorites/btn", crop_folder: crop_folder %></span>
               <%= link_to "#{crop_folder.crop_comments.count} コメント", crop_folder_path(crop_folder.id), class: "ml-3 link" %>
               <% unless crop_folder.is_published_flag? %>
@@ -23,64 +23,66 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6">
-            <div class="row">
-              <div class="crop_container mb-5">
-                <table class="table crop_box col-md-7">
-                  <tr>
-                    <th>作物名：</th>
-                    <td><%= crop_folder.crop_name %></td>
-                  </tr>
-                  <tr>
-                    <th>栽培開始：</th>
-                    <td><%= crop_folder.new_crop_date %></td>
-                  </tr>
-                  <tr>
-                    <th>場所：</th>
-                    <td><%= crop_folder.place %></td>
-                  </tr>
-                  <tr>
-                    <th>メモ：</th>
-                    <td class="long_text"><%= crop_folder.memo %></td>
-                  </tr>
-                </table>
-                <div class="col-md-4 offset-md-1">
-                  <div class="crop_status <%= crop_folder.is_active_color %>"><%= crop_folder.is_active ? "栽培中" : "栽培完了" %></div>
-                  <div class="crop_folder_image"><%= image_tag crop_folder.get_crop_image(150,150) %></div>
-                  <% if crop_folder.user == current_user %>
-                    <%= link_to "編集", edit_crop_folder_path(crop_folder) %>
-                    <%= link_to "削除",crop_folder_path(crop_folder), method: :delete, data: { confirm: '日記や計画も削除されます。本当に消しますか？' }, class: "ml-5" %>
+          <div class="col-lg-6">
+            <div class="row crop_container mb-5 mx-0 px-0">
+              <div class="col-md-4 col-lg-4 crop_folder_item_image mb-4">
+                <div class="crop_status <%= crop_folder.is_active_color %>"><%= crop_folder.is_active ? "栽培中" : "栽培完了" %></div>
+                <div class="crop_folder_image"><%= image_tag crop_folder.get_crop_image(150,150) %></div>
+                <% if crop_folder.user == current_user %>
+                  <%= link_to edit_crop_folder_path(crop_folder) do %>
+                    <i class="fas fa-pen"></i> 編集
                   <% end %>
-                </div>
-                <table class="table table-borderless">
-                  <% if crop_folder.user == current_user %>
-                    <tr>
-                      <td><%= link_to crop_folder_path(crop_folder.id), class: "btn btn-outline-info btn-block" do %>
-                        <i class="fas fa-pen"></i> 日記を書く
-                        <% end %>
-                      </td>
-                      <td><%= link_to  crop_folder_plans_path(crop_folder.id), class: "btn btn-outline-info btn-block mt-0 ml-2" do %>
-                        <i class="fas fa-calendar"></i> 計画を立てる
-                        <% end %>
-                      </td>
-                    </tr>
-                  <% else %>
-                    <tr>
-                      <td><%= link_to crop_folder_path(crop_folder.id), class: "btn btn-outline-secondary btn-block" do %>
-                          <i class="fas fa-pen"></i> 日記を見る
-                          <% end %>
-                      </td>
-                      <td><%= link_to  crop_folder_plans_path(crop_folder.id), class: "btn btn-outline-secondary btn-block mt-0 ml-2" do %>
-                          <i class="fas fa-calendar"></i> 計画を見る
-                          <% end %>
-                      </td>
-                    </tr>
+                  <%= link_to crop_folder_path(crop_folder), method: :delete, data: { confirm: '日記や計画も削除されます。本当に消しますか？' }, class: "ml-3" do %>
+                    <i class="fas fa-trash"></i> 削除
                   <% end %>
-                </table>
+                <% end %>
               </div>
+              <table class="table crop_box col-md-7 offset-md-1 col-lg-7 offset-lg-1">
+                <tr>
+                  <th width="35%">作物名：</th>
+                  <td width="65%"><%= crop_folder.crop_name %></td>
+                </tr>
+                <tr>
+                  <th>栽培開始：</th>
+                  <td><%= crop_folder.new_crop_date %></td>
+                </tr>
+                <tr>
+                  <th>場所：</th>
+                  <td><%= crop_folder.place %></td>
+                </tr>
+                <tr>
+                  <th>メモ：</th>
+                  <td class="long_text"><%= crop_folder.memo %></td>
+                </tr>
+              </table>
+              <table class="table table-borderless">
+                <% if crop_folder.user == current_user %>
+                  <tr>
+                    <td><%= link_to crop_folder_path(crop_folder.id), class: "btn btn-outline-info btn-block" do %>
+                      <i class="fas fa-book-open"></i> 日記を書く
+                      <% end %>
+                    </td>
+                    <td><%= link_to  crop_folder_plans_path(crop_folder.id), class: "btn btn-outline-info btn-block mt-0 ml-2" do %>
+                      <i class="fas fa-calendar"></i> 計画を立てる
+                      <% end %>
+                    </td>
+                  </tr>
+                <% else %>
+                  <tr>
+                    <td><%= link_to crop_folder_path(crop_folder.id), class: "btn btn-outline-secondary btn-block" do %>
+                        <i class="fas fa-book-open"></i> 日記を見る
+                        <% end %>
+                    </td>
+                    <td><%= link_to  crop_folder_plans_path(crop_folder.id), class: "btn btn-outline-secondary btn-block mt-0 ml-2" do %>
+                        <i class="fas fa-calendar"></i> 計画を見る
+                        <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </table>
             </div>
           </div>
-          <div class="col-md-5 offset-md-1">
+          <div class="col-lg-5 offset-lg-1 new_diary_container">
             <% if crop_folder.diaries.length > 0 %>
               <% crop_folder.diaries.last(1).each do |diary| %>
                 <div class="diary_box">

@@ -45,7 +45,9 @@
       <% else %>
         <p  class="ml-5 my-4">=== 栽培完了した作物はありません ===</p>
       <% end %>
-      <%= link_to "新しい作物の栽培を始める", user_path(current_user), class: "btn btn-info" %>
+      <% if @user == current_user %>
+        <%= link_to "新しい作物の栽培を始める", new_crop_folder_path, class: "btn btn-info" %>
+      <% end %>
       <h5 class="mt-5">出品した商品</h5>
       <p class="user_about_text">販売中</p>
       <% if @user.items.active.length > 0 %>
@@ -89,7 +91,9 @@
       <% end %>
       <table>
         <tr>
-          <td><%= link_to "新しい商品を出品", items_path, class: "btn btn-info mr-5" %>
+          <td><% if @user == current_user %>
+                <%= link_to "新しい商品を出品", items_path, class: "btn btn-info mr-5" %>
+              <% end %>
           <td><%= link_to user_items_path(@user), class: "btn btn-outline-secondary btn-block" do %>
                 <i class="fas fa-check"></i> 全ての出品
           </td><% end %>
