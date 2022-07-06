@@ -1,15 +1,22 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-lg-5 item_form">
       <% if @user == current_user %>
-        <p>新しい商品を登録</p>
+        <p>新しく作物を出品する</p>
         <%= render 'layouts/errors', obj: @item %>
         <%= render 'items/form', item: @item %>
       <% else %>
         <%= render 'users/info', user: @item.user %>
       <% end %>
     </div>
-    <div class="col-md-6 offset-md-1">
+    <div class="col-md-10 mx-auto col-lg-6 offset-lg-1">
+      <div class="new_item_button mb-4">
+        <% if @item.user == current_user %>
+          <%= link_to new_item_path, class: "btn btn-info" do %>
+            <i class="fas fa-seedling"></i> 追加
+          <% end %>
+        <% end %>
+      </div>
       <div class-"crop_item_info">
       <%= link_to user_about_path(@item.user) do %>
         <%= image_tag @item.user.get_profile_image(70,70), class: "user_profile_image" %>
@@ -17,40 +24,49 @@
       <%= link_to "#{@item.user.name}さん家の商品", user_path(@item.user), class: "link" %>
       <span id = "like_buttons_<%= @item.id %>"><%= render "likes/btn", item: @item %></span>
       </div>
-      <div class="row">
-        <div class="item_container mb-5">
-          <table class="table item_box col-md-7">
-            <tr>
-              <td><%= @item.item_name %></td>
-              <td><%= @item.item_count %> 個</td>
-            </tr>
-            <tr>
-              <td><%= @item.price.to_s(:delimited) %> 円</td>
-              <td>(１つあたり<%= (@item.price.div(@item.item_count)).to_s(:delimited) %>円 ) </td>
-            </tr>
-            <tr>
-              <th>地域：</th>
-              <td><%= @item.sales_area %></td>
-            </tr>
-            <tr>
-              <th>受渡：</th>
-              <td><%= @item.sales_method %></td>
-            </tr>
-            <tr>
-              <th>説明：</th>
-              <td class="long_text"><%= @item.introduction %></td>
-            </tr>
-          </table>
-          <div class="col-md-4 offset-md-1 item_image">
-            <div class="sales_status <%= @item.is_active_color %>"><%= @item.is_active ? "販売中" : "販売停止中" %></div>
-            <div><%= image_tag @item.get_item_image(150,150) %></div>
-            <% if @item.user == current_user %>
-              <%= link_to "編集", edit_item_path(@item) %>
-              <%= link_to "削除",item_path(@item), method: :delete, data: { confirm: '本当に消しますか？' }, class: "ml-5" %>
-            <% end %>
-            <% if current_user != @item.user %>
-              <%= link_to "チャットを始める", chat_path(@item.user) %>
-            <% end %>
+    <div class="row">
+        <div class="col">
+          <div class="item_container mb-5">
+            <div class="col-md-4 crop_folder_item_image mb-3">
+              <div class="sales_status <%= @item.is_active_color %>"><%= @item.is_active ? "販売中" : "販売停止中" %></div>
+              <div class="mb-2"><%= image_tag @item.get_item_image(150,150) %></div>
+              <% if @item.user == current_user %>
+                <%= link_to edit_item_path(@item) do %>
+                  <i class="fas fa-pen"></i> 編集
+                <% end %>
+                <%= link_to item_path(@item), method: :delete, data: { confirm: '本当に消しますか？' }, class: "ml-4" do %>
+                  <i class="fas fa-trash"></i> 削除
+                <% end %>
+              <% end %>
+              <% if current_user != @item.user %>
+                <%= link_to chat_path(@item.user), class: "btn btn-submit" do %>
+                  <i class="fas fa-envelope"></i><br>
+                  メッセージ
+                <% end %>
+              <% end %>
+            </div>
+            <table class="table col-md-7 offset-md-1">
+              <tr>
+                <th width="30%">商品：</th>
+                <td width="70%"><%= @item.item_name %>（<%= @item.item_count %> 個）</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><%= @item.price.to_s(:delimited) %> 円(１つ<%= (@item.price.div(@item.item_count)).to_s(:delimited) %>円 ) </td>
+              </tr>
+              <tr>
+                <th>地域：</th>
+                <td><%= @item.sales_area %></td>
+              </tr>
+              <tr>
+                <th>受渡：</th>
+                <td><%= @item.sales_method %></td>
+              </tr>
+              <tr>
+                <th>説明：</th>
+                <td class="long_text"><%= @item.introduction %></td>
+              </tr>
+            </table>
           </div>
         </div>
       </div>

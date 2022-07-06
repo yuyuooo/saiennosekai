@@ -8,7 +8,7 @@
             <tr>
               <th width="15%"></th>
               <th width="20%">名前</th>
-              <th width="40%">自己紹介</th>
+              <th class="search_min_invisible" width="40%">自己紹介</th>
               <th width="15%">作物件数(公開中)</th>
               <th width="10%">出品件数</th>
             </tr>
@@ -18,7 +18,7 @@
               <tr>
                 <td><%= image_tag user.get_profile_image(70,70) %></td>
                 <td><%= link_to user.name, user_about_path(user) %></td>
-                <td><%= user.introduction %></td>
+                <td class="search_min_invisible"><%= user.introduction %></td>
                 <td class="text-center"><%= link_to user.crop_folders.published.count, user_path(user) %></td>
                 <td class="text-center"><%= link_to user.items.count, user_items_path(user) %></td>
               </tr>
@@ -37,9 +37,9 @@
               <th width="10%"></th>
               <th width="20%">作物名</th>
               <th width="20%">栽培者</th>
-              <th width="20%">栽培開始</th>
-              <th width="15%">いいね件数</th>
-              <th width="15%">日記件数</th>
+              <th class="search_min_invisible" width="20%">開始日</th>
+              <th width="15%">いいね</th>
+              <th width="15%">日記</th>
             </tr>
           </thead>
           <% @crop_folders.published.each do |crop_folder| %>
@@ -48,7 +48,7 @@
                 <td><%= image_tag crop_folder.get_crop_image(100,100) %></td>
                 <td><%= link_to crop_folder.crop_name,crop_folder_path(crop_folder) %></td>
                 <td><%= link_to crop_folder.user.name,user_about_path(crop_folder.user) %></td>
-                <td><%= crop_folder.new_crop_date %></td>
+                <td class="search_min_invisible"><%= crop_folder.new_crop_date %></td>
                 <td><%= crop_folder.favorites.count %></td>
                 <td><%= crop_folder.diaries.count %></td>
               </tr>
@@ -68,8 +68,8 @@
               <th width="20%">商品名</th>
               <th width="15%">個数</th>
               <th width="20%">価格</th>
-              <th width="20%">販売状況</th>
-              <th width="15%">気になる件数</th>
+              <th class="search_min_invisible" width="20%">販売状況</th>
+              <th width="15%">気になる</th>
             </tr>
           </thead>
           <% @items.each do |item| %>
@@ -79,7 +79,7 @@
                 <td><%= link_to item.item_name,item_path(item) %></td>
                 <td><%= item.item_count %>個</td>
                 <td><%= item.price.to_s(:delimited) %>円</td>
-                <td class="sales_status <%= item.is_active_color %>"><%= item.is_active ? "販売中" : "販売停止中" %>
+                <td class="search_min_invisible sales_status <%= item.is_active_color %>"><%= item.is_active ? "販売中" : "販売停止中" %></td>
                 <td><%= item.likes.count %></td>
               </tr>
             <tbody>

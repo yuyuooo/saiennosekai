@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-lg-5 item_form">
       <% if @user == current_user %>
         <h4>新しく作物を出品する</h4>
         <%= render 'layouts/errors', obj: @new_item %>
@@ -9,8 +9,13 @@
         <%= render 'info', user: @user %>
       <% end %>
     </div>
-    <div class="col-md-6 offset-md-1">
+    <div class="col-md-10 mx-auto col-lg-6 offset-lg-1">
       <h5><%= @user.name %>の出品した作物</h5>
+      <div class="new_item_button mb-4">
+        <%= link_to new_item_path, class: "btn btn-info" do %>
+          <i class="fas fa-seedling"></i> 追加
+        <% end %>
+      </div>
       <% if @user.items.length > 0 %>
         <%= render 'items/index', items: @items %>
       <% else %>
