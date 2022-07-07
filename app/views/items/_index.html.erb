@@ -3,7 +3,7 @@
     <%= link_to user_about_path(item.user) do %>
       <%= image_tag item.user.get_profile_image(70,70), class: "user_profile_image" %>
     <% end %>
-    <%= link_to "#{item.user.name}さん家の商品", user_items_path(item.user), class: "link" %>
+    <%= link_to "#{item.user.name}の商品", user_items_path(item.user), class: "link" %>
     <span id = "like_buttons_<%= item.id %>"><%= render "likes/btn", item: item %></span>
   </div>
   <div class="row">

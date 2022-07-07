@@ -1,9 +1,9 @@
 <div class = "container">
   <div class ="row">
-    <div class="col-lg-5 mb-3">
+    <div class="col-md-10 mx-auto col-lg-5 mb-3">
       <%= render "info", user: @user %>
     </div>
-    <div class="col-lg-6 offset-lg-1">
+    <div class="col-md-10 mx-auto col-lg-6 offset-lg-1">
       <h5>今までの栽培</h5>
       <p class="user_about_text">栽培中</p>
       <% if @user.crop_folders.active.length > 0 %>
@@ -46,7 +46,7 @@
         <p  class="ml-5 my-4">=== 栽培完了した作物はありません ===</p>
       <% end %>
       <% if @user == current_user %>
-        <%= link_to "新しい作物の栽培を始める", new_crop_folder_path, class: "btn btn-info" %>
+        <%= link_to "新しい作物の栽培を登録", new_crop_folder_path, class: "btn btn-info" %>
       <% end %>
       <h5 class="mt-5">出品した商品</h5>
       <p class="user_about_text">販売中</p>
@@ -92,7 +92,7 @@
       <table>
         <tr>
           <td><% if @user == current_user %>
-                <%= link_to "新しい商品を出品", items_path, class: "btn btn-info mr-5" %>
+                <%= link_to "新しい商品を出品", new_item_path, class: "btn btn-info mr-5" %>
               <% end %>
           <td><%= link_to user_items_path(@user), class: "btn btn-outline-secondary btn-block" do %>
                 <i class="fas fa-check"></i> 全ての出品
