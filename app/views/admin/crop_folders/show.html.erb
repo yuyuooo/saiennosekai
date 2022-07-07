@@ -24,7 +24,7 @@
                 <td><%= diary.diary_date %></td>
                 <td class="admin_min_invisiable"><%= diary.title %></td>
                 <td><%= diary.body %></td>
-                <td><%= link_to "削除", admin_crop_folder_diary_path(diary), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger" %></td>
+                <td><%= link_to "削除", admin_crop_folder_diary_path(@crop_folder, diary), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger" %></td>
               </tr>
             </tbody>
           <% end %>
@@ -60,7 +60,7 @@
                     <% end %>
                 <td><%= crop_comment.created_at.strftime('%Y-%m-%d') %></td>
                 <td><%= crop_comment.comment %></td>
-                <td><%= link_to "削除", admin_crop_folder_crop_comment_path(crop_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger" %></td>
+                <td><%= link_to "削除", admin_crop_folder_crop_comment_path(@crop_folder, crop_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger" %></td>
               </tr>
             </tbody>
           <% end %>

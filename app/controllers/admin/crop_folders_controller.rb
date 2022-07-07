@@ -13,6 +13,6 @@ class Admin::CropFoldersController < ApplicationController
   def destroy
     @crop_folder = CropFolder.find(params[:id])
     @crop_folder.destroy
-    redirect_to admin_user_path(@crop_folder.user), success: "栽培作物を削除しました"
+    redirect_to request.referer, success: "栽培作物を削除しました"
   end
 end
