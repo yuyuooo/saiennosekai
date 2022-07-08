@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mb-5">
   <div class="row">
     <div class="col-lg-4 diary_container">
       <%=  render 'diaries/form' %>
@@ -87,7 +87,7 @@
       <%= render 'layouts/errors', obj: @crop_comment %>
       <%= form_with model: [@crop_folder, @crop_comment], url: crop_folder_crop_comments_path(@crop_folder.id) do |f| %>
         <%= f.text_area :comment, rows: '3', placeholder: "コメントをここに入力",class: 'form-control' %>
-        <%= f.submit "コメントを送信", class: 'btn btn-submit' %>
+        <%= f.submit "コメントを送信", class: 'btn btn-submit mb-4' %>
       <% end %>
       </div>
     </div>

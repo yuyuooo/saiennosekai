@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     resource :plans, only:[:show, :create]
   end
 
-  resources :users, only: [:index, :show, :edit, :update]
+  resources :users, only: [:show, :edit, :update]
   resources :items, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
     resource :likes, only: [:create, :destroy]
   end

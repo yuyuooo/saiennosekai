@@ -17,6 +17,7 @@
 
   .wrapper {
     flex: 1;
+    margin_bottom: 400px;
   }
 
   header {
@@ -24,9 +25,18 @@
   }
 
   footer {
+    position: fixed;
+    bottom: 0px;
     width: 100%;
     background: #98d98e;
     height: 80px;
+    margin_top: 50px
+  }
+
+  .footer_nav {
+    list-style: none;
+    display: flex;
+    display: none;
   }
 
   .container {
@@ -577,6 +587,18 @@
     border-radius: 3px;
     transform: rotate(25deg);
   }
+
+  // footer
+
+  .footer_text {
+    display: none;
+  }
+
+  .footer_nav {
+    display: block;
+    display: flex;
+  }
+
 
   // 今月のおすすめ
 

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mb-5">
   <div class="row">
     <div class="col-md-7 col-lg-6">
       <h4><%= @crop_folder.crop_name %>の栽培計画</h4>
@@ -24,6 +24,7 @@
       <% end %>
     </div>
   </div>
+  <div class="row mb-4">
     <div class="col">
       <%= month_calendar events: @crop_folder.plans do |date, plans| %>
         <%= date.day %>

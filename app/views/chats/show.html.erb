@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mb-5">
   <div class="row">
     <div class="col-12 px-3">
     <h5><%= @user.name %>さんとのチャット</h5>
@@ -24,7 +24,7 @@
       <div class="errors">
         <%= render "layouts/errors", obj: @chat %>
       </div>
-      <div class="message_form mt-5">
+      <div class="message_form mt-5 mb-3">
         <%= render "form", chat: @chat %>
       </div>
     </div>
