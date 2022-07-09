@@ -1,9 +1,11 @@
 <div class="container mb-5">
   <div class="row">
-    <div class="col-lg-4 col-xl-4 diary_container">
+    <div class="col-lg-3 col-xl-3 diary_form">
       <%=  render 'diaries/form' %>
     </div>
-    <div class="col-md-10 mx-auto col-lg-5 offset-lg-1 col-xl-4 offset-xl-1 mb-5">
+    <div class="col-lg-3 col-xl-3 diary_temporary_form">
+    </div>
+    <div class="col-md-10 offset-md-1 col-lg-5 offset-lg-1 col-xl-4 offset-xl-1 mb-5">
       <% unless @crop_folder.user == current_user %>
         <h5 class="mb-5 diary_title"><%= @crop_folder.crop_name %>の栽培日記</h5>
       <% end %>
