@@ -72,23 +72,17 @@
       <% end %>
     </div>
     <div class="col-md-8 mx-auto col-lg-3">
-     <div>
-      <p>コメント件数：<%= @crop_folder.crop_comments.count %></p>
-      <% @crop_folder.crop_comments.each do |crop_comment| %>
-      <div class="comment_user">
-        <%= image_tag crop_comment.user.get_profile_image(30,30), class: "user_profile_image" %>
-        <%= link_to "#{crop_comment.user.name}", user_about_path(crop_comment.user) %>
+      <div class="comment_count">
+        <%= render 'crop_comments/count', crop_folder: @crop_folder %>
       </div>
-        <p class="mb-0"><%= crop_comment.comment %></p>
-        <p>(<%= crop_comment.created_at.strftime('%Y-%m-%d') %>)</p>
-      <% end %>
+      <div class="comment_index">
+        <%= render 'crop_comments/index', crop_folder: @crop_folder %>
       </div>
-      <div>
-      <%= render 'layouts/errors', obj: @crop_comment %>
-      <%= form_with model: [@crop_folder, @crop_comment], url: crop_folder_crop_comments_path(@crop_folder.id) do |f| %>
-        <%= f.text_area :comment, rows: '3', placeholder: "コメントをここに入力",class: 'form-control' %>
-        <%= f.submit "コメントを送信", class: 'btn btn-submit mb-4' %>
-      <% end %>
+      <div class="comment_error">
+        <%= render 'layouts/errors', obj: @crop_comment %>
+      </div>
+      <div class="comment_form">
+        <%= render 'crop_comments/form', crop_folder: @crop_folder, crop_comment: @crop_comment %>
       </div>
     </div>
   </div>

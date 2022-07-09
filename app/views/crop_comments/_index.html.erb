@@ -1,0 +1,8 @@
+<% crop_folder.crop_comments.each do |crop_comment| %>
+  <div class="comment_user">
+    <%= image_tag crop_comment.user.get_profile_image(30,30), class: "user_profile_image" %>
+    <%= link_to "#{crop_comment.user.name}", user_about_path(crop_comment.user) %>
+  </div>
+  <p class="mb-0"><%= crop_comment.comment %></p>
+  <p>(<%= crop_comment.created_at.strftime('%Y-%m-%d') %>)</p>
+<% end %>

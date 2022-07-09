@@ -1,0 +1,4 @@
+$("textarea").val('');
+$(".comment_count").html("<%= j(render 'crop_comments/count', crop_folder: @crop_folder ) %>");
+$(".comment_index").html("<%= j(render 'crop_comments/index', crop_folder: @crop_folder ) %>");
+$(".comment_error").html("<%= j(render 'layouts/errors', obj: @crop_comment ) %>");
