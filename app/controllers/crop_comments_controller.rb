@@ -9,13 +9,7 @@ class CropCommentsController < ApplicationController
     unless @crop_comment.save
       render 'validater'
     end
-    # if @crop_comment.save
-    #   @comment_crop.create_notification_comment!(current_user, @crop_comment.id)
-    #   redirect_to crop_folder_path(@crop_folder)
-    # else
-    #   @diary = Diary.new
-    #   render 'crop_folders/show'
-    # end
+    @comment_crop.create_notification_comment!(current_user, @crop_comment.id)
   end
 
   private

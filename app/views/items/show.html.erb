@@ -1,15 +1,17 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-5 item_form">
+    <div class="col-lg-5 col-xl-4 item_form">
       <% if @user == current_user %>
-        <p>新しく作物を出品する</p>
+        <p>商品を登録</p>
         <%= render 'layouts/errors', obj: @item %>
         <%= render 'items/form', item: @item %>
       <% else %>
         <%= render 'users/info', user: @item.user %>
       <% end %>
     </div>
-    <div class="col-md-10 mx-auto col-lg-6 offset-lg-1">
+    <div class="col-lg-5 col-xl-4 item_temporary_form">
+    </div>
+    <div class="col-md-10 col-md-1 col-lg-6 offset-lg-1 col-xl-6 offset-xl-2">
       <div class="new_item_button mb-4">
         <% if @item.user == current_user %>
           <%= link_to new_item_path, class: "btn btn-info" do %>

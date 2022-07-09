@@ -337,7 +337,7 @@
   }
 
 
-  .item_form, .new_crop_form, .diary_form {
+  .item_form, .new_crop_form, .diary_form, .info_box {
     position: fixed;
     z-index: 10;
   }
@@ -545,11 +545,11 @@
 
 @media screen and (max-width:1024px) {
 
-  .item_temporary_form, .crop_folder_temporary_form, .diary_temporary_form {
+  .item_temporary_form, .crop_folder_temporary_form, .diary_temporary_form, .info_temporary_box {
     display: none;
   }
 
-  .item_form, .new_crop_form, .diary_form {
+  .item_form, .new_crop_form, .diary_form, .info_box {
     position: initial;
   }
 }
