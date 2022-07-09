@@ -1,7 +1,11 @@
-<div class='container mb-5'>
-  <div class='row'>
+<div class="container mb-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-2">
+      <h4>作物の栽培を編集</h4>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-md-8 col-lg-6 mx-auto">
-      <h4>栽培作物の編集</h4>
       <%= render 'layouts/errors', obj: @crop_folder %>
       <%= render 'crop_folders/form', crop_folder: @crop_folder %>
     </div>

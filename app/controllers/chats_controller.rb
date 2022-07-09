@@ -1,6 +1,6 @@
 class ChatsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def show
     @user = User.find(params[:id])
     rooms = current_user.user_rooms.pluck(:room_id)
@@ -21,8 +21,10 @@ class ChatsController < ApplicationController
   def create
     @chat = current_user.chats.new(chat_params)
     @user = current_user
+    @chat.save
     unless @chat.save
       render :validater
+
     end
     @chat.room.create_notification_dm!(current_user, @chat.room_id, @chat.id)
   end

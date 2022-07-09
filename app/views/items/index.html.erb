@@ -1,11 +1,21 @@
 <div class="container mb-5">
   <div class="row">
     <div class="col-lg-5 item_form">
-      <h4>新しく作物を出品する</h4>
-      <%= render 'layouts/errors', obj: @item %>
-      <%= render 'form', item: @item %>
+      <div class="row">
+        <div class="col-lg-10">
+          <h4>商品を登録</h4>
+        </div>
+      </div>
+      <div class="row mb-5">
+        <div class="col-lg-12 mb-5">
+          <%= render 'layouts/errors', obj: @item %>
+          <%= render 'form', item: @item %>
+        </div>
+      </div>
     </div>
-    <div class="col-md-10 mx-auto col-lg-6 offset-lg-1">
+    <div class="col-lg-5 item_temporary_form">
+    </div>
+    <div class="col-md-10 offset-md-1 col-lg-6 offset-lg-1">
       <h5>みんなの出品した作物</h5>
         <div class="new_item_button mb-4">
           <%= link_to new_item_path, class: "btn btn-info" do %>

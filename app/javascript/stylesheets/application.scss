@@ -3,6 +3,12 @@
 
 // 全体
 
+  // html, body {
+  //   -webkit-overflow-scrolling : touch !important;
+  //   overflow: auto !important;
+  //   height: 100% !important;
+  // }
+
   html {
     height: 100%;
   }
@@ -30,7 +36,7 @@
     width: 100%;
     background: #98d98e;
     height: 75px;
-    margin_top: 50px
+    z-index: 5;
   }
 
   .footer_nav {
@@ -301,6 +307,10 @@
     box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15);
   }
 
+  .crop_folder_image {
+    padding: 4% 3%;
+  }
+
   .item_container {
     position: relative;
     background: #fff0f5;
@@ -326,8 +336,10 @@
     box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15);
   }
 
-  .crop_folder_image {
-    padding: 4% 3%;
+
+  .item_form, .new_crop_form {
+    position: fixed;
+    z-index: 10;
   }
 
 
@@ -529,6 +541,18 @@
   	border-radius: 150px;
   	background-color: #ffebcd;
   }
+
+
+@media screen and (max-width:1024px) {
+
+  .item_temporary_form, .crop_folder_temporary_form {
+    display: none;
+  }
+
+  .item_form, .new_crop_form {
+    position: initial;
+  }
+}
 
 
 

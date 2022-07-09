@@ -1,1 +1,7 @@
-$('.errors').html("<%= j(render 'layouts/errors', obj: @chat) %>");
+<!--if ($('#error_explanation').length == 0) {-->
+<!--  $('.errors').html("<%#= j(render 'layouts/errors', obj: @chat) %>");-->
+<!--}-->
+if ($('#error_explanation').length) {
+} else {
+  $('.errors').html("<%= j(render 'layouts/errors', obj: @chat) %>");
+}

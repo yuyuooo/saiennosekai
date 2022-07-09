@@ -2,12 +2,26 @@
   <div class="row">
     <div class="col-lg-5 item_form">
       <% if @user == current_user %>
-        <h4>新しく作物を出品する</h4>
-        <%= render 'layouts/errors', obj: @new_item %>
-        <%= render 'items/form', item: @new_item %>
+        <div class="row">
+          <div class="col-lg-10">
+            <h4>新しく作物を出品する</h4>
+          </div>
+        </div>
+        <div class="row mb-5">
+          <div class="col-lg-12 mb-5">
+            <%= render 'layouts/errors', obj: @new_item %>
+            <%= render 'items/form', item: @new_item %>
+          </div>
+        </div>
       <% else %>
-        <%= render 'info', user: @user %>
+        <div class="row">
+          <div class="col-lg-10">
+            <%= render 'info', user: @user %>
+          </div>
+        </div>
       <% end %>
+    </div>
+    <div class="col-lg-5 item_temporary_form">
     </div>
     <div class="col-md-10 mx-auto col-lg-6 offset-lg-1">
       <h5><%= @user.name %>の出品した作物</h5>

@@ -1,4 +1,7 @@
+<!--$('.errors').val('');-->
 $("textarea").val('');
 $(document).ready(function(){
   $('.message_table').append('<td></td><td colspan="2" class="message_2"><div class="message_box_2"><%= @chat.message %></div></td><td></td>');
 });
+$('.errors').html("<%= j(render 'layouts/errors', obj: @chat) %>");
+<!--$('.errors').remove("<%#= j(render 'layouts/errors', obj: @chat) %>");-->
