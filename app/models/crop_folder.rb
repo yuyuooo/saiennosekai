@@ -40,9 +40,9 @@ class CropFolder < ApplicationRecord
     # 自分以外のコメント者を取得
     comment_users = CropComment.select(:user_id).where(crop_folder_id: id).where.not(user_id: current_user.id).distinct
     comment_users.each do |comment_user|
-      save_notification_comment!(current_user, crop_comment_id, comment_user['user_id']) if comment_users.blank?
+      save_notification_comment!(current_user, crop_comment_id, comment_user['user_id'])
     end
-    # comment_usersがいない＝初めてのコメントを取得
+    # comment_usersがいない＝初めてのコメントを取得　cropfolderの投稿者へのみ通知
       save_notification_comment!(current_user, crop_comment_id, user_id) if comment_users.blank?
   end
     # 複数回のコメントも通知

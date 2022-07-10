@@ -21,11 +21,11 @@ class ChatsController < ApplicationController
   def create
     @chat = current_user.chats.new(chat_params)
     @user = current_user
-    @chat.save
-    unless @chat.save
+    if @chat.save
+      @chat.room.create_notification_dm!(current_user, @chat.room_id, @chat.id)
+    else
       render :validater
     end
-    @chat.room.create_notification_dm!(current_user, @chat.room_id, @chat.id)
   end
 
 private
