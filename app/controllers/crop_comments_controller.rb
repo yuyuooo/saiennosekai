@@ -6,6 +6,7 @@ class CropCommentsController < ApplicationController
     @crop_comment = current_user.crop_comments.new(crop_comment_params)
     @crop_comment.crop_folder_id = @crop_folder.id
     @comment_crop = @crop_comment.crop_folder
+    @crop_comment.save
     unless @crop_comment.save
       render 'validater'
     end

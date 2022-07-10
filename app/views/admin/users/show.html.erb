@@ -17,7 +17,7 @@
             <th width="15%"></th>
           </tr>
         </thead>
-        <% @user.crop_folders.each do |crop_folder| %>
+        <% @crop_folders.each do |crop_folder| %>
           <tbody>
             <tr>
               <td><% unless crop_folder.is_published_flag? %>
