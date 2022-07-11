@@ -1,6 +1,6 @@
 <div class="container month_crop_container mb-5">
-  <div class="row">
-    <div class="col-md-4 mx-auto">
+  <div class="row month_crop_content">
+    <div class="col-md-4 col-lg-5 mx-auto">
       <div class="ribbon mb-5">
         <h3>今月のおすすめ栽培</h3>
       </div>
@@ -8,7 +8,7 @@
   </div>
   <% if @month_crops.length > 0%>
     <% @month_crops.each do |month_crop| %>
-      <div class="row mb-5 mt-2">
+      <div class="row mb-5 mt-2 month_crop_content">
         <div class="col-md-10 col-lg-7 mx-auto">
           <div class="row">
             <div class="col-md-6 col-lg-6 mb-4">

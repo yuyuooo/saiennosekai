@@ -3,12 +3,6 @@
 
 // 全体
 
-  // html, body {
-  //   -webkit-overflow-scrolling : touch !important;
-  //   overflow: auto !important;
-  //   height: 100% !important;
-  // }
-
   html {
     height: 100%;
   }
@@ -423,7 +417,12 @@
 
   .has-events {
     background: #98fb98;
+    // width: 14%;
   }
+  
+  // .table td {
+  //   padding: 1.4rem;
+  // }
 }
 
   .message_table {
@@ -784,6 +783,10 @@
 
   // 今月のおすすめ
 
+  .month_crop_content {
+    text-align: center;
+  }
+
   .ribbon h3 {
     font-size: 15px;
   }
@@ -798,6 +801,7 @@
     width: 120px;
   	border-radius: 120px;
   	background-color: #ffebcd;
+  	margin-left: 80px;
   }
 
   // crop_folder

@@ -25,11 +25,13 @@
     </div>
     <div class="col-md-10 mx-auto col-lg-6 offset-lg-1">
       <h5><%= @user.name %>の出品した作物</h5>
-      <div class="new_item_button mb-4">
-        <%= link_to new_item_path, class: "btn btn-info" do %>
-          <i class="fas fa-seedling"></i> 追加
-        <% end %>
-      </div>
+      <% if @user == current_user %>
+        <div class="new_item_button mb-4">
+          <%= link_to new_item_path, class: "btn btn-info" do %>
+            <i class="fas fa-seedling"></i> 追加
+          <% end %>
+        </div>
+      <% end %>
       <% if @user.items.length > 0 %>
         <%= render 'items/index', items: @items %>
         <%= paginate @items %>

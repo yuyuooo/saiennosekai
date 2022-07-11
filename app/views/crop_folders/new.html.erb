@@ -6,8 +6,10 @@
   </div>
   <div class="row">
     <div class="col-md-8 col-lg-6 mx-auto">
-      <%= render 'layouts/errors', obj: @crop_folder %>
-      <%= render 'crop_folders/form', crop_folder: @crop_folder%>
+      <div class="col">
+        <%= render 'layouts/errors', obj: @crop_folder %>
+        <%= render 'crop_folders/form', crop_folder: @crop_folder %>
+      </div>
     </div>
   </div>
 </div>
