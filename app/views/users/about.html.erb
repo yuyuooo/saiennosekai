@@ -47,9 +47,16 @@
       <% else %>
         <p  class="ml-5 my-4">=== 栽培完了した作物はありません ===</p>
       <% end %>
-      <% if @user == current_user %>
-        <%= link_to "新しい作物の栽培を登録", new_crop_folder_path, class: "btn btn-info" %>
-      <% end %>
+      <table>
+        <tr>
+          <td><% if @user == current_user %>
+                <%= link_to "新しい作物の栽培を登録", new_crop_folder_path, class: "btn btn-info mr-5 mb-4" %>
+          </td><% end %>
+          <td><%= link_to user_path(@user), class: "btn btn-outline-secondary btn-block mb-4" do %>
+                <i class="fas fa-seedling"></i> 全ての栽培
+          </td><% end %>
+        </tr>
+      </table>
       <h5 class="mt-5">出品した商品</h5>
       <p class="user_about_text">販売中</p>
       <% if @user.items.active.length > 0 %>
@@ -95,7 +102,7 @@
         <tr>
           <td><% if @user == current_user %>
                 <%= link_to "新しい商品を出品", new_item_path, class: "btn btn-info mr-5 mb-5" %>
-              <% end %>
+          </td><% end %>
           <td><%= link_to user_items_path(@user), class: "btn btn-outline-secondary btn-block mb-5" do %>
                 <i class="fas fa-check"></i> 全ての出品
           </td><% end %>

@@ -24,6 +24,19 @@
     width: 100%;
   }
 
+  .nav-link {
+  background:
+    linear-gradient(orange 0 0)
+    bottom /var(--d, 0) 3px
+    no-repeat;
+    transition: 0.5s;
+  }
+
+  .nav-link:hover {
+    --d: 100%;
+  }
+
+
   footer {
     position: fixed;
     bottom: 0px;
@@ -151,6 +164,10 @@
     background: #000;
     border-radius: 3px;
     transform: rotate(25deg);
+  }
+
+  .main_text p:hover {
+    transform: rotatey( 0deg );
   }
 
   .main_about {
@@ -419,7 +436,7 @@
     background: #98fb98;
     // width: 14%;
   }
-  
+
   // .table td {
   //   padding: 1.4rem;
   // }
@@ -486,6 +503,13 @@
 
 
   //今月のおすすめ
+
+  .month_crop_li {
+    text-align: center;
+    width: 150px;
+  	border-radius: 150px;
+  	background-color: #ffebcd;
+  }
 
   .ribbon {
     display: inline-block;
