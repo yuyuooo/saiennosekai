@@ -28,6 +28,9 @@ class Item < ApplicationRecord
 
   scope :active, -> {where(is_active: true)}
   scope :unactive, -> {where(is_active: false)}
+  
+  scope :latest, -> {order(created_at: :desc)}
+  scope :old, -> {order(created_at: :asc)}
 
   def liked_by?(user)
     likes.exists?(user_id: user.id)

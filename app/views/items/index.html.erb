@@ -17,6 +17,9 @@
     </div>
     <div class="col-md-10 offset-md-1 col-lg-6 offset-lg-1">
       <h5>みんなの出品した作物</h5>
+      <%= link_to "新しい順", items_path(latest: "true") %> |
+      <%= link_to "古い順", items_path(old: "true") %> |
+      <%= link_to "気になる順", items_path(like_count: "true") %> |
         <div class="new_item_button mb-4">
           <%= link_to new_item_path, class: "btn btn-info" do %>
             <i class="fas fa-seedling"></i> 追加

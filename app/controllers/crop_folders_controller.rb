@@ -8,7 +8,16 @@ class CropFoldersController < ApplicationController
   end
 
   def index
-    @crop_folders = CropFolder.published.order(created_at: :desc).page(params[:page]).per(5)
+    if params[:latest]
+      @crop_folders = CropFolder.published.latest.page(params[:page]).per(5)
+    elsif params[:old]
+      @crop_folders = CropFolder.published.old.page(params[:page]).per(5)
+    elsif params[:favorite_count]
+      @crop_folders = CropFolder.includes(:favorites).sort {|a,b| b.favorites.size <=> a.favorites.size}
+      @crop_folders = Kaminari.paginate_array(@crop_folders).page(params[:page]).per(5)
+    else
+      @crop_folders = CropFolder.published.order(created_at: :desc).page(params[:page]).per(5)
+    end
   end
 
   def show

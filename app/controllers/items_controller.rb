@@ -11,8 +11,17 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all.order(created_at: :desc).page(params[:page]).per(5)
     @item = Item.new
+    if params[:latest]
+      @items = Item.latest.page(params[:page]).per(5)
+    elsif params[:old]
+      @items = Item.old.page(params[:page]).per(5)
+    elsif params[:like_count]
+      @items = Item.includes(:likes).sort {|a,b| b.likes.size <=> a.likes.size}
+      @items = Kaminari.paginate_array(@items).page(params[:page]).per(5)
+    else
+      @items = Item.all.order(created_at: :desc).page(params[:page]).per(5)
+    end
   end
 
   def create

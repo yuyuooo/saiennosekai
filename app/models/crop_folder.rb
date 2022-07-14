@@ -17,6 +17,9 @@ class CropFolder < ApplicationRecord
 
   scope :active, -> {where(is_active: true)}
   scope :unactive, -> {where(is_active: false)}
+  
+  scope :latest, -> {order(created_at: :desc)}
+  scope :old, -> {order(created_at: :asc)}
 
   has_one_attached :crop_image
 

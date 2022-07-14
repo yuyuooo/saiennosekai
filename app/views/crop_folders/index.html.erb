@@ -6,6 +6,9 @@
   </div>
   <div class="row">
     <div class="col-md-10 mx-auto col-lg-12">
+      <%= link_to "新しい順", crop_folders_path(latest: "true") %> |
+      <%= link_to "古い順", crop_folders_path(old: "true") %> |
+      <%= link_to "いいね順", crop_folders_path(favorite_count: "true") %> |
       <% @crop_folders.each do |crop_folder| %>
         <div class="row">
           <div class="col-lg-6">
