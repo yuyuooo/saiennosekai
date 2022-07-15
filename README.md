@@ -9,7 +9,7 @@
 栽培をより良いものにする、作物の廃棄を防ぐという目的で制作した、
 栽培作物に関する投稿ができるコミュニティーサイトです。
 自分が育てる作物を記録し日記を書いたり、栽培計画を立て、投稿ができます。
-また、育てた野菜の出品をすることもできます。
+また、育てた野菜の出品や販売場所・イベントの紹介をすることもできます。
 出品後は DM でのやり取りをしていただき、ユーザー同士で売買できます。
 
 ### テーマを選んだ理由
@@ -33,7 +33,7 @@
 
 ## 設計書
 
-！！！設計書を入れる
+<img width="747" alt="ER図" src="https://user-images.githubusercontent.com/103011542/179161190-8d9df62c-b1cc-4fac-bd86-a63adc0ab65b.png">
 
 ## 開発環境
 
@@ -46,6 +46,7 @@
 ## 使用素材
 
 photoAC
-https://www.photo-ac.com/main/search?q=%E9%87%8E%E8%8F%9C%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0&srt=dlrank&qt=&pp=70&p=1&pt=A
+https://www.photo-ac.com/
+
 EC design（デザイン）
-http://design-ec.com/?tag=no-image
+http://design-ec.com/
