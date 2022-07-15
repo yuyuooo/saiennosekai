@@ -288,6 +288,16 @@
     display: none;
   }
 
+  .sort_li {
+    padding: 5px;
+    color: white;
+    text-align: center;
+    width: 300px;
+  	border-radius: 300px;
+  	background-color: #87cefa;
+  	margin: 3px;
+  }
+
   .crop_item_info {
     display: flex;
     align-items: center;
