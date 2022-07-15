@@ -96,6 +96,12 @@
     white-space: pre-wrap;
   }
 
+  .side_image {
+    background: url(/images/background.jpg);
+    background-repeat: no-repeat;
+    height: 1000px;
+  }
+
 
 // トップ
 
@@ -601,9 +607,17 @@
   .item_form, .new_crop_form, .diary_form, .info_box {
     position: initial;
   }
+
+  .about_container {
+    background: rgba(255,255,255,0.6);
+  }
+
+  .side_image {
+    background: url(/images/background.jpg);
+    background-repeat: no-repeat;
+    height: 1000px;
+  }
 }
-
-
 
 
 @media screen and (max-width:768px) {

@@ -1,113 +1,115 @@
-<div class = "container">
-  <div class ="row">
-    <div class="col-md-10 offset-md-1 col-lg-5 offset-lg-0 col-xl-4 mb-3 info_box">
-      <%= render "info", user: @user %>
-    </div>
-    <div class="col-lg-5 col-xl-4 info_temporary_box">
-    </div>
-    <div class="col-md-10 offset-md-1 col-lg-6 offset-lg-1 col-xl-6 offset-xl-2 mb-5">
-      <h5>今までの栽培</h5>
-      <p class="user_about_text">栽培中</p>
-      <% if @user.crop_folders.active.length > 0 %>
-        <% @user.crop_folders.active.first(3).each do |crop_folder| %>
-          <% if crop_folder.is_active? %>
-            <%= render 'users/crop', crop_folder: crop_folder %>
-          <% end %>
-        <% end %>
-        <% if @user.crop_folders.active.length > 3 %>
-          <details>
-            <summary class="mb-5">全ての作物を表示</summary>
-            <% @user.crop_folders.active.offset(3).each do |crop_folder| %>
-              <% if crop_folder.is_active? %>
-                <%= render 'users/crop', crop_folder: crop_folder %>
-              <% end %>
+<div class="side_image">
+  <div class = "container about_container">
+    <div class ="row">
+      <div class="col-md-10 offset-md-1 col-lg-5 offset-lg-0 col-xl-4 mb-3 info_box">
+        <%= render "info", user: @user %>
+      </div>
+      <div class="col-lg-5 col-xl-4 info_temporary_box">
+      </div>
+      <div class="col-md-10 offset-md-1 col-lg-6 offset-lg-1 col-xl-6 offset-xl-2 mb-5">
+        <h5>今までの栽培</h5>
+        <p class="user_about_text">栽培中</p>
+        <% if @user.crop_folders.active.length > 0 %>
+          <% @user.crop_folders.active.first(3).each do |crop_folder| %>
+            <% if crop_folder.is_active? %>
+              <%= render 'users/crop', crop_folder: crop_folder %>
             <% end %>
-          </details>
-        <% end %>
-      <% else %>
-        <p class="ml-5 my-4">=== 栽培中の作物はありません ===</p>
-      <% end %>
-      <p class="user_about_text">栽培完了</p>
-      <% if @user.crop_folders.unactive.length > 0 %>
-        <% @user.crop_folders.unactive.first(3).each do |crop_folder| %>
-          <% unless crop_folder.is_active? %>
-            <%= render 'users/crop', crop_folder: crop_folder %>
           <% end %>
-        <% end %>
-        <% if @user.crop_folders.unactive.length > 3 %>
-          <details>
-            <summary class="mb-5">全ての作物を表示</summary>
-            <% @user.crop_folders.unactive.offset(3).each do |crop_folder| %>
-              <% unless crop_folder.is_active? %>
-                <%= render 'users/crop', crop_folder: crop_folder %>
+          <% if @user.crop_folders.active.length > 3 %>
+            <details>
+              <summary class="mb-5">全ての作物を表示</summary>
+              <% @user.crop_folders.active.offset(3).each do |crop_folder| %>
+                <% if crop_folder.is_active? %>
+                  <%= render 'users/crop', crop_folder: crop_folder %>
+                <% end %>
               <% end %>
-            <% end %>
-          </details>
+            </details>
+          <% end %>
+        <% else %>
+          <p class="ml-5 my-4">=== 栽培中の作物はありません ===</p>
         <% end %>
-      <% else %>
-        <p  class="ml-5 my-4">=== 栽培完了した作物はありません ===</p>
-      <% end %>
-      <table>
-        <tr>
-          <td><% if @user == current_user %>
-                <%= link_to "新しい作物の栽培を登録", new_crop_folder_path, class: "btn btn-info mr-5 mb-4" %>
-          </td><% end %>
-          <td><%= link_to user_path(@user), class: "btn btn-outline-secondary btn-block mb-4" do %>
-                <i class="fas fa-seedling"></i> 全ての栽培
-          </td><% end %>
-        </tr>
-      </table>
-      <h5 class="mt-5">出品した商品</h5>
-      <p class="user_about_text">販売中</p>
-      <% if @user.items.active.length > 0 %>
-        <% @user.items.active.first(3).each do |item| %>
-          <% if item.is_active? %>
+        <p class="user_about_text">栽培完了</p>
+        <% if @user.crop_folders.unactive.length > 0 %>
+          <% @user.crop_folders.unactive.first(3).each do |crop_folder| %>
+            <% unless crop_folder.is_active? %>
+              <%= render 'users/crop', crop_folder: crop_folder %>
+            <% end %>
+          <% end %>
+          <% if @user.crop_folders.unactive.length > 3 %>
+            <details>
+              <summary class="mb-5">全ての作物を表示</summary>
+              <% @user.crop_folders.unactive.offset(3).each do |crop_folder| %>
+                <% unless crop_folder.is_active? %>
+                  <%= render 'users/crop', crop_folder: crop_folder %>
+                <% end %>
+              <% end %>
+            </details>
+          <% end %>
+        <% else %>
+          <p  class="ml-5 my-4">=== 栽培完了した作物はありません ===</p>
+        <% end %>
+        <table>
+          <tr>
+            <td><% if @user == current_user %>
+                  <%= link_to "新しい作物の栽培を登録", new_crop_folder_path, class: "btn btn-info mr-5 mb-4" %>
+            </td><% end %>
+            <td><%= link_to user_path(@user), class: "btn btn-outline-secondary btn-block mb-4" do %>
+                  <i class="fas fa-seedling"></i> 全ての栽培
+            </td><% end %>
+          </tr>
+        </table>
+        <h5 class="mt-5">出品した商品</h5>
+        <p class="user_about_text">販売中</p>
+        <% if @user.items.active.length > 0 %>
+          <% @user.items.active.first(3).each do |item| %>
+            <% if item.is_active? %>
+                <%= render 'users/item', item: item %>
+            <% end %>
+          <% end %>
+          <% if @user.items.active.length > 3 %>
+            <details>
+              <summary class="mb-5">全ての作物を表示</summary>
+              <% @user.items.active.offset(3).each do |item| %>
+                <% if item.is_active? %>
+                  <%= render 'users/item', item: item %>
+                <% end %>
+              <% end %>
+            </details>
+          <% end %>
+        <% else %>
+          <p class="ml-5 my-4">=== 販売中の商品はありません ===</p>
+        <% end %>
+        <p class="user_about_text">販売停止中</p>
+        <% if @user.items.unactive.length > 0 %>
+          <% @user.items.unactive.first(3).each do |item| %>
+            <% unless item.is_active? %>
               <%= render 'users/item', item: item %>
-          <% end %>
-        <% end %>
-        <% if @user.items.active.length > 3 %>
-          <details>
-            <summary class="mb-5">全ての作物を表示</summary>
-            <% @user.items.active.offset(3).each do |item| %>
-              <% if item.is_active? %>
-                <%= render 'users/item', item: item %>
-              <% end %>
             <% end %>
-          </details>
-        <% end %>
-      <% else %>
-        <p class="ml-5 my-4">=== 販売中の商品はありません ===</p>
-      <% end %>
-      <p class="user_about_text">販売停止中</p>
-      <% if @user.items.unactive.length > 0 %>
-        <% @user.items.unactive.first(3).each do |item| %>
-          <% unless item.is_active? %>
-            <%= render 'users/item', item: item %>
           <% end %>
-        <% end %>
-        <% if @user.items.unactive.length > 3 %>
-          <details>
-            <summary class="mb-5">全ての作物を表示</summary>
-            <% @user.items.unactive.offset(3).each do |item| %>
-              <% unless item.is_active? %>
-                <%= render 'users/item', item: item %>
+          <% if @user.items.unactive.length > 3 %>
+            <details>
+              <summary class="mb-5">全ての作物を表示</summary>
+              <% @user.items.unactive.offset(3).each do |item| %>
+                <% unless item.is_active? %>
+                  <%= render 'users/item', item: item %>
+                <% end %>
               <% end %>
-            <% end %>
-          </details>
+            </details>
+          <% end %>
+        <% else %>
+          <p class="ml-5 my-4">=== 販売停止中の商品はありません ===</p>
         <% end %>
-      <% else %>
-        <p class="ml-5 my-4">=== 販売停止中の商品はありません ===</p>
-      <% end %>
-      <table>
-        <tr>
-          <td><% if @user == current_user %>
-                <%= link_to "新しい商品を出品", new_item_path, class: "btn btn-info mr-5 mb-5" %>
-          </td><% end %>
-          <td><%= link_to user_items_path(@user), class: "btn btn-outline-secondary btn-block mb-5" do %>
-                <i class="fas fa-check"></i> 全ての出品
-          </td><% end %>
-        </tr>
-      </table>
+        <table>
+          <tr>
+            <td><% if @user == current_user %>
+                  <%= link_to "新しい商品を出品", new_item_path, class: "btn btn-info mr-5 mb-5" %>
+            </td><% end %>
+            <td><%= link_to user_items_path(@user), class: "btn btn-outline-secondary btn-block mb-5" do %>
+                  <i class="fas fa-check"></i> 全ての出品
+            </td><% end %>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
 </div>
