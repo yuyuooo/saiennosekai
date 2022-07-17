@@ -1,8 +1,9 @@
-<div class='container'>
-  <div class='row'>
+<!--<div class='container'>-->
+<!--  <div class='row'>-->
     <% if user_signed_in? %>
-      <div class='mx-auto footer_text'>
-      	<p>©️ Let's enjoy cultivation!</p>
+      <div clsass="signed_in_footer_container">
+      <div class='footer_text'>
+      	<div>©️ Let's enjoy cultivation!</div>
       </div>
       <ul class="footer_nav mx-auto my-auto pl-0">
         <li class="ml-0">
@@ -32,10 +33,13 @@
           <% end %>
         </li>
       </ul>
+      </div>
     <% else %>
+      <div class="signed_out_footer_container">
       <div class='mx-auto'>
       	<p>©️ Let's enjoy cultivation!</p>
       </div>
+      </div>
     <% end %>
-  </div>
-</div>
+<!--  </div>-->
+<!--</div>-->
