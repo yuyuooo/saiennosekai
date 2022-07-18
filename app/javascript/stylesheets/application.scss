@@ -17,7 +17,7 @@
 
   .wrapper {
     flex: 1;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
   }
 
   header {
@@ -60,7 +60,7 @@
 
   .footer_text {
     // position: fixed;
-    bottom: 0px;
+    // bottom: 0px;
     width: 100%;
     background: #98d98e;
     text-align: center;
@@ -118,10 +118,10 @@
     white-space: pre-wrap;
   }
 
-  .side_image {
+  .about_crop_image {
     background: url(/images/background.jpg);
     background-repeat: no-repeat;
-    height: 1000px;
+    height: 100px;
   }
 
 
@@ -304,7 +304,7 @@
   }
 
   .user_about_item_btn {
-    margin_bottom: 120px;
+    margin-bottom: 200px;
   }
 
   // users/edit
@@ -638,10 +638,8 @@
     background: rgba(255,255,255,0.6);
   }
 
-  .side_image {
-    background: url(/images/background.jpg);
-    background-repeat: no-repeat;
-    height: 1000px;
+  .about_crop_image {
+    display: none;
   }
 }
 

@@ -1,12 +1,12 @@
-<div class="side_image">
   <div class = "container about_container">
     <div class ="row">
       <div class="col-md-10 offset-md-1 col-lg-5 offset-lg-0 col-xl-4 mb-3 info_box">
         <%= render "info", user: @user %>
+        <div class="about_crop_image"></div>
       </div>
       <div class="col-lg-5 col-xl-4 info_temporary_box">
       </div>
-      <div class="col-md-10 offset-md-1 col-lg-6 offset-lg-1 col-xl-6 offset-xl-2 mb-5">
+      <div class="col-md-10 offset-md-1 col-lg-6 offset-lg-1 col-xl-6 offset-xl-2">
         <h5>今までの栽培</h5>
         <p class="user_about_text">栽培中</p>
         <% if @user.crop_folders.active.length > 0 %>
@@ -112,4 +112,3 @@
       </div>
     </div>
   </div>
-</div>

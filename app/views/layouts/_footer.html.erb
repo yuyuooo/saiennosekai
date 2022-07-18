@@ -1,45 +1,41 @@
-<!--<div class='container'>-->
-<!--  <div class='row'>-->
-    <% if user_signed_in? %>
-      <div clsass="signed_in_footer_container">
-      <div class='footer_text'>
-      	<div>©️ Let's enjoy cultivation!</div>
-      </div>
-      <ul class="footer_nav mx-auto my-auto pl-0">
-        <li class="ml-0">
-          <% if unchecked_notifications.any? %>
-            <%= link_to notifications_path, class: "btn btn-secondary px-4" do %>
-              <i class="fa fa-circle" style="color: gold;"></i><i class="fas fa-bell"></i>
-            <% end %>
-          <% else %>
-            <%= link_to notifications_path, class: "btn btn-secondary px-4 ml-0" do %>
-              <i class="fas fa-bell"></i>
-            <% end %>
+<% if user_signed_in? %>
+  <div clsass="signed_in_footer_container">
+    <div class='footer_text'>
+    	<div>©️ Let's enjoy cultivation!</div>
+    </div>
+    <ul class="footer_nav mx-auto my-auto pl-0">
+      <li class="ml-0">
+        <% if unchecked_notifications.any? %>
+          <%= link_to notifications_path, class: "btn btn-secondary px-4" do %>
+            <i class="fa fa-circle" style="color: gold;"></i><i class="fas fa-bell"></i>
           <% end %>
-        </li>
-        <li>
-          <%= link_to user_about_path(current_user), class: "btn btn-secondary px-4 ml-3" do %>
-            <i class="fas fa-user"></i>
+        <% else %>
+          <%= link_to notifications_path, class: "btn btn-secondary px-4 ml-0" do %>
+            <i class="fas fa-bell"></i>
           <% end %>
-        </li>
-        <li>
-          <%= link_to user_path(current_user), class: "btn btn-secondary px-4 ml-3" do %>
-            <i class="fas fa-seedling"></i>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to items_path, class: "btn btn-secondary px-4 ml-3" do %>
-            <i class="fas fa-store"></i>
-          <% end %>
-        </li>
-      </ul>
-      </div>
-    <% else %>
-      <div class="signed_out_footer_container">
-      <div class='mx-auto'>
-      	<p>©️ Let's enjoy cultivation!</p>
-      </div>
-      </div>
-    <% end %>
-<!--  </div>-->
-<!--</div>-->
+        <% end %>
+      </li>
+      <li>
+        <%= link_to user_about_path(current_user), class: "btn btn-secondary px-4 ml-3" do %>
+          <i class="fas fa-user"></i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to user_path(current_user), class: "btn btn-secondary px-4 ml-3" do %>
+          <i class="fas fa-seedling"></i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to items_path, class: "btn btn-secondary px-4 ml-3" do %>
+          <i class="fas fa-store"></i>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+<% else %>
+  <div class="signed_out_footer_container">
+    <div class='mx-auto'>
+    	<p>©️ Let's enjoy cultivation!</p>
+    </div>
+  </div>
+<% end %>

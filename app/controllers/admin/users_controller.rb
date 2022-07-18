@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
   before_action :ensure_admin_user, only: [:edit, :update, :quit]
 
   def index
-      @users = User.all.page(params[:page]).per(5)
+      @users = User.all.order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def edit
