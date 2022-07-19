@@ -14,7 +14,7 @@ module NotificationsHelper
         tag.a(@visitor.name, href:user_about_path(@visitor), style:"font-weight: bold;")+"があなたに"+tag.a('メッセージ',href:chat_path(notification.visitor), style:"font-weight: bold;")+"を送りました"
       when "comment" then
         @comment = CropComment.find_by(id: @visitor_comment)&.comment
-        tag.a(@visitor.name, href:user_about_path(@visitor), style:"font-weight: bold;")+"が"+tag.a('あなたの栽培作物', href:crop_folder_path(notification.crop_folder_id), style:"font-weight: bold;")+"に「コメント」しました"
+        tag.a(@visitor.name, href:user_about_path(@visitor), style:"font-weight: bold;")+"が"+tag.a('栽培作物', href:crop_folder_path(notification.crop_folder_id), style:"font-weight: bold;")+"に「コメント」しました"
       when "favorite" then
         tag.a(@visitor.name, href:user_about_path(@visitor), style:"font-weight: bold;")+"が"+tag.a('あなたの栽培作物', href:crop_folder_path(notification.crop_folder_id), style:"font-weight: bold;")+"に「いいね」しました"
       when "like" then

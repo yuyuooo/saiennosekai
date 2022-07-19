@@ -431,11 +431,11 @@
     left: 30%;
     width: 100px;
     height: 30px;
-    border-left: 2px dotted rgba(0,0,0,.1); /* マステの左のギザギザ */
-    border-right: 2px dotted rgba(0,0,0,.1); /* マステの右のギザギザ */
-    box-shadow: 0 0 5px rgba(0,0,0,.2); /* マステに影をつける */
-    transform: rotate(4deg); /* マステを回転させる */
-    padding: 5px 15px; /* マステの内側の余白 */
+    border-left: 2px dotted rgba(0,0,0,.1); // 左のギザギザ
+    border-right: 2px dotted rgba(0,0,0,.1); // 右のギザギザ
+    box-shadow: 0 0 5px rgba(0,0,0,.2);
+    transform: rotate(4deg);
+    padding: 5px 15px;
     background-color: #FAFF07;
     color: #333;
     font-size: 20px;
@@ -545,6 +545,10 @@
 
   //今月のおすすめ
 
+  .month_crop_container {
+    margin-top: 0px;
+  }
+
   .month_crop_li {
     text-align: center;
     width: 150px;
@@ -605,6 +609,13 @@
     width: 150px;
   	border-radius: 150px;
   	background-color: #ffebcd;
+  }
+
+  .month_crop_background {
+    background: url(/images/month_crop_background.png);
+    background-repeat: no-repeat;
+    height: 85px;
+    margin-left: 220px;
   }
 
 
@@ -723,6 +734,13 @@
 
   .ribbon h3 {
     font-size: 16px;
+  }
+
+  .month_crop_background {
+    background: url(/images/month_crop_background.png);
+    background-repeat: no-repeat;
+    height: 85px;
+    margin-left: 130px;
   }
 
   // crop_folder
@@ -881,6 +899,13 @@
   	border-radius: 120px;
   	background-color: #ffebcd;
   	margin-left: 80px;
+  }
+
+  .month_crop_background {
+    background: url(/images/month_crop_background.png);
+    background-repeat: no-repeat;
+    height: 85px;
+    margin-left: 200px;
   }
 
   // crop_folder

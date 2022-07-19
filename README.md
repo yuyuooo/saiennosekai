@@ -33,7 +33,7 @@
 
 ## 設計書
 
-<img width="747" alt="ER図" src="https://user-images.githubusercontent.com/103011542/179161190-8d9df62c-b1cc-4fac-bd86-a63adc0ab65b.png">
+<img width="751" alt="ER図" src="https://user-images.githubusercontent.com/103011542/179435996-5656fda4-07cd-4805-9abf-bc99298f0cfc.png">
 
 ## 開発環境
 

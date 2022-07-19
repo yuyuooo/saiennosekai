@@ -1,12 +1,13 @@
-<div class="container month_crop_container mb-5">
+<div class="container month_crop_container">
   <div class="row month_crop_content">
-    <div class="col-md-4 col-lg-5 mx-auto">
+    <div class="col-md-5 col-lg-5 mx-auto">
+      <div class="month_crop_background"></div>
       <div class="ribbon mb-5">
         <h3>今月のおすすめ栽培</h3>
       </div>
     </div>
   </div>
-  <% if @month_crops.length > 0%>
+  <% if @month_crops.length > 0 %>
     <% @month_crops.each do |month_crop| %>
       <div class="row mb-5 mt-2 month_crop_content">
         <div class="col-md-10 col-lg-7 mx-auto">
@@ -23,7 +24,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-10 mx-auto">
+        <div class="col-md-10 mx-auto mb-5">
           <h5><%= month_crop.crop_name %>はどんな作物？？</h5>
           <p class="long_text mb-5"><%= month_crop.introduction %></p>
           <h5><%= month_crop.crop_name %>の栽培方法</h5>
