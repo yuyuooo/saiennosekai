@@ -47,17 +47,21 @@
       <p class="text">菜園の世界では会員様の様々な作物を見ることができます。見るだけでも菜園の世界にハマります。</p>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-8 col-lg-5 mx-auto mt-3">
-      <h7 class="guest_text text-center">まずは会員登録なしで、お試ししてみませんか？</h7>
+  <% unless user_signed_in? %>
+    <div class="row">
+      <div class="col-md-8 col-lg-5 mx-auto mt-3">
+        <h7 class="guest_text text-center">まずは会員登録なしで、お試ししてみませんか？</h7>
+      </div>
     </div>
-  </div>
-  <div class="row mb-5">
-    <div class="col-sm-6 col-md-3 mx-auto mt-4">
-      <%= link_to 'お試しログイン', users_guest_sign_in_path, class: "btn btn-secondary btn-block sign_in", method: :post %>
+    <div class="row mb-5">
+      <div class="col-sm-6 col-md-3 mx-auto mt-4">
+        <%= link_to 'お試しログイン', users_guest_sign_in_path, class: "btn btn-secondary btn-block sign_in", method: :post %>
+      </div>
     </div>
+  <% end %>
+</div>
+<% unless user_signed_in? %>
+  <div class="admin_button mb-3 text-right mr-3">
+    <%= link_to '管理者用ログイン', new_admin_session_path, class: "btn btn-sm btn-outline-info" %>
   </div>
-</div>
-<div class="admin_button mb-3 text-right mr-3">
-  <%= link_to '管理者用ログイン', new_admin_session_path, class: "btn btn-sm btn-outline-info" %>
-</div>
+<% end %>

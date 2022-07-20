@@ -16,8 +16,8 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
-  validates :name, presence: true
-  validates :introduction, length: { maximum: 50 }
+  validates :name, length: { minimum: 1, maximum: 8 }
+  validates :introduction, length: { maximum: 30 }
 
   has_one_attached :profile_image
 
@@ -39,7 +39,7 @@ class User < ApplicationRecord
   def active_for_authentication?
     super && (self.is_active == true)
   end
-  
+
   def is_active_color
     is_active ? "font-weight-bold text-success":"font-weight-bold text-muted"
   end

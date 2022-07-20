@@ -59,8 +59,6 @@
   }
 
   .footer_text {
-    // position: fixed;
-    // bottom: 0px;
     width: 100%;
     background: #98d98e;
     text-align: center;
@@ -122,6 +120,7 @@
     background: url(/images/background.jpg);
     background-repeat: no-repeat;
     height: 100px;
+    z-index: 0;
   }
 
 
@@ -194,7 +193,7 @@
   }
 
   .main_text p:hover {
-    transform: rotatey( 0deg );
+    transform: rotatey(0deg);
   }
 
   .main_about {
@@ -403,9 +402,10 @@
     border: 1px solid #ccc;
     padding: 10px 10px 20px;
     margin-bottom: 60px;
+    margin-left: 20px;
     box-shadow: 0 10px 8px -6px #bebebe;
     display: inline-block;
-    max-width: 100%;
+    width: 325px;
     box-sizing: border-box;
     position: relative;
   }

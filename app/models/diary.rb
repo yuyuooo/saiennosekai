@@ -4,7 +4,7 @@ class Diary < ApplicationRecord
   belongs_to :crop_folder
 
   validates :diary_date, presence: true
-  validates :title, length: { minimum: 1, maximum: 50 }
+  validates :title, length: { minimum: 1, maximum: 15 }
   validates :body, length: { maximum: 100 }
 
   has_one_attached :crop_image

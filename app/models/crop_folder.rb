@@ -7,17 +7,17 @@ class CropFolder < ApplicationRecord
   has_many :crop_comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
-  validates :crop_name, length: { minimum: 1, maximum: 20 }
+  validates :crop_name, length: { minimum: 1, maximum: 10 }
   validates :new_crop_date, presence: true
   validates :place, presence: true
-  validates :memo, length: { maximum: 100 }
+  validates :memo, length: { maximum: 50 }
 
   scope :published, -> {where(is_published_flag: true)}
   scope :unpublished, -> {where(is_published_flag: false)}
 
   scope :active, -> {where(is_active: true)}
   scope :unactive, -> {where(is_active: false)}
-  
+
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
 
@@ -71,8 +71,8 @@ class CropFolder < ApplicationRecord
       notification = current_user.active_notifications.new(
       crop_folder_id: id,
       visited_id: user_id, # 通知相手に相手のidを指定
-      action: 'favorite', # helperにて使用
-      checked: false # defaultでfalse「未確認」を設定
+      action: 'favorite',
+      checked: false
       )
       # 自分の投稿に対するいいねは、通知済み
       if notification.visitor_id == notification.visited_id
