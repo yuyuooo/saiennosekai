@@ -24,7 +24,19 @@
     width: 100%;
   }
 
+  .navbar {
+    background-color: #dcd3b2;
+  }
+
+  .navbar-brand {
+    background: url(/images/logo.png);
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 240px;
+  }
+
   .nav-link {
+  display: inline-block;
   background:
     linear-gradient(orange 0 0)
     bottom /var(--d, 0) 3px
@@ -53,14 +65,14 @@
   .signed_out_footer_container {
     bottom: 0px;
     width: 100%;
-    background: #98d98e;
+    background: #cee4ae;
     height: 75px;
     z-index: 5;
   }
 
   .footer_text {
     width: 100%;
-    background: #98d98e;
+    background: #cee4ae;
     text-align: center;
     line-height: 75px;
     margin-top: 20px;
@@ -117,7 +129,7 @@
   }
 
   .about_crop_image {
-    background: url(/images/background.jpg);
+    background: url(/images/background.png);
     background-repeat: no-repeat;
     height: 100px;
     z-index: 0;
@@ -549,6 +561,10 @@
     margin-top: 0px;
   }
 
+  .month_crop_title {
+    text-align: center;
+  }
+
   .month_crop_li {
     text-align: center;
     width: 150px;
@@ -615,7 +631,7 @@
     background: url(/images/month_crop_background.png);
     background-repeat: no-repeat;
     height: 85px;
-    margin-left: 220px;
+    margin-left: 400px;
   }
 
 
@@ -720,7 +736,7 @@
     position: fixed;
     bottom: 0px;
     width: 100%;
-    background: #98d98e;
+    background: #cee4ae;
     height: 75px;
     z-index: 5;
     display: block;
@@ -805,6 +821,10 @@
     background: #f4f4f4;
     margin-bottom: 5%;
     font-size: 19px;
+  }
+
+  .search_form {
+    order: 2;
   }
 
   // トップ

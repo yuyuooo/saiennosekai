@@ -31,7 +31,7 @@ class CropFoldersController < ApplicationController
     @crop_folder = CropFolder.new(crop_folder_params)
     @crop_folder.user_id = current_user.id
     if @crop_folder.save
-      redirect_to user_path(current_user), success: "栽培作物を投稿しました"
+      redirect_to user_path(current_user), notice: "栽培作物を投稿しました"
     else
       @user = current_user
       @crop_folders = @user.crop_folders.all
@@ -47,7 +47,7 @@ class CropFoldersController < ApplicationController
     @crop_folder = CropFolder.find(params[:id])
     @user = User.find_by(id: params[:id])
     if @crop_folder.update(crop_folder_params)
-      redirect_to user_path(@crop_folder.user), success: "作物の内容を更新しました"
+      redirect_to user_path(@crop_folder.user), notice: "作物の内容を更新しました"
     else
       render 'edit'
     end
@@ -56,7 +56,7 @@ class CropFoldersController < ApplicationController
   def destroy
     @crop_folder = CropFolder.find(params[:id])
     @crop_folder.destroy
-    redirect_to user_path(@crop_folder.user), success: "栽培作物を削除しました"
+    redirect_to user_path(@crop_folder.user), notice: "栽培作物を削除しました"
   end
 
 private

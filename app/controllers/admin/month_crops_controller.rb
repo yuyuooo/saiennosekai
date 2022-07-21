@@ -8,7 +8,7 @@ class Admin::MonthCropsController < ApplicationController
   def create
     @month_crop = MonthCrop.new(month_crop_params)
     if @month_crop.save
-      redirect_to admin_month_crops_path, success: "今月のおすすめ作物を投稿しました"
+      redirect_to admin_month_crops_path, notice: "今月のおすすめ作物を投稿しました"
     else
       render 'new'
     end
@@ -29,7 +29,7 @@ class Admin::MonthCropsController < ApplicationController
   def update
     @month_crop = MonthCrop.find(params[:id])
     if @month_crop.update(month_crop_params)
-      redirect_to admin_month_crop_path(@month_crop), success: "今月のおすすめ栽培を更新しました"
+      redirect_to admin_month_crop_path(@month_crop), notice: "今月のおすすめ栽培を更新しました"
     else
       render 'edit'
     end
@@ -38,7 +38,7 @@ class Admin::MonthCropsController < ApplicationController
   def destroy
     @month_crop = MonthCrop.find(params[:id])
     @month_crop.destroy
-    redirect_to request.referer, success: "今月のおすすめ栽培を削除しました"
+    redirect_to request.referer, notice: "今月のおすすめ栽培を削除しました"
   end
 
 private

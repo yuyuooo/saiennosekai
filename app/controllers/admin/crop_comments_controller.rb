@@ -5,6 +5,6 @@ class Admin::CropCommentsController < ApplicationController
     @crop_folder = CropFolder.find(params[:crop_folder_id])
     @crop_comment = CropComment.find(params[:id])
     @crop_comment.destroy
-    redirect_to admin_crop_folder_path(@crop_folder), success: "コメントを削除しました"
+    redirect_to admin_crop_folder_path(@crop_folder), notice: "コメントを削除しました"
   end
 end

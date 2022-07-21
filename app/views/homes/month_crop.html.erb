@@ -1,6 +1,6 @@
 <div class="container month_crop_container">
   <div class="row month_crop_content">
-    <div class="col-md-5 col-lg-5 mx-auto">
+    <div class="col-md-5 col-lg-8 mx-auto month_crop_title">
       <div class="month_crop_background"></div>
       <div class="ribbon mb-5">
         <h3>今月のおすすめ栽培</h3>
@@ -15,7 +15,7 @@
             <div class="col-md-6 col-lg-6 mb-4">
               <%= image_tag month_crop.get_crop_image(250,250) %>
             </div>
-            <div class="col-md-6 col-lg-6">
+            <div class="col-md-5 offset-md-1 col-lg-5 offset-lg-1">
               <h6 class="month_crop mb-4"><%= month_crop.month %>の栽培</h6>
               <p class="font-weight-bold"><%= month_crop.crop_name %></p>
               <p>収穫時期は<%= month_crop.harvest_time %>です。</p>

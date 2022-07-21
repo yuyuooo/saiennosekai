@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.user_id = current_user.id
     if @item.save
-      redirect_to user_items_path(@item.user), success: "栽培作物を投稿しました"
+      redirect_to user_items_path(@item.user), notice: "栽培作物を投稿しました"
     else
       @items = Item.all.order(created_at: :desc).page(params[:page]).per(5)
       render "new"
@@ -42,7 +42,7 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      redirect_to user_items_path(@item.user), success: "商品の登録内容を更新しました"
+      redirect_to user_items_path(@item.user), notice: "商品の登録内容を更新しました"
     else
       render "edit"
     end
@@ -51,7 +51,7 @@ class ItemsController < ApplicationController
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
-    redirect_to user_items_path(@item.user), success: "栽培作物を削除しました"
+    redirect_to user_items_path(@item.user), notice: "栽培作物を削除しました"
   end
 
 private

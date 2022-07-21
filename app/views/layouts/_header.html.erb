@@ -1,9 +1,9 @@
 <div class="header-container">
-  <nav class="navbar navbar-expand-xl navbar-light bg-light pl-5">
+  <nav class="navbar navbar-expand-xl navbar-light pl-5">
     <% unless admin_signed_in? %>
-      <a class="navbar-brand" href="/"><strong>菜園の世界</strong><i class="fas fa-leaf" style="color: green;"></i></a>
+      <a class="navbar-brand" href="/"></a>
     <% else %>
-      <div class="navbar-brand"><strong>菜園の世界</strong><i class="fas fa-leaf" style="color: green;"></i></div>
+      <div class="navbar-brand"></div>
     <% end %>
     <%= render 'searches/search' %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

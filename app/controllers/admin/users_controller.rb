@@ -13,7 +13,7 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to admin_users_path, success: "会員情報の編集が完了しました"
+      redirect_to admin_users_path, notice: "会員情報の編集が完了しました"
     else
       render :edit
     end
@@ -38,7 +38,7 @@ private
 
   def ensure_admin_user
     unless admin_signed_in?
-      redirect_to admin_users_path, danger: "他人情報の編集はできません。"
+      redirect_to admin_users_path, alert: "他人情報の編集はできません。"
     end
   end
 

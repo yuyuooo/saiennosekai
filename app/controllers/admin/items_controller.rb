@@ -8,7 +8,7 @@ class Admin::ItemsController < ApplicationController
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
-    redirect_to request.referer, success: "商品を削除しました"
+    redirect_to request.referer, notice: "商品を削除しました"
   end
 
 end

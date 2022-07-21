@@ -11,7 +11,7 @@ class PlansController < ApplicationController
     @plan = current_user.plans.new(plan_params)
     @plan.crop_folder_id = @crop_folder.id
     if @plan.save
-      redirect_to crop_folder_plans_path(@crop_folder.id), success: "予定を登録しました"
+      redirect_to crop_folder_plans_path(@crop_folder.id), notice: "予定を登録しました"
     else
       render 'show'
     end

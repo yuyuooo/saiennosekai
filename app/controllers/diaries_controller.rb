@@ -11,7 +11,7 @@ class DiariesController < ApplicationController
     @diary = current_user.diaries.new(diary_params)
     @diary.crop_folder_id = @crop_folder.id
     if @diary.save
-      redirect_to crop_folder_path(@crop_folder.id), success: "栽培日記を登録しました"
+      redirect_to crop_folder_path(@crop_folder.id), notice: "栽培日記を登録しました"
     else
       @crop_comment = CropComment.new
       render 'new'
@@ -22,7 +22,7 @@ class DiariesController < ApplicationController
     @crop_folder = CropFolder.find(params[:crop_folder_id])
     @diary = Diary.find(params[:id])
     @diary.destroy
-    redirect_to crop_folder_path(@crop_folder), success: "日記を削除しました"
+    redirect_to crop_folder_path(@crop_folder), notice: "日記を削除しました"
   end
 
 private

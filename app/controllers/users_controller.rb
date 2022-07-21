@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to user_about_path(@user), success: "会員情報の登録内容を更新しました"
+      redirect_to user_about_path(@user), notice: "会員情報の登録内容を更新しました"
     else
       render 'edit'
     end
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(is_active: false)
     reset_session
-    redirect_to root_path, success: "ありがとうございました。またのご利用を心よりお待ちしております。"
+    redirect_to root_path, notice: "ありがとうございました。またのご利用を心よりお待ちしております。"
   end
 
 private
@@ -68,14 +68,14 @@ private
   def ensure_correct_user
     @user = User.find(params[:id])
     unless current_user == @user
-      redirect_to user_about_path(current_user), danger: "他人情報の編集はできません"
+      redirect_to user_about_path(current_user), alert: "他人情報の編集はできません"
     end
   end
 
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.name == "ゲスト"
-      redirect_to user_about_path(current_user) , danger: 'ゲストユーザーはプロフィール編集画面へ遷移できません'
+      redirect_to user_about_path(current_user) , alert: 'ゲストユーザーはプロフィール編集画面へ遷移できません'
     end
   end
 end
