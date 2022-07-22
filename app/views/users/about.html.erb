@@ -2,7 +2,6 @@
     <div class ="row">
       <div class="col-md-10 offset-md-1 col-lg-5 offset-lg-0 col-xl-4 mb-3 info_box">
         <%= render "info", user: @user %>
-        <!--<div class="about_crop_image"></div>-->
       </div>
       <div class="col-lg-5 col-xl-4 info_temporary_box">
       </div>
@@ -51,9 +50,9 @@
         <table>
           <tr>
             <td><% if @user == current_user %>
-                  <%= link_to "新しい作物の栽培を登録", new_crop_folder_path, class: "btn btn-info mr-5 mb-4" %>
+                  <%= link_to "新しい作物の栽培を登録", new_crop_folder_path, class: "btn btn-info mr-5 mb-4 mt-3" %>
             </td><% end %>
-            <td><%= link_to user_path(@user), class: "btn btn-outline-secondary btn-block mb-4" do %>
+            <td><%= link_to user_path(@user), class: "btn btn-outline-secondary btn-block mb-4 mt-3" do %>
                   <i class="fas fa-seedling"></i> 全ての栽培
             </td><% end %>
           </tr>
@@ -102,9 +101,9 @@
         <table>
           <tr>
             <td><% if @user == current_user %>
-                  <%= link_to "新しい商品を出品", new_item_path, class: "btn btn-info mr-5 user_about_item_btn mb-5" %>
+                  <%= link_to "新しい商品を出品", new_item_path, class: "btn btn-info mr-5 user_about_item_btn mb-5 mt-3" %>
             </td><% end %>
-            <td><%= link_to user_items_path(@user), class: "btn btn-outline-secondary btn-block user_about_item_btn mb-5" do %>
+            <td><%= link_to user_items_path(@user), class: "btn btn-outline-secondary btn-block user_about_item_btn mb-5 mt-3" do %>
                   <i class="fas fa-check"></i> 全ての出品
             </td><% end %>
           </tr>

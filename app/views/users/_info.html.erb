@@ -19,11 +19,23 @@
   </tr>
   <tr>
     <th style="width: 40%">作物いいね</th>
-    <td class="favorites_count" style="width: 60%"><%= render 'favorites/count', user: user %></td>
+    <td class="favorites_count" style="width: 60%">
+      <% if user == current_user %>
+        <%= render 'favorites/count', user: user %>
+      <% else %>
+        <strong><i class="fas fa-heart"></i></strong><span>　</span><%= link_to "#{user.favorites.count} 件", user_favorites_path(user) %>
+      <% end %>
+    </td>
   </tr>
   <tr>
     <th style="width: 40%">商品気になる</th>
-    <td class="likes_count" style="width: 60%"><%= render 'likes/count', user: user %></td>
+    <td class="likes_count" style="width: 60%">
+      <% if user == current_user %>
+        <%= render 'likes/count', user: user %>
+      <% else %>
+        <strong><i class="fas fa-heart"></i></strong><span>　</span><%= link_to "#{user.likes.count} 件", user_likes_path(user) %>
+      <% end %>
+    </td>
   </tr>
 </table>
 <% if current_user == user %>

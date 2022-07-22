@@ -36,16 +36,21 @@
   }
 
   .nav-link {
-  display: inline-block;
-  background:
-    linear-gradient(orange 0 0)
-    bottom /var(--d, 0) 3px
-    no-repeat;
-    transition: 0.5s;
+    display: inline-block;
+    background:
+      linear-gradient(orange 0 0)
+      bottom /var(--d, 0) 3px
+      no-repeat;
+      transition: 0.5s;
   }
 
   .nav-link:hover {
     --d: 100%;
+  }
+
+  .search_box {
+    border-radius: 15px;
+    border-color: beige;
   }
 
   .signed_in_footer_container {
@@ -132,7 +137,56 @@
     background: url(/images/background.png);
     background-repeat: no-repeat;
     height: 100px;
+    width: 100%;
     z-index: 0;
+  }
+
+  .signin_wrapper {
+    width: 90%;
+    background: beige;
+  }
+
+  .signin_container {
+    border-bottom: 2px dashed #000;
+    width: 80%;
+  }
+
+  .signin_wrapper h5 {
+    padding: 1% 2%;
+    background: #a1a46d;
+    margin-bottom: 5%;
+    color: white;
+    text-align: center;
+    border-top: none;
+  }
+
+  .signin_box {
+    border-radius: 15px;
+    border-color: chocolate;
+  }
+
+  .signin_submit {
+    background-color: #c47600;
+    color: white;
+    width: 50%;
+    border-radius: 30px;
+    padding: 10px;
+  }
+
+  .actions {
+    text-align: center;
+  }
+
+  .signin_link {
+    text-align: center;
+  }
+
+  .signin_button {
+    background-color: #8b968d;
+    color: white;
+    width: 50%;
+    border-radius: 30px;
+    padding: 10px;
   }
 
 
@@ -674,6 +728,10 @@
 @media screen and (max-width:768px) {
 
   // トップ
+  
+  .container {
+    margin-top: 5%;
+  }
 
   .main_image {
     height: 500px;
@@ -805,6 +863,10 @@
 @media screen and (max-width:425px) {
 
   //　全体
+  
+  .container {
+    margin-top: 8%;
+  }
 
   h4 {
     padding: 1% 2%;
