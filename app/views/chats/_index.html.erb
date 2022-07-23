@@ -2,7 +2,7 @@
     <% if chat.user_id != current_user.id %>
     <tbody>
       <tr>
-        <td class="icon_1"><%= image_tag @user.get_profile_image(50,50), class: "message_icon pl-0 pr-4" %></td>
+        <td class="icon_1"><%= image_tag @user.get_profile_image(45,45), class: "message_icon" %></td>
         <td colspan="2"><div class="message_box_1"><%= chat.message %></div></td>
         <td></td>
       </tr>

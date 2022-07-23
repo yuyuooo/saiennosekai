@@ -19,7 +19,7 @@
   </tr>
   <tr>
     <th style="width: 40%">作物いいね</th>
-    <td class="favorites_count" style="width: 60%">
+    <td id="user_info_favorites_count" data-user-id="<%= user.id %>" class="favorites_count" style="width: 60%">
       <% if user == current_user %>
         <%= render 'favorites/count', user: user %>
       <% else %>
@@ -29,11 +29,11 @@
   </tr>
   <tr>
     <th style="width: 40%">商品気になる</th>
-    <td class="likes_count" style="width: 60%">
+    <td id="user_info_likes_count" data-user-id="<%= user.id %>" class="likes_count" style="width: 60%">
       <% if user == current_user %>
         <%= render 'likes/count', user: user %>
       <% else %>
-        <strong><i class="fas fa-heart"></i></strong><span>　</span><%= link_to "#{user.likes.count} 件", user_likes_path(user) %>
+        <strong><i class="fas fa-star"></i></strong><span>　</span><%= link_to "#{user.likes.count} 件", user_likes_path(user) %>
       <% end %>
     </td>
   </tr>

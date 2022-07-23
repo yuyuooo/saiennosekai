@@ -358,7 +358,7 @@
   }
 
   .user_about_image {
-    border-radius: 50%;
+    border-radius: 10%;
   }
 
   .user_about_text {
@@ -572,8 +572,6 @@
     margin: 10px;
     font-size: 14px;
     display: inline-block;
-    // word-break: break-word;
-    //white-space: pre-wrap;
   }
 
 
@@ -728,7 +726,7 @@
 @media screen and (max-width:768px) {
 
   // トップ
-  
+
   .container {
     margin-top: 5%;
   }
@@ -863,7 +861,7 @@
 @media screen and (max-width:425px) {
 
   //　全体
-  
+
   .container {
     margin-top: 8%;
   }

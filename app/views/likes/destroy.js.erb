@@ -1,2 +1,4 @@
 $('#like_buttons_<%= @item.id %>').html("<%= j(render 'likes/btn',  item: @item ) %>")
-$(".likes_count").html("<%= j(render 'likes/count', user: current_user ) %>");
+if ($('#user_info_likes_count').data('user-id') === <%= current_user.id %>) {
+  $(".likes_count").html("<%= j(render 'likes/count', user: current_user ) %>");
+}

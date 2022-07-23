@@ -1,2 +1,8 @@
 $('#favorite_buttons_<%= @crop_folder.id %>').html("<%= j(render 'favorites/btn',  crop_folder: @crop_folder ) %>")
-$(".favorites_count").html("<%= j(render 'favorites/count', user: current_user ) %>");
+<!--console.log(typeof $('#user_info_favorites_count').data('user-id'))-->
+<!--console.log('---')-->
+<!--console.log(<%#= current_user.id %>)-->
+<!--console.log($('#user_info_favorites_count').data('user-id') === <%#= current_user.id %>)-->
+if ($('#user_info_favorites_count').data('user-id') === <%= current_user.id %>) {
+  $(".favorites_count").html("<%= j(render 'favorites/count', user: current_user ) %>");
+}
