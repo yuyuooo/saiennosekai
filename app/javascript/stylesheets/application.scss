@@ -23,6 +23,12 @@
   header {
     width: 100%;
   }
+  
+  .notice_circle {
+    color: tomato;
+    font-size: small;
+    margin-bottom: 5px;
+  }
 
   .navbar {
     background-color: #dcd3b2;
@@ -591,7 +597,6 @@
     text-align: right;
   }
 
-
   .message_icon {
     max-width: 50px;
     max-height: 50px;
@@ -926,7 +931,6 @@
     border-radius: 3px;
     transform: rotate(-25deg);
   }
-
 
   .main_text p:after {
     position: absolute;

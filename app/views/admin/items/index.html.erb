@@ -20,13 +20,15 @@
         <% @items.each do |item| %>
           <tbody>
             <tr>
-              <td><%= link_to edit_admin_user_path(item.user) do %>
-                    <%= item.user.name %></br>
-                    <%= image_tag item.user.get_profile_image(70,70) %>
-                  <% end %>
+              <td>
+                <%= link_to edit_admin_user_path(item.user) do %>
+                  <%= item.user.name %></br>
+                  <%= image_tag item.user.get_profile_image(70,70) %>
+                <% end %>
               </td>
-              <td><%= item.item_name %>(<%= item.item_count %>個)</br>
-                  <%= image_tag item.get_item_image(70,70) %>
+              <td>
+                <%= item.item_name %>(<%= item.item_count %>個)</br>
+                <%= image_tag item.get_item_image(70,70) %>
               </td>
               <td><%= item.price.to_s(:delimited) %></td>
               <td class="admin_min_invisiable"><%= item.sales_area %></td>

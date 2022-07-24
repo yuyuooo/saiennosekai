@@ -49,12 +49,16 @@
         <% end %>
         <table>
           <tr>
-            <td><% if @user == current_user %>
-                  <%= link_to "新しい作物の栽培を登録", new_crop_folder_path, class: "btn btn-info mr-5 mb-4 mt-3" %>
-            </td><% end %>
-            <td><%= link_to user_path(@user), class: "btn btn-outline-secondary btn-block mb-4 mt-3" do %>
-                  <i class="fas fa-seedling"></i> 全ての栽培
-            </td><% end %>
+            <td>
+              <% if @user == current_user %>
+                <%= link_to "新しい作物の栽培を登録", new_crop_folder_path, class: "btn btn-info mr-5 mb-4 mt-3" %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to user_path(@user), class: "btn btn-outline-secondary btn-block mb-4 mt-3" do %>
+                <i class="fas fa-seedling"></i> 全ての栽培
+              <% end %>
+            </td>
           </tr>
         </table>
         <h5 class="mt-5">出品した商品</h5>
@@ -100,12 +104,16 @@
         <% end %>
         <table>
           <tr>
-            <td><% if @user == current_user %>
-                  <%= link_to "新しい商品を出品", new_item_path, class: "btn btn-info mr-5 user_about_item_btn mb-5 mt-3" %>
-            </td><% end %>
-            <td><%= link_to user_items_path(@user), class: "btn btn-outline-secondary btn-block user_about_item_btn mb-5 mt-3" do %>
-                  <i class="fas fa-check"></i> 全ての出品
-            </td><% end %>
+            <td>
+              <% if @user == current_user %>
+                <%= link_to "新しい商品を出品", new_item_path, class: "btn btn-info mr-5 user_about_item_btn mb-5 mt-3" %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to user_items_path(@user), class: "btn btn-outline-secondary btn-block user_about_item_btn mb-5 mt-3" do %>
+                <i class="fas fa-check"></i> 全ての出品
+              <% end %>
+            </td>
           </tr>
         </table>
       </div>

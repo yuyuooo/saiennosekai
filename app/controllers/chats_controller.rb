@@ -23,6 +23,7 @@ class ChatsController < ApplicationController
     @user = current_user
     if @chat.save
       @chat.room.create_notification_dm!(current_user, @chat.room_id, @chat.id)
+      @chat_message = @chat.message.gsub(/(\r\n|\r|\n)/, "\\n")
     else
       render :validater
     end

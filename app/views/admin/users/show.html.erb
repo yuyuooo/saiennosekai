@@ -20,10 +20,11 @@
         <% @crop_folders.each do |crop_folder| %>
           <tbody>
             <tr>
-              <td><% unless crop_folder.is_published_flag? %>
-                    <i class="fas fa-lock"></i></br>
-                  <% end %>
-                  <%= image_tag crop_folder.get_crop_image(70,70) %>
+              <td>
+                <% unless crop_folder.is_published_flag? %>
+                  <i class="fas fa-lock"></i></br>
+                <% end %>
+                <%= image_tag crop_folder.get_crop_image(70,70) %>
               </td>
               <td><%= crop_folder.crop_name %></td>
               <td><%= crop_folder.new_crop_date %></td>

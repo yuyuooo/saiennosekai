@@ -30,9 +30,9 @@
           <tr>
             <th width="35%">作物名：</th>
             <td width="65%"><%= crop_folder.crop_name %>
-                <% unless crop_folder.is_published_flag? %>
-                  <i class="fas fa-lock"></i>
-                <% end %>
+              <% unless crop_folder.is_published_flag? %>
+                <i class="fas fa-lock"></i>
+              <% end %>
             </td>
           </tr>
           <tr>
@@ -51,25 +51,29 @@
         <table class="table table-borderless">
           <% if crop_folder.user == current_user %>
             <tr>
-              <td><%= link_to crop_folder_path(crop_folder.id), class: "btn btn-outline-info btn-block" do %>
-                    <i class="fas fa-book-open"></i> 日記を書く
-                  <% end %>
+              <td>
+                <%= link_to crop_folder_path(crop_folder.id), class: "btn btn-outline-info btn-block" do %>
+                  <i class="fas fa-book-open"></i> 日記を書く
+                <% end %>
               </td>
-              <td><%= link_to  crop_folder_plans_path(crop_folder.id), class: "btn btn-outline-info btn-block mt-0 ml-2" do %>
-                    <i class="fas fa-calendar"></i> 計画を立てる
-                  <% end %>
+              <td>
+                <%= link_to  crop_folder_plans_path(crop_folder.id), class: "btn btn-outline-info btn-block mt-0 ml-2" do %>
+                  <i class="fas fa-calendar"></i> 計画を立てる
+                <% end %>
               </td>
             </tr>
           <% else %>
             <% if crop_folder.is_published_flag? %>
               <tr>
-                <td><%= link_to crop_folder_path(crop_folder.id), class: "btn btn-outline-secondary btn-block" do %>
-                      <i class="fas fa-book-open"></i> 日記を見る
-                    <% end %>
+                <td>
+                  <%= link_to crop_folder_path(crop_folder.id), class: "btn btn-outline-secondary btn-block" do %>
+                    <i class="fas fa-book-open"></i> 日記を見る
+                  <% end %>
                 </td>
-                <td><%= link_to  crop_folder_plans_path(crop_folder.id), class: "btn btn-outline-secondary btn-block mt-0 ml-2" do %>
-                      <i class="fas fa-calendar"></i> 計画を見る
-                    <% end %>
+                <td>
+                  <%= link_to  crop_folder_plans_path(crop_folder.id), class: "btn btn-outline-secondary btn-block mt-0 ml-2" do %>
+                    <i class="fas fa-calendar"></i> 計画を見る
+                  <% end %>
                 </td>
               </tr>
             <% else %>

@@ -1,6 +1,6 @@
 $('.errors').val('');
 $("textarea").val('');
 $(document).ready(function(){
-  $('.message_table').append('<tbody><tr><td></td><td colspan="2" class="message_2"><div class="message_box_2"><%= @chat.message %></div></td><td></td></tr></tbody>');
+ $('.message_table').append('<tbody><tr><td></td><td colspan="2" class="message_2"><div class="message_box_2"><%= @chat_message %></div></td><td></td></tr></tbody>');
 });
 $('.errors').html("<%= j(render 'layouts/errors', obj: @chat) %>");

@@ -44,7 +44,7 @@
           <li class="nav-item">
             <% if unchecked_notifications.any? %>
               <%= link_to notifications_path, class: "nav-link" do %>
-                <i class="fa fa-circle" style="color: gold;"></i><i class="fas fa-bell"></i> 通知
+                <i class="fa fa-circle notice_circle"></i><i class="fas fa-bell"></i> 通知
               <% end %>
             <% else %>
               <%= link_to notifications_path, class: "nav-link ml-3" do %>

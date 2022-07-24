@@ -13,7 +13,7 @@ class CropCommentsController < ApplicationController
     end
   end
 
-  private
+private
 
   def crop_comment_params
     params.require(:crop_comment).permit(:comment)

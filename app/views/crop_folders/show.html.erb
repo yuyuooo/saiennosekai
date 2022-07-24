@@ -27,9 +27,10 @@
                 <tr>
                   <td><%= diary.diary_date %></td>
                   <td>天気：<%= diary.weather %></td>
-                  <td><% if diary.user == current_user %>
-                        <%= link_to "削除", crop_folder_diary_path(@crop_folder, diary), method: :delete, class: "btn btn-danger btn-sm" %>
-                      <% end %>
+                  <td>
+                    <% if diary.user == current_user %>
+                      <%= link_to "削除", crop_folder_diary_path(@crop_folder, diary), method: :delete, class: "btn btn-danger btn-sm" %>
+                    <% end %>
                   </td>
                 </tr>
               </table>
@@ -52,9 +53,10 @@
                   <tr>
                     <td><%= diary.diary_date %></td>
                     <td>天気：<%= diary.weather %></td>
-                    <td><% if diary.user == current_user %>
-                          <%= link_to "削除", crop_folder_diary_path(@crop_folder, diary), method: :delete, class: "btn btn-danger btn-sm" %>
-                        <% end %>
+                    <td>
+                      <% if diary.user == current_user %>
+                        <%= link_to "削除", crop_folder_diary_path(@crop_folder, diary), method: :delete, class: "btn btn-danger btn-sm" %>
+                      <% end %>
                     </td>
                   </tr>
                 </table>

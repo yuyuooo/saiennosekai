@@ -15,13 +15,16 @@
           <table class="table table-borderless mb-5">
             <% @notifications.each do |notification|%>
               <tr>
-                <td style="text-align: right;"><%= link_to user_about_path(notification.visitor) do %>
-                      <%= image_tag notification.visitor.get_profile_image(50,50), class: "user_profile_image" %>
-                    <% end %>
+                <td style="text-align: right;">
+                  <%= link_to user_about_path(notification.visitor) do %>
+                    <%= image_tag notification.visitor.get_profile_image(50,50), class: "user_profile_image" %>
+                  <% end %>
                 </td>
-                <td><p><%= notification_form(notification) %>
+                <td>
+                  <p>
+                    <%= notification_form(notification) %>
                     <span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)}前)" %></span>
-                    </p>
+                  </p>
                 </td>
               </tr>
             <% end %>
